@@ -3,6 +3,11 @@ package pacman;
 public abstract class Gum 
 {
 	private int state;
+	
+	public int getState() {
+		return state;
+	}
+
 	private int type;
 	private int score;
 
