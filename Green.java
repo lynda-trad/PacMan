@@ -16,5 +16,4 @@ public class Green extends Gum
 	
 	// devra changer la grille sur laquelle on joue si on touche cette gum
 	// donc il modifiera le tableau dont les cases representent les murs
-	
 }

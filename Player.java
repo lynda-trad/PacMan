@@ -1,9 +1,10 @@
 package pacman;
 
-public class Player 
+public class Player extends Elements
 {
-	private int score;	   // score du player
-	private int lives = 3; // initialement trois vies
+	private int score	= 0;	     // score du player
+	private int lives 	= 3; // initialement trois vies
+	private int element = 0;
 	
 	public int getScore() 
 	{
@@ -23,6 +24,11 @@ public class Player
 	public void setLives(int lives)
 	{
 		this.lives = lives;
+	}
+	
+	@Override
+	public int getElement() {
+		return element;
 	}
 	
 	//////////////////////////////////////////////////
@@ -61,9 +67,5 @@ public class Player
 			System.exit(0);
 		}
 		
-		/*
-		
-		
-		*/
 	}
 }

@@ -1,8 +1,9 @@
 package pacman;
 
-public class Ghosts 
+public class Ghosts extends Elements
 {
 	private int x,y ;
+	private int element = 1;
 	
 	public int getX() {
 		return x;
@@ -20,9 +21,17 @@ public class Ghosts
 		this.y = y;
 	}
 	
-	public void backToCenter() // touché par pacman qd vulnerable -> gum orange
-	{
-		x = y = 0;
+	@Override
+	public int getElement() {
+		return element;
+	}
+	
+	////////////////////////////////////////
+	
+	public void backToCenter() 
+	{   // touché par pacman qd vulnerable -> gum orange
+		x = y = 4;
+		//mettre a jour map
 	}
 
 	public void checkWalls()
@@ -42,6 +51,7 @@ public class Ghosts
 		// apres avoir atteint le mur, check haut droit gauche droite -> premier de libre et va la bas et continue son
 		// voyage 
 	}
+
 	
 }
 

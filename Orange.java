@@ -14,4 +14,8 @@ public class Orange extends Gum
 		super.setScore(500);
 		super.setType (3); 		// type de gum 
 	}
+	
+	//modifie aspect du pacman
+	//rend fantome mangeable et deux fois plus lents -> fantome gereront eux memes si se font manger
+	
 }

@@ -2,7 +2,6 @@ package pacman;
 
 public class Blue extends Gum
 {
-	
 	/*
 	Bleu
 	100
