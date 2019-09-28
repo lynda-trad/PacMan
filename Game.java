@@ -11,6 +11,13 @@ public class Game
 	 que cest au fur et a mesure
 	 */
 	
+	public void initializeGame()
+	{
+		
+		
+	}
+	
+	
 	public static void main(String[] args)
 	{
 		System.out.println("test");

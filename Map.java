@@ -11,11 +11,23 @@ public class Map extends Elements
 		
 		 /*
 		 Numero d'élément
-		 Joueur = 0
+		 Rien   = 0
 		 Ghosts = 1
 		 Gums 	= 2
 		 Murs 	= 3
+		 Joueur = 4
 		 */
+	}
+	
+	public void printMap()
+	{
+		for(int i = 0; i < 7; ++i)
+		{
+			for(int j = 0; j < 7; ++j)
+			{
+				System.out.println(map[i][j]);
+			}
+		}
 	}
 	
 	public void getElementCase(int x, int y)
@@ -23,7 +35,7 @@ public class Map extends Elements
 		switch(map[x][y].getElement())
 		{
 				case 0:
-					//player
+					//rien
 					break;
 
 				case 1:
@@ -32,13 +44,22 @@ public class Map extends Elements
 
 				case 2:
 					//gum
-					map[x][y].getState();
+					map[x][y].getState(); //savoir quel type de gum c'est pour appliquer le pouvoir
+					
+					
 					break;
 
 				case 3:
 					//wall
 					break;
+					
+				case 4:
+					//joueur
+					break;
 		}
 	}
+	
+	
+	
 }
 
