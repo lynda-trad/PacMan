@@ -107,7 +107,7 @@ public class Pacman extends Characters
 	
 	public void eatGum(Gum g) 
 	{
-		if (g.eaten == false)
+		if (g.getEaten() == false)
 		{
 			if(g.getType()==0)
 			{
