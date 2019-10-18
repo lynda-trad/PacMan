@@ -10,6 +10,17 @@ public class Ghosts extends Characters
 		return element;
 	}
 	
+	public int beNormal()
+	{
+		this.state = 0;
+	}
+	
+	public int beVulnerable()
+	{
+		this.state = 1;
+	}
+	
+	
 	////////////////////////////////////////
 	
 	public void backToCenter() 
