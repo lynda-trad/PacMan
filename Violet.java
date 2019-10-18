@@ -12,7 +12,14 @@ public class Violet extends Gum
 	
 	public Violet()
 	{
-		super.setScore(300);
-		super.setType (2); 		// type de gum 2
+		new Gum(1); // Violet --> type = 1
 	}
+	
+	@Override
+	public void effet(Pacman p) 
+	{
+	p.beInvisible();
+		
+	}
+	
 }

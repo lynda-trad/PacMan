@@ -1,25 +1,9 @@
 package pacman;
 
-public class Ghosts extends Elements
+public class Ghosts extends Characters
 {
-	private int x,y ;
-	private int element = 1;
-	
-	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
+	private int state ; // 0 = normal, 1 = vulnerable
+	private int element = 1;  // 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
 	
 	@Override
 	public int getElement() {
@@ -51,7 +35,26 @@ public class Ghosts extends Elements
 		// apres avoir atteint le mur, check haut droit gauche droite -> premier de libre et va la bas et continue son
 		// voyage 
 	}
+	
+	@Override
+	public void move()
+	{
+		
 
+	}
+	
+	public void moveSlow()
+	{
+		
+
+	}
+	
+	@Override
+	public void cross()
+	{
+		
+
+	}
 	
 }
 

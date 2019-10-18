@@ -2,7 +2,10 @@ package pacman;
 
 public abstract class Elements 
 {
-	private int element;
+	protected int element;  // 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
+	protected int x;
+	protected int y;
+
 	
 	public int getState() 
 	{
@@ -11,11 +14,32 @@ public abstract class Elements
 	
 	public int getElement() 
 	{
-		return element;
+		return this.element;
 	}
 	
-	public void setElement(int e)
+	public void setElement(int element)
 	{
-		element = e;
+		this.element = e;
 	}
+	
+	public int getX() 
+	{
+		return this.x;
+	}
+	
+	public int setX(int x) 
+	{
+		 this.x = x;
+	}
+	
+	public int getY() 
+	{
+		return this.y;
+	}
+	
+	public int setY(int y) 
+	{
+		 this.y = y;
+	}
+	
 }

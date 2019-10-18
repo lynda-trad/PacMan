@@ -11,9 +11,18 @@ public class Orange extends Gum
 	deux fois plus lentement et ils reviennent au centre du labyrinthe si ils sont touches par le pacman.
 	*/
 	
-	public Orange() {
-		super.setScore(500);
-		super.setType (3); 		// type de gum 
+	public Orange()
+	{
+		new Gum(2); // Orange --> type = 2
+		
+	}
+	
+	@Override
+	public void effet(Pacman p, Ghosts g) 
+	{
+	p.beSuperPacman();
+	g.beVulnerable();
+	
 	}
 	
 	//modifie aspect du pacman

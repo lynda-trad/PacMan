@@ -10,8 +10,15 @@ public class Green extends Gum
 	
 	public Green() 
 	{	
-		super.setScore(1000);
-		super.setType (4); 		// type de gum 
+		new Gum(3); // Green --> type = 3
+
+	}
+	
+	@Override
+	public void effet()
+	{
+	//GameGraphics.newStructure() //Nouvelle structure de labyrinthe
+		
 	}
 	
 	// devra changer la grille sur laquelle on joue si on touche cette gum

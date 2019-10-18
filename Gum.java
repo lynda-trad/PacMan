@@ -1,54 +1,82 @@
 package pacman;
 
-public abstract class Gum extends Elements 
+public abstract class Gum extends Elements
 {
-	private int state = 1;   // not eaten
-	private int type;
-	private int score;
-	private int element = 2; // for the map
+	protected static int compteur = 0;
+	protected boolean eaten; 
+	protected int type;  // 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert
+	protected int score; // 100 = Blue, 300 = Violet, 500 = Orange, 1000 = Vert
+	protected int element;  // 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
 	
-	@Override
-	public int getState() 
+	public Gum(int type)
 	{
-		return state;
-	}
-
-	public int getScore() 
-	{
-		return score;
+		this.eaten = false;
+		switch(type)
+		{
+			case 0:
+				this.score = 100;
+				break;
+			case 1:
+				this.score = 300;
+				break;	
+			case 2:
+				this.score = 500;
+				break;
+			case 3:
+				this.score = 1000;
+				break;
+			default:
+				this.score = 100;
+		}
+		
+		this.element = 2;
+		this.compteur ++;
+		
 	}
 	
-	public void setScore(int s) 
+	public int getCompteur()
 	{
-		score = s;
+		return compteur;
+	}
+	
+	public void setCompteur(int nbGum) 
+	{
+		compteur = nbGum;
+	}
+	
+	public void decrementeCompteur() {
+		compteur --;
+	}
+	
+	public bool getEaten() 
+	{
+		return this.eaten;
+	}
+	
+	public void isEaten() 
+	{
+		this.eaten = true;
 	}
 
 	public int getType() {
 		return type;
 	}
-
-	public void setType(int type) 
+	
+	public int getScore() 
 	{
-		this.type = type;
+		return this.score;
 	}
 	
-	public void setState(int s) 
-	{
-		state = s;
-	}
 
 	@Override
 	public int getElement() 
 	{
-		return element;
+		return this.element;
 	}
 
 	/////////////////////////////////////
 	
-	public void gumEaten()
-	{
-		state = 0;
-	}
+	public abstract void effet(); // Effets sur le jeu (Pacman et Ghosts) 
 	
 	/*
 		Apres qu'une gum ait été consommée on doit  mettre son etat a 0 pour dire

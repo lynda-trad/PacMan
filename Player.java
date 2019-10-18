@@ -8,7 +8,7 @@ public class Player extends Elements
 	
 	public int getScore() 
 	{
-		return score;
+		return this.score;
 	}
 	
 	public void setScore(int score) 
@@ -18,7 +18,7 @@ public class Player extends Elements
 	
 	public int getLives() 
 	{
-		return lives;
+		return this.lives;
 	}
 	
 	public void setLives(int lives)
@@ -28,7 +28,7 @@ public class Player extends Elements
 	
 	@Override
 	public int getElement() {
-		return element;
+		return this.element;
 	}
 	
 	//////////////////////////////////////////////////

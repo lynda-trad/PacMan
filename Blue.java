@@ -9,7 +9,7 @@ public class Blue extends Gum
 	*/
 	public Blue()
 	{
-		super.setScore(100);
-		super.setType (1); 		// type de gum 
+		new Gum(0); // Blue --> type= 0  
 	}
+	
 }
