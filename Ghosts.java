@@ -6,8 +6,14 @@ public class Ghosts extends Characters
 	private int element = 1;  // 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
 	
 	@Override
-	public int getElement() {
-		return element;
+	public int getElement()
+	{
+		return this.element;
+	}
+	
+	public int getState() 
+	{
+		return this.state;
 	}
 	
 	public int beNormal()
