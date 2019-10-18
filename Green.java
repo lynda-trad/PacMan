@@ -10,7 +10,7 @@ public class Green extends Gum
 	
 	public Green() 
 	{	
-		new Gum(3); // Green --> type = 3
+		super(3); // Green --> type = 3
 
 	}
 	

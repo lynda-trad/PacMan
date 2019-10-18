@@ -13,7 +13,7 @@ public class Orange extends Gum
 	
 	public Orange()
 	{
-		new Gum(2); // Orange --> type = 2
+		super(2); // Orange --> type = 2
 		
 	}
 	

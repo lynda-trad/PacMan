@@ -12,7 +12,7 @@ public class Violet extends Gum
 	
 	public Violet()
 	{
-		new Gum(1); // Violet --> type = 1
+		super(1); // Violet --> type = 1
 	}
 	
 	@Override

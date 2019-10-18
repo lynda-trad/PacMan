@@ -9,7 +9,7 @@ public class Blue extends Gum
 	*/
 	public Blue()
 	{
-		new Gum(0); // Blue --> type= 0  
+		super(0); // Blue --> type= 0  
 	}
 	
 }
