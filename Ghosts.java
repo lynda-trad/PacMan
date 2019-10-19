@@ -5,6 +5,10 @@ public class Ghosts extends Characters
 	private int state ; // 0 = normal, 1 = vulnerable
 	private int element = 1;  // 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
 	
+	public Ghosts() {
+		this.state = 0;
+	}
+	
 	@Override
 	public int getElement()
 	{
@@ -16,16 +20,29 @@ public class Ghosts extends Characters
 		return this.state;
 	}
 	
-	public int beNormal()
+	public void beNormal()
 	{
 		this.state = 0;
 	}
 	
-	public int beVulnerable()
+	public void beVulnerable()
 	{
 		this.state = 1;
 	}
 	
+	public String toString()
+	{
+		switch(this.state) {
+		
+		case 0:
+			return "Ghost blanc à l'état Normal";
+		case 1:
+			return "Ghost bleu à l'état Vulnérable";
+		default:
+			return "Ghost blanc à l'état Normal";
+		}
+	
+	}
 	
 	////////////////////////////////////////
 	

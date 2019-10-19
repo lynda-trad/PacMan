@@ -17,12 +17,27 @@ public class Orange extends Gum
 		
 	}
 	
-	@Override
-	public void effet(Pacman p, Ghosts g) 
+	// Rendre les 4 Fantomes du jeu vulnérables
+	/*@Override
+	public void effet(Pacman p, Ghosts ghosts[]) 
 	{
-	p.beSuperPacman();
-	g.beVulnerable();
+		for(Ghosts g: ghosts)
+		{
+			g.beVulnerable();
+		}
 	
+	}
+	*/
+	
+
+	
+	public String toString()
+	{
+			if (this.eaten==true)
+				return "Gum Orange de score " + this.score + " eaten";
+			else
+				return "Gum Orange de score " + this.score + " not eaten";
+			
 	}
 	
 	//modifie aspect du pacman

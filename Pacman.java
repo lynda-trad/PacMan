@@ -1,10 +1,13 @@
 package pacman;
 
+import pacman.Characters;
+import pacman.Gum;
+
 public class Pacman extends Characters
 {
-	protected int score;	     // score du player
-	protected int lives; // initialement trois vies
-	protected int state;  // 0 = normal, 1 = superPacman, 2 = invisible
+	private int score;	     // score du player
+	private int lives; // initialement trois vies
+	private int state;  // 0 = normal, 1 = superPacman, 2 = invisible
 	private int element; // 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
 	
 	public Pacman ()
@@ -61,6 +64,23 @@ public class Pacman extends Characters
 		return this.element;
 	}
 	
+	public String toString()
+	{
+		switch(this.state) {
+		
+		case 0:
+			return "Pacman jaune à l'état Normal avec un score de " + this.score + " et " + this.lives + " vies restantes.";
+
+		case 1:
+			return "Pacman orange à l'état SuperPacman avec un score de " + this.score + " et " + this.lives + " vies restantes.";
+		case 2:
+			return "Pacman jaune pale à l'état Invisible avec un score de " + this.score + " et " +this.lives + " vies restantes.";
+		default:
+			return "Pacman à l'état Normal avec un score de " + this.score + this.lives + " et " + " vies restantes.";
+		}
+	
+	}
+	
 	//////////////////////////////////////////////////
 	
 	public void addScore(Gum g)
@@ -84,6 +104,7 @@ public class Pacman extends Characters
 
 	public void loseLife() 
 	{
+		if(this.lives>0)
 		this.lives--;
 		if(this.lives == 0) //checks if dead
 			gameOver();
@@ -94,7 +115,7 @@ public class Pacman extends Characters
 		
 		if(this.lives == 0) //quand le pacman a perdu toutes ses vies    la partie est perdue.
 		{
-			System.out.println("noob");
+			System.out.println("Game Over");
 			System.exit(0);
 		}
 		else 		   //quand il n'y a plus de pacgommes 	   	    la partie est gagnee 
@@ -109,20 +130,35 @@ public class Pacman extends Characters
 	{
 		if (g.getEaten() == false)
 		{
-			if(g.getType()==0)
+			if(g.getType()==0) // Blue
 			{
 				this.addScore(g);
 				g.isEaten();
 				g.decrementeCompteur();
 				
 			} 
-			else 
+			else if (g.getType()==1) // Violet = Pacman invisible
 			{
 				this.addScore(g);
-				g.effet();
+				this.beInvisible(); 
 				g.isEaten();
 				g.decrementeCompteur();
 
+			} 
+			else if (g.getType()==2) // Orange 
+			{
+				this.addScore(g);
+				this.beSuperPacman();
+				//	g.effet();  // Marche pas--> SuperPacman et les 4 Ghosts vulnérables
+				g.isEaten();
+				g.decrementeCompteur();
+			}
+			else // Green 
+			{
+				this.addScore(g);
+				//	g.effet(); // Marche pas--> New Structure labyrinthe	
+				g.isEaten();
+				g.decrementeCompteur();
 			}
 					
 		}

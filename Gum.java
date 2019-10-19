@@ -11,6 +11,7 @@ public abstract class Gum extends Elements
 	public Gum(int type)
 	{
 		this.eaten = false;
+		this.type= type;
 		switch(type)
 		{
 			case 0:
@@ -48,7 +49,7 @@ public abstract class Gum extends Elements
 		compteur --;
 	}
 	
-	public bool getEaten() 
+	public boolean getEaten() 
 	{
 		return this.eaten;
 	}
@@ -62,11 +63,14 @@ public abstract class Gum extends Elements
 		return type;
 	}
 	
+	public int setType(int type) {
+		this.type = type;
+	}
+	
 	public int getScore() 
 	{
 		return this.score;
 	}
-	
 
 	@Override
 	public int getElement() 
@@ -76,7 +80,8 @@ public abstract class Gum extends Elements
 
 	/////////////////////////////////////
 	
-	public abstract void effet(); // Effets sur le jeu (Pacman et Ghosts) 
+	public abstract void effet(); // Effets sur le jeu (et Ghosts) 
+	
 	
 	/*
 		Apres qu'une gum ait été consommée on doit  mettre son etat a 0 pour dire
