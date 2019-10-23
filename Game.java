@@ -2,6 +2,7 @@ package pacman;
 
 public class Game 
 {
+	private Elements[][] map;
 	/*
 	 Initialisation du jeu : 
 	 - cree 1 joueur, score 0, emplacement random ?, vies = 3, pas de pouvoir
@@ -24,4 +25,14 @@ public class Game
 		Player p = new Player();
 		System.out.println(p.getElement());
 	}
+
+
+	public Elements[][] getMap() {
+		return map;
+	}
+
+	public void setMap(Elements[][] map) {
+		this.map = map;
+	}
+	
 }

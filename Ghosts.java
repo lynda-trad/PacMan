@@ -3,7 +3,7 @@ package pacman;
 public class Ghosts extends Characters
 {
 	private int state ; // 0 = normal, 1 = vulnerable
-	private int element = 1;  // 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
+	private int element = 3;  
 	
 	public Ghosts() {
 		this.state = 0;
@@ -71,7 +71,7 @@ public class Ghosts extends Characters
 	}
 	
 	@Override
-	public void move()
+	public void move(Game g)
 	{
 		
 
@@ -84,7 +84,7 @@ public class Ghosts extends Characters
 	}
 	
 	@Override
-	public void cross()
+	public void cross(Game g)
 	{
 		
 

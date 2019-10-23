@@ -15,7 +15,7 @@ public class Pacman extends Characters
 	this.score = 0;
 	this.lives = 3;
 	this.state = 0;
-	this.element = 0;
+	this.element = 2;
 	}
 	
 	public int getScore() 
@@ -166,17 +166,100 @@ public class Pacman extends Characters
 	}
 	
 	@Override
-	public void move()
+	public void move(Game g, String direction)
 	{
-		
-
+		//on a ses x et y dans elements
+		cross(g, direction);
 	}
 	
 	@Override
-	public void cross()
+	public void cross(Game g, String direction)
 	{
+		int future_x = 0;
+		int future_y = 0;
+		switch(direction)
+		{
+			case "RIGHT" :
+				future_x = x + 1;
+				break;
+			case "LEFT"  :
+				future_x = x - 1;
+				break;
+			case "UP" :
+				future_y = y - 1;
+				break;
+			case "DOWN" :
+				future_y = y + 1;
+				break;
+		}
 		
-
+		//on a ses x et y dans elements
+		
+		/*
+		je crois que tout ca equivaut a appeler :
+			g.getMap().getElementCase(future_x, future_y);
+		mais y a un soucis je peux pas 
+		*/
+		
+		switch(g.getMap()[future_x][future_y].getElement())
+		{
+			case 0 :
+				// rien donc on peut move
+				switchDirection(direction);
+				break;
+			case 1 : 
+				// on ne fait rien pcq mur apres
+				break;
+			case 2 :
+				// pas possible ici puisque soi meme
+				break;
+			case 3 :
+				// ghosts
+				// verifie etat
+				// peut perdre une vie
+				switch(state)
+				{
+					case 0 :
+						//normal
+						loseLife(); 
+						break;
+					case 1 :
+						//superpacman
+						//g.getMap()[future_x][future_y].backToCenter();
+						break;
+					case 2 :
+						//invisible
+						switchDirection(direction);
+						break;
+				}
+				break;
+			case 4 :
+				// verifie type de gum
+				// applique pouvoir au joueur
+				//switch(g.getMap()[future_x][future_y].getElement().getType())
+				
+				break;
+			
+		}
+	}
+	
+	public void switchDirection(String direction)
+	{
+		switch(direction)
+		{
+			case "RIGHT" :
+				++ x;
+				break;
+			case "LEFT"  :
+				-- x;
+				break;
+			case "UP" :
+				-- y;
+				break;
+			case "DOWN"  :
+				++ y;
+				break;
+		}
 	}
 	
 }

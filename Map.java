@@ -12,10 +12,10 @@ public class Map extends Elements
 		 /*
 		 Numero d'élément
 		 Rien   = 0
-		 Ghosts = 1
-		 Gums 	= 2
-		 Murs 	= 3
-		 Joueur = 4
+		 Murs 	= 1
+		 Joueur = 2
+		 Ghosts = 3
+		 Gums 	= 4
 		 */
 	}
 	
@@ -58,8 +58,5 @@ public class Map extends Elements
 					break;
 		}
 	}
-	
-	
-	
 }
 

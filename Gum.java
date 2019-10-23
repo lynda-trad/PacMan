@@ -2,11 +2,11 @@ package pacman;
 
 public abstract class Gum extends Elements
 {
-	protected static int compteur = 0;
 	protected boolean eaten; 
-	protected int type;  // 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert
-	protected int score; // 100 = Blue, 300 = Violet, 500 = Orange, 1000 = Vert
-	protected int element;  // 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
+	protected int type;     			// 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert
+	protected int score; 				// 100 = Blue, 300 = Violet, 500 = Orange, 1000 = Vert
+	protected int element;  			// 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
+	protected static int compteur = 0;
 	
 	public Gum(int type)
 	{
@@ -30,9 +30,8 @@ public abstract class Gum extends Elements
 				this.score = 100;
 		}
 		
-		this.element = 2;
-		this.compteur ++;
-		
+		this.element = 4;
+		++this.compteur;
 	}
 	
 	public int getCompteur()
@@ -63,7 +62,7 @@ public abstract class Gum extends Elements
 		return type;
 	}
 	
-	public int setType(int type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 	

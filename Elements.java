@@ -2,7 +2,14 @@ package pacman;
 
 public abstract class Elements 
 {
-	protected int element;  // 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
+	protected int element;  
+	/*
+	 		 Rien   = 0
+			 Murs 	= 1
+			 Joueur = 2
+			 Ghosts = 3
+			 Gums 	= 4
+	*/
 	protected int x;
 	protected int y;
 
@@ -19,7 +26,7 @@ public abstract class Elements
 	
 	public void setElement(int element)
 	{
-		this.element = e;
+		this.element = element;
 	}
 	
 	public int getX() 
@@ -27,7 +34,7 @@ public abstract class Elements
 		return this.x;
 	}
 	
-	public int setX(int x) 
+	public void setX(int x) 
 	{
 		 this.x = x;
 	}
@@ -37,9 +44,11 @@ public abstract class Elements
 		return this.y;
 	}
 	
-	public int setY(int y) 
+	public void setY(int y) 
 	{
 		 this.y = y;
 	}
+	
+	
 	
 }
