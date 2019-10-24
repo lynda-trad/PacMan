@@ -2,18 +2,24 @@ package pacman;
 
 public abstract class Elements 
 {
-	protected int element;  
+	//Chaque element sera reconnu par un int qui lui correspond
 	/*
-	 		 Rien   = 0
-			 Murs 	= 1
-			 Joueur = 2
-			 Ghosts = 3
-			 Gums 	= 4
-	*/
+	 Rien   = 0
+	 Murs 	= 1
+	 Joueur = 2
+	 Ghosts = 3
+	 Gums 	= 4
+	 */
+	protected int element;
+	
+	// Chaque element a une position
 	protected int x;
 	protected int y;
 
 	
+	// Ghosts : 0 = normal, 1 = vulnerable
+	// Pacman : 0 = normal, 1 = superPacman, 2 = invisible
+	// Gum : boolean eaten or not dans abstract class Gum
 	public int getState() 
 	{
 		return 0;
@@ -28,6 +34,8 @@ public abstract class Elements
 	{
 		this.element = element;
 	}
+	
+	//	Positions
 	
 	public int getX() 
 	{
@@ -48,7 +56,5 @@ public abstract class Elements
 	{
 		 this.y = y;
 	}
-	
-	
 	
 }

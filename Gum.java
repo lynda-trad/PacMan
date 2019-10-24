@@ -3,15 +3,16 @@ package pacman;
 public abstract class Gum extends Elements
 {
 	protected boolean eaten; 
-	protected int type;     			// 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert
-	protected int score; 				// 100 = Blue, 300 = Violet, 500 = Orange, 1000 = Vert
-	protected int element;  			// 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
-	protected int compteur = 0;
+	protected int 	  type;     			// 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert
+	protected int 	  score; 				// 100 = Blue, 300 = Violet, 500 = Orange, 1000 = Vert
+	protected int 	  element;  			// Rien = 0, Murs = 1, Joueur = 2, Ghosts = 3, Gums = 4
+	protected int     compteur = 0;
 	
 	public Gum(int type)
 	{
 		this.eaten = false;
-		this.type= type;
+		this.type  = type;
+		
 		switch(type)
 		{
 			case 0:
@@ -31,8 +32,10 @@ public abstract class Gum extends Elements
 		}
 		
 		this.element = 4;
-		++this.compteur;
+		++ this.compteur;
 	}
+	
+	// Setter & Getter
 	
 	public int getCompteur()
 	{
@@ -44,25 +47,13 @@ public abstract class Gum extends Elements
 		compteur = nbGum;
 	}
 	
-	public void decrementeCompteur() {
-		compteur --;
-	}
-	
-	public boolean getEaten() 
+	public int getType() 
 	{
-		return this.eaten;
-	}
-	
-	public void isEaten() 
-	{
-		this.eaten = true;
-	}
-
-	public int getType() {
 		return type;
 	}
 	
-	public void setType(int type) {
+	public void setType(int type) 
+	{
 		this.type = type;
 	}
 	
@@ -77,7 +68,22 @@ public abstract class Gum extends Elements
 		return this.element;
 	}
 
+	public boolean getEaten() 
+	{
+		return this.eaten;
+	}
+	
 	/////////////////////////////////////
+	
+	public void isEaten() 
+	{
+		this.eaten = true;
+	}
+	
+	public void decrementeCompteur() 
+	{
+		-- compteur;
+	}
 	
 	public abstract void effet(); // Effets sur le jeu (et Ghosts) 
 
@@ -86,10 +92,19 @@ public abstract class Gum extends Elements
 		// TODO Auto-generated method stub
 		
 	}
+
+	/*
+	public void effet(Pacman p, Ghosts[] ghosts) {
+		// TODO Auto-generated method stub
+		
+	}
+	*/
 	
-	
+
 	/*
 		Apres qu'une gum ait été consommée on doit  mettre son etat a 0 pour dire
 		quelle ne doit plus apparaitre -> si tt gum mangées alors jeu gagné 
 	*/
+	
+	
 }

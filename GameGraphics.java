@@ -2,12 +2,15 @@ package pacman;
 
 import java.awt.Color;
 import java.awt.Graphics;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class GameGraphics extends JPanel
 {
 	private Game g;
+	private	Gui gui;
 	private int width, height;
 	
 	public GameGraphics() 
@@ -34,4 +37,12 @@ public class GameGraphics extends JPanel
 		
 	}
 	
+	public void gameOver(int i)
+	{
+		if(i == 0)
+			JOptionPane.showMessageDialog(gui.getFrame(), "Game Over ! You lost !");
+		else
+			JOptionPane.showMessageDialog(gui.getFrame(), "Game Over ! You won !");
+		System.exit(0);
+	}
 }

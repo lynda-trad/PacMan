@@ -3,13 +3,13 @@ package pacman;
 public class Blue extends Gum
 {
 	/*
-	Bleu
-	100
-	rien
+		Bleu
+		100
+		rien
 	*/
 	public Blue()
 	{
-		super(0); // Blue --> type= 0  
+		super(0);  
 	}
 	
 	public String toString()
@@ -18,11 +18,11 @@ public class Blue extends Gum
 				return "Gum Blue de score " + this.score + " eaten";
 			else
 				return "Gum Blue de score " + this.score + " not eaten";
-
 	}
 
 	@Override
-	public void effet() {
+	public void effet() 
+	{
 		// TODO Auto-generated method stub
 		
 	}

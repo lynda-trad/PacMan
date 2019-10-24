@@ -4,17 +4,17 @@ public class Orange extends Gum
 {
 	
 	/*
-	Orange
-	500
-	pacman devient orange et fantomes bleus 
-	Quand le pacman est un superpacman, les fantomes deviennent vulnerables. Dans ce cas, ils se deplacent
-	deux fois plus lentement et ils reviennent au centre du labyrinthe si ils sont touches par le pacman.
+		Orange
+		500
+		pacman devient orange et fantomes bleus 
+		superpacman, fantomes -> vulnerables. 
+		ghosts se deplacent deux fois plus lentement 
+		ghosts reviennent au centre du labyrinthe si ils sont touches par le pacman.
 	*/
 	
 	public Orange()
 	{
-		super(2); // Orange --> type = 2
-		
+		super(2); 
 	}
 	
 	// Rendre les 4 Fantomes du jeu vulnérables
@@ -29,8 +29,6 @@ public class Orange extends Gum
 	}
 	*/
 	
-
-	
 	public String toString()
 	{
 			if (this.eaten==true)
@@ -41,7 +39,8 @@ public class Orange extends Gum
 	}
 
 	@Override
-	public void effet() {
+	public void effet() 
+	{
 		// TODO Auto-generated method stub
 		
 	}
