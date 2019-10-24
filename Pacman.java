@@ -9,6 +9,10 @@ public class Pacman extends Characters
 	private int lives; 		// initialement trois vies
 	private int state;  	// 0 = normal, 1 = superPacman, 2 = invisible
 	private int element; 	// Rien = 0, Murs = 1, Joueur = 2, Ghosts = 3, Gums = 4
+
+	private String direction;
+
+	private Game g;
 	
 	public Pacman ()
 	{
@@ -45,8 +49,19 @@ public class Pacman extends Characters
 		return this.state;
 	}
 	
+	public String getDirection() 
+	{
+		return direction;
+	}
+
+	public void setDirection(String direction)
+	{
+		this.direction = direction;
+	}
+	
 	@Override
-	public int getElement() {
+	public int getElement() 
+	{
 		return this.element;
 	}
 	
@@ -70,7 +85,8 @@ public class Pacman extends Characters
 	//////////////////////////////////////////////////
 	
 	public void addScore(Gum g)
-	{ // apres avoir manger une gum on ajoute son score au score du player
+	{ 
+		// apres avoir manger une gum on ajoute son score au score du player
 		this.score += g.getScore();
 	}	
 	
@@ -78,16 +94,11 @@ public class Pacman extends Characters
 	{	//Si le joueur depasse les 5000 points, il obtient une vie supplementaire.
 		if(this.score > 5000)
 		{
-			initializeScore();
+			score = 0;
 			++this.lives;
 		}
 	}	
 	
-	public void initializeScore()
-	{
-		this.score = 0;
-	}
-
 	public void loseLife() 
 	{
 		if(this.lives > 0)
@@ -102,12 +113,12 @@ public class Pacman extends Characters
 		
 		if(this.lives == 0) 				  //pacman a perdu toutes ses vies, game over
 		{
-			g.gameOver(0);
+			graph.gameOver(0);
 			System.exit(0);
 		}
 		else 		   						  //quand il n'y a plus de pacgommes, partie gagnee 
 		{
-			g.gameOver(1);
+			graph.gameOver(1);
 			System.exit(0);
 		}
 	}

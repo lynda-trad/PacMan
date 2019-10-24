@@ -1,10 +1,9 @@
 package pacman;
 
-import javax.swing.JPanel;
-
 public abstract class Characters extends Elements // abstract ou interface?
 {
-	protected GameGraphics g;
+	protected GameGraphics graph;
+	protected Map m;
 	
 	public abstract void cross(Game g, String direction); 
 	

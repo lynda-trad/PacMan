@@ -3,7 +3,13 @@ package pacman;
 public class Game 
 {
 	private Elements[][] map;
-	private String direction;
+	
+	private Pacman player;
+	private Ghosts[] ghosts;
+	private Blue blue;
+	private Violet violet;
+	private Green green;
+	private Orange orange;
 	
 	/*
 	 Initialisation du jeu : 
@@ -19,32 +25,15 @@ public class Game
 		
 		
 	}
-	
-	
-	public static void main(String[] args)
+
+	public Elements[][] getMap() 
 	{
-		System.out.println("test");
-		Player p = new Player();
-		System.out.println(p.getElement());
-	}
-
-
-	public Elements[][] getMap() {
 		return map;
 	}
 
-	public void setMap(Elements[][] map) {
+	public void setMap(Elements[][] map) 
+	{
 		this.map = map;
 	}
 
-
-	public String getDirection() {
-		return direction;
-	}
-
-
-	public void setDirection(String direction) {
-		this.direction = direction;
-	}
-	
 }

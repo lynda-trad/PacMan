@@ -5,11 +5,11 @@ import java.awt.event.KeyEvent;
 
 public class MyListener extends KeyAdapter 
 {
-	private Game g;
+	private Pacman p;
 	
-	public MyListener(Game g)
+	public MyListener(Pacman p)
 	{
-		this.g = g;
+		this.p = p;
 	}
 	
 	public void keyPressed(KeyEvent e)
@@ -18,16 +18,16 @@ public class MyListener extends KeyAdapter
 	    switch( keyCode ) 
 	    { 
 	        case KeyEvent.VK_UP:
-	    		g.setDirection("UP");
+	    		p.setDirection("UP");
 	            break;
 	        case KeyEvent.VK_DOWN:
-	    		g.setDirection("DOWN");
+	    		p.setDirection("DOWN");
 	            break;
 	        case KeyEvent.VK_LEFT:
-	    		g.setDirection("LEFT");
+	    		p.setDirection("LEFT");
 	            break;
 	        case KeyEvent.VK_RIGHT :
-	    		g.setDirection("RIGHT");
+	    		p.setDirection("RIGHT");
 	            break;
 	     }
 	}	

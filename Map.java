@@ -4,6 +4,7 @@ public class Map extends Elements
 {
 	private Elements[][] map;
 	
+
 	public Map()
 	{
 		map = new Elements[7][7];
@@ -18,6 +19,18 @@ public class Map extends Elements
 		 Gums 	= 4
 		 */
 	}
+
+	public void setMap(Elements[][] map) 
+	{
+		this.map = map;
+	}
+
+	public Elements[][] getMap() 
+	{
+		return map;
+	}
+	
+	////////////////////////////////////////////////
 	
 	public void printMap()
 	{
@@ -30,6 +43,13 @@ public class Map extends Elements
 		}
 	}
 	
+	public void setNewMap(Elements[][] map) 
+	{
+		this.map = map;
+	}
+	
+	// Pas utile je crois 
+	/*
 	public void getElementCase(int x, int y)
 	{
 		switch(map[x][y].getElement())
@@ -58,5 +78,6 @@ public class Map extends Elements
 					break;
 		}
 	}
+	*/
 }
 
