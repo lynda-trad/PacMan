@@ -70,24 +70,25 @@ public class Ghosts extends Characters
 		// voyage 
 	}
 	
-	@Override
-	public void move(Game g)
-	{
-		
-
-	}
 	
 	public void moveSlow()
 	{
 		
 
 	}
-	
-	@Override
-	public void cross(Game g)
-	{
-		
 
+	@Override
+	public void cross(Game g, String direction) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void move(Game g, String direction) 
+	{
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

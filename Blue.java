@@ -20,5 +20,11 @@ public class Blue extends Gum
 				return "Gum Blue de score " + this.score + " not eaten";
 
 	}
+
+	@Override
+	public void effet() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

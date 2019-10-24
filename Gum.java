@@ -6,7 +6,7 @@ public abstract class Gum extends Elements
 	protected int type;     			// 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert
 	protected int score; 				// 100 = Blue, 300 = Violet, 500 = Orange, 1000 = Vert
 	protected int element;  			// 0 = Pacman, 1 = Ghosts, 2 = Gum , 3 = Mur
-	protected static int compteur = 0;
+	protected int compteur = 0;
 	
 	public Gum(int type)
 	{

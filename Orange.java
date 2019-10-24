@@ -39,6 +39,12 @@ public class Orange extends Gum
 				return "Gum Orange de score " + this.score + " not eaten";
 			
 	}
+
+	@Override
+	public void effet() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	//modifie aspect du pacman
 	//rend fantome mangeable et deux fois plus lents -> fantome gereront eux memes si se font manger
