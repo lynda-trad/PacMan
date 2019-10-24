@@ -4,12 +4,12 @@ public class Game
 {
 	private Elements[][] map;
 	
-	private Pacman player;
+	private Pacman 	 player;
 	private Ghosts[] ghosts;
-	private Blue blue;
-	private Violet violet;
-	private Green green;
-	private Orange orange;
+	private Blue 	 blue;
+	private Violet 	 violet;
+	private Green 	 green;
+	private Orange   orange;
 	
 	/*
 	 Initialisation du jeu : 

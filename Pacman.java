@@ -163,14 +163,27 @@ public class Pacman extends Characters
 	}
 	
 	@Override
-	public void move(Game g, String direction)
+	public void move()
 	{
-		//on a ses x et y dans elements
-		cross(g, direction);
+		switch(direction)
+		{
+			case "RIGHT" :
+				++ x;
+				break;
+			case "LEFT"  :
+				-- x;
+				break;
+			case "UP" :
+				-- y;
+				break;
+			case "DOWN"  :
+				++ y;
+				break;
+		}
 	}
 	
 	@Override
-	public void cross(Game g, String direction)
+	public void cross()
 	{
 		int future_x = 0;
 		int future_y = 0;
@@ -202,7 +215,7 @@ public class Pacman extends Characters
 		{
 			case 0 :
 				// rien donc on peut move
-				switchDirection(direction);
+				move();
 				break;
 			case 1 : 
 				// on ne fait rien pcq mur apres
@@ -226,7 +239,7 @@ public class Pacman extends Characters
 						break;
 					case 2 :
 						//invisible
-						switchDirection(direction);
+						move();
 						break;
 				}
 				break;
@@ -235,25 +248,6 @@ public class Pacman extends Characters
 				// applique pouvoir au joueur
 				//switch(g.getMap()[future_x][future_y].getElement().getType())
 				
-				break;
-		}
-	}
-	
-	public void switchDirection(String direction)
-	{
-		switch(direction)
-		{
-			case "RIGHT" :
-				++ x;
-				break;
-			case "LEFT"  :
-				-- x;
-				break;
-			case "UP" :
-				-- y;
-				break;
-			case "DOWN"  :
-				++ y;
 				break;
 		}
 	}
