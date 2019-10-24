@@ -15,6 +15,8 @@ public class Violet extends Gum
 		super(1); // Violet --> type = 1
 	}
 	
+
+	@Override
 	public void effet(Pacman p) 
 	{
 	p.beInvisible();
@@ -28,13 +30,6 @@ public class Violet extends Gum
 			else
 				return "Gum Violet de score " + this.score + " not eaten";
 			
-	}
-
-	@Override
-	public void effet() 
-	{
-		// TODO Auto-generated method stub
-		
 	}
 
 }

@@ -1,5 +1,7 @@
 package pacman;
 
+import pacman.Characters;
+
 public class Ghosts extends Characters
 {
 	private int state ; // 0 = normal, 1 = vulnerable
@@ -69,7 +71,6 @@ public class Ghosts extends Characters
 		// apres avoir atteint le mur, check haut droit gauche droite -> premier de libre et va la bas et continue son
 		// voyage 
 	}
-	
 	
 	public void moveSlow()
 	{

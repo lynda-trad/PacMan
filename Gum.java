@@ -80,6 +80,12 @@ public abstract class Gum extends Elements
 	/////////////////////////////////////
 	
 	public abstract void effet(); // Effets sur le jeu (et Ghosts) 
+
+	public void effet(Pacman p) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	/*
