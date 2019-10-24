@@ -3,6 +3,8 @@ package pacman;
 public class Game 
 {
 	private Elements[][] map;
+	private String direction;
+	
 	/*
 	 Initialisation du jeu : 
 	 - cree 1 joueur, score 0, emplacement random ?, vies = 3, pas de pouvoir
@@ -33,6 +35,16 @@ public class Game
 
 	public void setMap(Elements[][] map) {
 		this.map = map;
+	}
+
+
+	public String getDirection() {
+		return direction;
+	}
+
+
+	public void setDirection(String direction) {
+		this.direction = direction;
 	}
 	
 }
