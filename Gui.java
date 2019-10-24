@@ -6,7 +6,6 @@ public class Gui
 {
 	private JFrame frame   = new JFrame();
 	private GameGraphics graph = new GameGraphics();
-	private Game g;
 	
 	public JFrame getFrame() 
 	{
@@ -24,6 +23,6 @@ public class Gui
 		
 		frame.setVisible(true);
 		
-		frame.addKeyListener(new MyListener(this.g));
+		frame.addKeyListener(new MyListener(this.p));
 	}
 }
