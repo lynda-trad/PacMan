@@ -110,7 +110,7 @@ public class Game
 			ghosts[i].move();
 		}
 		try {
-			Thread.sleep(150);
+			Thread.sleep(300);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

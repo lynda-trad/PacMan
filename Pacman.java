@@ -15,8 +15,6 @@ public class Pacman extends Characters
 	
 	private String direction;
 
-	private Game game;
-	
 	public Pacman (Game g)
 	{
 		this.score = 0;
@@ -126,10 +124,9 @@ public class Pacman extends Characters
 	
 	public void gameOver()
 	{
-		
 		if(this.lives == 0) 				  //pacman a perdu toutes ses vies, game over
 		{
-			graph.gameOver(0);
+			graph().gameOver(0);
 			System.exit(0);
 		}
 		else 		   						  //quand il n'y a plus de pacgommes, partie gagnee 
@@ -194,8 +191,8 @@ public class Pacman extends Characters
 	@Override
 	public void cross()
 	{
-		int future_x = 0;
-		int future_y = 0;
+		int future_x = x;
+		int future_y = y;
 		
 		switch(direction)
 		{

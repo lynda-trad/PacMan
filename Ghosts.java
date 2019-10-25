@@ -13,7 +13,7 @@ public class Ghosts extends Characters
 	
 	public Ghosts(Game g, int x, int y)
 	{
-		this.g = g;
+		this.game = g;
 		this.state = 0;
 		this.x = x;
 		this.y = y;
@@ -64,7 +64,7 @@ public class Ghosts extends Characters
 		//if calcul collision donne oui 
 		
 		//on verifie selon la direction si prochain step est un mur 
-		if(g.getMap().getMap()[x][y] == Element.WALL) 
+		if(game.getMap().getMap()[x][y] == Element.WALL) 
 			// en supposant quils vont toujours à droite, on nen sait rien
 			
 			//on fait random direction
@@ -98,7 +98,7 @@ public class Ghosts extends Characters
 		//fonction fait un nouveau random, ca met a jour le champ direction
 		if(x + 1 < 10)
 		{
-			if (g.getMap().getMap()[x + 1][y] != Element.WALL)
+			if (game.getMap().getMap()[x + 1][y] != Element.WALL)
 			{
 				++x;
 			// Forcer à sortir de fonction redirection en appelant quelque chose
@@ -107,7 +107,7 @@ public class Ghosts extends Characters
 		else 
 			if (x - 1 > 0)
 			{
-				if(g.getMap().getMap()[x - 1][y]!= Element.WALL)
+				if(game.getMap().getMap()[x - 1][y]!= Element.WALL)
 		{
 			--x;
 			//Forcer à sortir de fonction redirection en appelant quelque chose
@@ -115,7 +115,7 @@ public class Ghosts extends Characters
 			}
 		else 
 			if(y + 1 < 10)
-				{if(g.getMap().getMap()[x][y + 1]!= Element.WALL)
+				{if(game.getMap().getMap()[x][y + 1]!= Element.WALL)
 		{
 			++y;
 			//Forcer à sortir de fonction redirection en appelant quelque chose
@@ -124,7 +124,7 @@ public class Ghosts extends Characters
 		else 
 			if(y - 1 > 0)
 			{
-				if(g.getMap().getMap()[x][y - 1]!= Element.WALL)
+				if(game.getMap().getMap()[x][y - 1]!= Element.WALL)
 		{
 			--y;
 			//Forcer à sortir de fonction redirection en appelant quelque chose

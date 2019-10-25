@@ -2,7 +2,7 @@ package pacman;
 
 public abstract class Characters extends Elements // abstract ou interface?
 {
-	protected Game g;
+	protected Game game;
 	
 	protected int x;
 	protected int y;
