@@ -238,7 +238,8 @@ public class Pacman extends Characters
 				{
 					case 0 :
 						//normal
-						loseLife(); 
+						loseLife();
+						restartAfterCollision();
 						break;
 					case 1 :
 						//superpacman
@@ -279,4 +280,22 @@ public class Pacman extends Characters
 		}
 	}
 	*/
+	
+	public void restartAfterCollision()
+	{
+		x = 3;
+		y = 3;
+		
+		game.getGhosts()[0].x = 1;
+		game.getGhosts()[0].y = 1;
+		
+		game.getGhosts()[1].x = 0;
+		game.getGhosts()[1].y = 9;
+		
+		game.getGhosts()[2].x = 9;
+		game.getGhosts()[2].y = 1;
+		
+		game.getGhosts()[3].x = 9;
+		game.getGhosts()[3].y = 9;
+	}
 }
