@@ -6,9 +6,9 @@ public class Game
 	
 	private Pacman player;
 
-	private Ghosts[] ghosts;
+	private Ghosts[] ghosts = new Ghosts[4];
 	
-	private Gum[] gums;
+	private Gum[] gums = new Gum[4];
 	
 	/*
 	 * Gum feront partie de map donc plus besoin de les stocker 
@@ -52,10 +52,10 @@ public class Game
 	
 	public void initializeGhosts()
 	{
-		ghosts[0] = new Ghosts(1,1);
-		ghosts[1] = new Ghosts(0,9);
-		ghosts[2] = new Ghosts(9,1);
-		ghosts[3] = new Ghosts(9,9); 
+		ghosts[0] = new Ghosts(this, 1, 1);
+		ghosts[1] = new Ghosts(this, 0, 9);
+		ghosts[2] = new Ghosts(this, 9, 1);
+		ghosts[3] = new Ghosts(this, 9, 9); 
 	}
 	
 	public Map getMap() 
@@ -104,10 +104,16 @@ public class Game
 	
 	public void move() 
 	{
-		player.move();
+		player.cross();
 		for(int i = 0 ; i < ghosts.length; ++i)
 		{
 			ghosts[i].move();
+		}
+		try {
+			Thread.sleep(150);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

@@ -11,29 +11,25 @@ public class Graph extends JPanel implements Observer
 {
 	private Game game;
 	//private Gui gui; 							// gui a besoin de jpanel pas linverse
-	private int width, height 	   = 200; 		// 200 car tableau 10
-	private static final int SCALE = 20;
+	private static final int width  = 50 * 10 + 14;
+	private static final int height = 50 * 10 + 37;
+	private static final int SCALE  = 50;
 	
 	public Graph(Game g) 
 	{
 		this.game = g;
+		this.setSize(width, height);
 	}
 	
 	@Override
 	public void paintComponent(Graphics g) //appelée par repaint 
 	{
 		super.paintComponent(g);
-		width = getSize().width ;
-		height= getSize().height;
+		//width = getSize().width ;
+		//height= getSize().height;
 		
-		g.setColor(Color.BLACK);
-		//set backgruo d color a gris
-		
-		g.drawLine(width / 3, 0, width / 3, height);
-		g.drawLine(width * 2 / 3, 0, width * 2 / 3, height);
-		
-		g.drawLine(0, height / 3, width, height / 3);
-		g.drawLine(0, height * 2 / 3, width, height * 2 / 3);	
+		g.setColor(Color.WHITE);
+		//set backgruo d color a gris	
 
 		//////////
 		
@@ -47,6 +43,7 @@ public class Graph extends JPanel implements Observer
 						drawWalls(g, i, j );
 					break;
 					case GUM : 
+						System.out.println("gum");
 						drawGums(g, i, j);
 					break;
 					default :

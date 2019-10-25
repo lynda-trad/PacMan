@@ -5,8 +5,8 @@ public class Map extends Elements
 	private Element[][] map = 
 		{ 
 			{Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.VIDE, Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL}, 
-			{Element.WALL, Element.GHOST,Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.GHOST}, 
-			{Element.WALL, Element.GUM,  Element.VIDE, Element.WALL, Element.GUM, Element.VIDE,  Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE},
+			{Element.WALL, Element.GHOST,Element.GUM, Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.GHOST}, 
+			{Element.WALL, Element.VIDE,  Element.VIDE, Element.WALL, Element.GUM, Element.VIDE,  Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE},
 			{Element.WALL, Element.VIDE, Element.VIDE, Element.PLAYER,Element.WALL,Element.WALL, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE},
 			{Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE},
 			{Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.GUM,  Element.WALL, Element.VIDE},

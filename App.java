@@ -8,17 +8,25 @@ public class App
 	public static void main(String[] args) 
 	{
 		// cree un Jframe
-		Game g = new Game();
-		Graph graph = new Graph(g);
+		Game game = new Game();
+		Graph graph = new Graph(game);
 		
 		JFrame frame = new JFrame();
 		frame.add(graph);
 		
-		g.getPlayer().addObserver(graph);
+		frame.setSize(graph.getSize());
+		frame.setLocation(100, 100);
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		frame.setVisible(true);
+		
+		game.getPlayer().addObserver(graph);
+		frame.addKeyListener(new MyListener(game.getPlayer()));
 		
 		while(true)
 		{
-			g.move();
+			game.move();
 		}
 //		
 ////Test Pacman, différents états 
@@ -138,4 +146,5 @@ public class App
 //		System.out.println(p);
 //	}
 
-}
+	}
+	}

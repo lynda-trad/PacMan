@@ -23,6 +23,8 @@ public class Pacman extends Characters
 		this.lives = 3;
 		this.state = 0;
 		this.game = g;
+		this.direction = "";
+		this.observers = new ArrayList<Observer>();
 	}
 	
 	// Getter & Setter
