@@ -9,9 +9,9 @@ public class Violet extends Gum
 		Quand le pacman est invisible, il pourra traverser les fantomes sans perdre de vie.
 	*/
 	
-	public Violet()
+	public Violet(int type, int x, int y)
 	{
-		super(1);
+		super(1,x,y);
 	}
 	
 	@Override
@@ -20,6 +20,7 @@ public class Violet extends Gum
 		p.beInvisible();
 	}
 	
+	/*
 	public String toString()
 	{
 			if (this.eaten==true)
@@ -27,7 +28,8 @@ public class Violet extends Gum
 			else
 				return "Gum Violet de score " + this.score + " not eaten";
 	}
-
+*/
+	
 	@Override
 	public void effet() {
 		// TODO Auto-generated method stub

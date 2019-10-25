@@ -2,16 +2,18 @@ package pacman;
 
 public abstract class Gum extends Elements
 {
-	protected boolean eaten; 
 	protected int 	  type;     			// 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert
 	protected int 	  score; 				// 100 = Blue, 300 = Violet, 500 = Orange, 1000 = Vert
-	protected int 	  element;  			// Rien = 0, Murs = 1, Joueur = 2, Ghosts = 3, Gums = 4
 	protected int     compteur = 0;
 	
-	public Gum(int type)
+	protected int 	  x;
+	protected int     y;
+	
+	public Gum(int type, int x, int y)
 	{
-		this.eaten = false;
 		this.type  = type;
+		this.x = x; 
+		this.y = y;
 		
 		switch(type)
 		{
@@ -31,7 +33,6 @@ public abstract class Gum extends Elements
 				this.score = 100;
 		}
 		
-		this.element = 4;
 		++ this.compteur;
 	}
 	
@@ -62,27 +63,12 @@ public abstract class Gum extends Elements
 		return this.score;
 	}
 
-	@Override
-	public int getElement() 
-	{
-		return this.element;
-	}
-
-	public boolean getEaten() 
-	{
-		return this.eaten;
-	}
-	
 	/////////////////////////////////////
 	
 	public void isEaten() 
 	{
-		this.eaten = true;
-	}
-	
-	public void decrementeCompteur() 
-	{
 		-- compteur;
+		//mettre a jour la map , retirer gum qui sest faite manger 
 	}
 	
 	public abstract void effet(); // Effets sur le jeu (et Ghosts) 

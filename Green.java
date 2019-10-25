@@ -8,9 +8,9 @@ public class Green extends Gum
 		Modifie la structure du labyrinthe
 	*/
 	
-	public Green() 
+	public Green(int type, int x, int y) 
 	{	
-		super(3);
+		super(3, x, y);
 	}
 	
 	@Override
@@ -26,6 +26,7 @@ public class Green extends Gum
 		
 	}
 	
+	/*
 	public String toString()
 	{
 			if (this.eaten == true)
@@ -33,5 +34,13 @@ public class Green extends Gum
 			else
 				return "Gum Green de score " + this.score + " not eaten";
 	}
+	*/
 	
 }
+
+/*
+ 	*	 
+ * 
+ * 
+ * */
+ 

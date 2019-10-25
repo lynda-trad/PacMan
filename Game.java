@@ -2,16 +2,23 @@ package pacman;
 
 public class Game 
 {
-	private Elements[][] map;
+	private Map map;
 	
-	private Pacman 	 player;
+	private Pacman player;
+
 	private Ghosts[] ghosts;
+	
+	private Gum[] gums;
+	
+	/*
+	 * Gum feront partie de map donc plus besoin de les stocker 
+	 * 
+	//Gum
 	private Blue 	 blue;
 	private Violet 	 violet;
 	private Green 	 green;
 	private Orange   orange;
 	
-	/*
 	 Initialisation du jeu : 
 	 - cree 1 joueur, score 0, emplacement random ?, vies = 3, pas de pouvoir
 	 - cree 4 fantomes, au centre, peuvent tuer au depart car pas de pouvoir, pas de ia, ils bougent de facon random
@@ -20,20 +27,88 @@ public class Game
 	 que cest au fur et a mesure
 	 */
 	
-	public void initializeGame()
+	public Game()
 	{
-		
-		
+		map = new Map();
+		initializeGhosts();
+		initializePlayer();
+		initializeGum();
+	}
+	
+	public void initializeGum()
+	{
+		gums[0] = new Blue  (0,1,2); // blue
+		gums[1] = new Violet(1,1,9); // violet
+		gums[2] = new Orange(2,7,5); // orange 
+		gums[3] = new Green (3,4,2); // vert
 	}
 
-	public Elements[][] getMap() 
+	public void initializePlayer()
+	{
+		player = new Pacman(this);
+		player.x = 3;
+		player.y = 3;
+	}
+	
+	public void initializeGhosts()
+	{
+		ghosts[0] = new Ghosts(1,1);
+		ghosts[1] = new Ghosts(0,9);
+		ghosts[2] = new Ghosts(9,1);
+		ghosts[3] = new Ghosts(9,9); 
+	}
+	
+	public Map getMap() 
 	{
 		return map;
 	}
 
-	public void setMap(Elements[][] map) 
+	public void setMap(Map map) 
 	{
 		this.map = map;
+	}
+	
+	public void step()
+	{
+		//pacman.move();
+		//pour chaque fantome on move
+			
+	}
+
+	public Pacman getPlayer() 
+	{
+		return player;
+	}
+
+	public void setPlayer(Pacman player) 
+	{
+		this.player = player;
+	}
+
+	public Ghosts[] getGhosts() {
+		return ghosts;
+	}
+
+	public void setGhosts(Ghosts[] ghosts) {
+		this.ghosts = ghosts;
+	}
+
+	public Gum[] getGums() {
+		return gums;
+	}
+
+	public void setGums(Gum[] gums) {
+		this.gums = gums;
+	}
+	
+	
+	public void move() 
+	{
+		player.move();
+		for(int i = 0 ; i < ghosts.length; ++i)
+		{
+			ghosts[i].move();
+		}
 	}
 
 }

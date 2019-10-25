@@ -1,5 +1,7 @@
 package pacman;
 
+import java.util.ArrayList;
+
 import pacman.Characters;
 import pacman.Gum;
 
@@ -8,18 +10,19 @@ public class Pacman extends Characters
 	private int score;	    // score du player
 	private int lives; 		// initialement trois vies
 	private int state;  	// 0 = normal, 1 = superPacman, 2 = invisible
-	private int element; 	// Rien = 0, Murs = 1, Joueur = 2, Ghosts = 3, Gums = 4
 
+	private ArrayList<Observer> observers;
+	
 	private String direction;
 
-	private Game g;
+	private Game game;
 	
-	public Pacman ()
+	public Pacman (Game g)
 	{
 		this.score = 0;
 		this.lives = 3;
 		this.state = 0;
-		this.element = 2;
+		this.game = g;
 	}
 	
 	// Getter & Setter
@@ -59,11 +62,6 @@ public class Pacman extends Characters
 		this.direction = direction;
 	}
 	
-	@Override
-	public int getElement() 
-	{
-		return this.element;
-	}
 	
 	/////////////////////////////
 	
@@ -82,7 +80,23 @@ public class Pacman extends Characters
 		this.state = 2;
 	}
 	
-	//////////////////////////////////////////////////
+	public void addObserver(Observer o)
+	{
+		observers.add(o);
+	}
+	
+	
+	/////////////////////////////
+	
+
+	public void notifyObserver()
+	{
+		for(Observer observer : observers)
+		{
+			observer.update();
+		}
+	}
+	
 	
 	public void addScore(Gum g)
 	{ 
@@ -125,22 +139,16 @@ public class Pacman extends Characters
 	
 	public void eatGum(Gum g) 
 	{
-		if (g.getEaten() == false)
-		{
 			if(g.getType() == 0) 			// Blue
 			{
 				this.addScore(g);
 				g.isEaten();
-				g.decrementeCompteur();
-				
 			} 
 			else if (g.getType() == 1) 	// Violet = Pacman invisible
 			{
 				this.addScore(g);
 				this.beInvisible(); 
 				g.isEaten();
-				g.decrementeCompteur();
-
 			} 
 			else if (g.getType() == 2) 	// Orange 
 			{
@@ -148,17 +156,15 @@ public class Pacman extends Characters
 				this.beSuperPacman();
 				//	g.effet();  		// Marche pas--> SuperPacman et les 4 Ghosts vulnérables
 				g.isEaten();
-				g.decrementeCompteur();
 			}
 			else // Green 
 			{
 				this.addScore(g);
 				//	g.effet(); 			// Marche pas--> New Structure labyrinthe	
 				g.isEaten();
-				g.decrementeCompteur();
 			}
 					
-		}
+			// ici on met a jour la map on met VIDE aux coordonnées de Gum g  
 		
 	}
 	
@@ -180,6 +186,7 @@ public class Pacman extends Characters
 				++ y;
 				break;
 		}
+		notifyObserver();
 	}
 	
 	@Override
@@ -187,6 +194,7 @@ public class Pacman extends Characters
 	{
 		int future_x = 0;
 		int future_y = 0;
+		
 		switch(direction)
 		{
 			case "RIGHT" :
@@ -211,19 +219,19 @@ public class Pacman extends Characters
 		mais y a un soucis je peux pas 
 		*/
 		
-		switch(g.getMap()[future_x][future_y].getElement())
+		switch(game.getMap().getMap()[future_x][future_y])
 		{
-			case 0 :
+			case VIDE :
 				// rien donc on peut move
 				move();
 				break;
-			case 1 : 
+			case WALL : 
 				// on ne fait rien pcq mur apres
 				break;
-			case 2 :
+			case PLAYER :
 				// pas possible ici puisque soi meme
 				break;
-			case 3 :
+			case GHOST :
 				// ghosts
 				// verifie etat
 				// peut perdre une vie
@@ -243,15 +251,20 @@ public class Pacman extends Characters
 						break;
 				}
 				break;
-			case 4 :
+			case GUM :
 				// verifie type de gum
 				// applique pouvoir au joueur
 				//switch(g.getMap()[future_x][future_y].getElement().getType())
+				
+				// appelle eatGum sur gum qui a les coordonnées future_x et future_y 
+				
+				
 				
 				break;
 		}
 	}
 	
+	/*
 	public String toString()
 	{
 		switch(this.state) 
@@ -265,6 +278,6 @@ public class Pacman extends Characters
 		default:
 			return "Pacman à l'état Normal avec un score de " + this.score + this.lives + " et " + " vies restantes.";
 		}
-	
 	}
+	*/
 }

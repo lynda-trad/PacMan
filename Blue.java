@@ -7,11 +7,12 @@ public class Blue extends Gum
 		100
 		rien
 	*/
-	public Blue()
+	public Blue(int type, int x, int y)
 	{
-		super(0);  
+		super(0, x , y);  
 	}
 	
+	/*
 	public String toString()
 	{
 			if (this.eaten==true)
@@ -19,6 +20,7 @@ public class Blue extends Gum
 			else
 				return "Gum Blue de score " + this.score + " not eaten";
 	}
+	*/
 
 	@Override
 	public void effet() 

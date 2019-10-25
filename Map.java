@@ -2,32 +2,57 @@ package pacman;
 
 public class Map extends Elements
 {
-	private Elements[][] map;
+	private Element[][] map = 
+		{ 
+			{Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.VIDE, Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL}, 
+			{Element.WALL, Element.GHOST,Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.GHOST}, 
+			{Element.WALL, Element.GUM,  Element.VIDE, Element.WALL, Element.GUM, Element.VIDE,  Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE},
+			{Element.WALL, Element.VIDE, Element.VIDE, Element.PLAYER,Element.WALL,Element.WALL, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE},
+			{Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE},
+			{Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.GUM,  Element.WALL, Element.VIDE},
+			{Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.WALL, Element.WALL, Element.VIDE},
+			{Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.VIDE, Element.VIDE, Element.WALL, Element.VIDE},
+			{Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.VIDE, Element.VIDE, Element.WALL, Element.VIDE},
+			{Element.GHOST,Element.GUM,  Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.WALL, Element.GHOST},
+	};
 	
+	/*
+	 * On met que les pacgum, les murs et le vide 
+	 * 
+	 * comme ca si fantome pase sur pacgum, leplacement ne devient pas vide quand il se fait manger par superpacman
+	 * 
+	 * 
+	 * */
 
 	public Map()
 	{
-		map = new Elements[7][7];
 		// initialise toutes les cases à 0 donc on va attribuer une valeur à tous les éléments du jeu 
 		
 		 /*
 		 Numero d'élément
 		 Rien   = 0
 		 Murs 	= 1
+		 Gums 	= 4
+		 
+		 eux vont etre gerer par game
 		 Joueur = 2
 		 Ghosts = 3
-		 Gums 	= 4
 		 */
 	}
 
-	public void setMap(Elements[][] map) 
+	public void setMap(Element[][] map) 
 	{
 		this.map = map;
 	}
 
-	public Elements[][] getMap() 
+	public Element[][] getMap() 
 	{
 		return map;
+	}
+	
+	public Element getElement() 
+	{
+		return this.element;
 	}
 	
 	////////////////////////////////////////////////
@@ -42,11 +67,12 @@ public class Map extends Elements
 			}
 		}
 	}
-	
-	public void setNewMap(Elements[][] map) 
+	/*
+	public void setNewMap(Element[][] map) 
 	{
 		this.map = map;
 	}
+	*/
 	
 	// Pas utile je crois 
 	/*

@@ -12,9 +12,9 @@ public class Orange extends Gum
 		ghosts reviennent au centre du labyrinthe si ils sont touches par le pacman.
 	*/
 	
-	public Orange()
+	public Orange(int type, int x, int y)
 	{
-		super(2); 
+		super(2, x, y); 
 	}
 	
 	// Rendre les 4 Fantomes du jeu vulnérables
@@ -29,6 +29,8 @@ public class Orange extends Gum
 	}
 	*/
 	
+	/*
+	
 	public String toString()
 	{
 			if (this.eaten==true)
@@ -37,7 +39,8 @@ public class Orange extends Gum
 				return "Gum Orange de score " + this.score + " not eaten";
 			
 	}
-
+	 */
+	
 	@Override
 	public void effet() 
 	{

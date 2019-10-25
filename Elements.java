@@ -2,6 +2,10 @@ package pacman;
 
 public abstract class Elements 
 {
+	
+	// possiblement pas utile vu quon peut utiliser element directement 
+	
+	
 	/*Chaque element sera reconnu par un int qui lui correspond
 	 Rien   = 0
 	 Murs 	= 1
@@ -9,12 +13,25 @@ public abstract class Elements
 	 Ghosts = 3
 	 Gums 	= 4
 	 */
-	protected int element;
 	
+	protected Element element;
+	//a partir de ca on pourra appeler les fonctions dont on a besoin
+	//par exemple backtoCenter pour les fantomes 
+		
+	/*
+	 * On n'a plus besoin des x et y car les gum seront placées dès le debut du jeu
+	 * on verifie dans lenum quoi est quoi et apres on appelle la fonction getEaten etc  
+	 * 
+	 * 
+	 * 
+	*/
+	
+	/*
 	// Chaque element a une position
 	protected int x;
 	protected int y;
-
+	*/
+	
 	//Getter & Setter
 	
 	// Ghosts : 0 = normal, 1 = vulnerable
@@ -25,32 +42,18 @@ public abstract class Elements
 		return 0;
 	}
 	
-	public int getElement() 
+	public Element getElement() 
 	{
 		return this.element;
 	}
 	
-	public void setElement(int element)
-	{
-		this.element = element;
-	}
 	
-	public int getX() 
-	{
-		return this.x;
-	}
-	public int getY() 
-	{
-		return this.y;
-	}
-
-	public void setX(int x) 
-	{
-		 this.x = x;
-	}
-	
-	public void setY(int y) 
-	{
-		 this.y = y;
-	}
+	/*
+	 * fonction getEaten -> score ++ 
+	 * maj de la map mettre du vide a cet endroit 
+	 * 
+	 * par contre si fantome se font manger 
+	 * ils changeront leur propre coordonnées, pas ceux de la map
+	 * 
+	 * */
 }

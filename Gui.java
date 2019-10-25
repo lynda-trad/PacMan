@@ -4,8 +4,9 @@ import javax.swing.JFrame;
 
 public class Gui 
 {
+	/*
 	private JFrame frame   = new JFrame();
-	private GameGraphics graph = new GameGraphics();
+	//private Graph graph ;
 	
 	public JFrame getFrame() 
 	{
@@ -23,6 +24,6 @@ public class Gui
 		
 		frame.setVisible(true);
 		
-		frame.addKeyListener(new MyListener(this.p));
 	}
+	*/
 }

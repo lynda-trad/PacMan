@@ -4,18 +4,17 @@ import pacman.Characters;
 
 public class Ghosts extends Characters
 {
-	private int state ; // 0 = normal, 1 = vulnerable
-	private int element = 3; 
+	private int state ; // 0 = normal, 1 = vulnerable et ralenti
+	//private int element = 3;
 	
-	public Ghosts() 
+	private int ralenti; // incremente a chaque move et si impair on bouge pas
+	
+	public Ghosts(int x, int y) 
 	{
 		this.state = 0;
-	}
-	
-	@Override
-	public int getElement()
-	{
-		return this.element;
+		this.x = x;
+		this.y = y;
+		ralenti = 0;
 	}
 	
 	public int getState() 
@@ -49,10 +48,10 @@ public class Ghosts extends Characters
 	
 	////////////////////////////////////////
 	
-	public void backToCenter() 
+	public void backToCenter(int x, int y) 
 	{   // touché par pacman qd vulnerable -> gum orange
-		x = y = 4;
-		//mettre a jour map -> repaint dans gamegraphics je crois
+		this.x = this.y = 4;
+		//mettre a jour map graphic -> repaint dans gamegraphics
 	}
 
 	public void checkWalls()
@@ -60,8 +59,10 @@ public class Ghosts extends Characters
 		// verifie si ghost touche un mur pour se rediriger si besoin
 		//if calcul collision donne oui 
 		
-		if(m.getMap()[x + 1][y].getElement() == 1) // en supposant quils vont toujours à droite, on nen sait rien
+		if(m.getMap()[x + 1][y] == Element.WALL) // en supposant quils vont toujours à droite, on nen sait rien
 			redirection();
+		else;
+			
 	}
 	
 	public void redirection() 
@@ -70,22 +71,31 @@ public class Ghosts extends Characters
 		Chaque fantome se deplace dans une direction jusqu'a ce qu'il atteigne un mur, puis choisit une nouvelle
 		direction aleatoirement.
 		*/
-		if	   (m.getMap()[x + 1][y].getElement() != 1)
+		
+		/* POSSIBLE FACON DE LE FAIRE 
+		 *  aller tjrs a droite
+		 * faire random de direction
+		 * choisir si cest possible dy aller
+		 * sinon random again 
+		 * et on y go quand pas mur   
+		*/
+		
+		if	   (m.getMap()[x + 1][y] != Element.WALL)
 		{
 			++x;
 			// Forcer à sortir de fonction redirection en appelant quelque chose
 		}
-		else if(m.getMap()[x - 1][y].getElement() != 1)
+		else if(m.getMap()[x - 1][y]!= Element.WALL)
 		{
 			--x;
 			//Forcer à sortir de fonction redirection en appelant quelque chose
 		}
-		else if(m.getMap()[x][y + 1].getElement() != 1)
+		else if(m.getMap()[x][y + 1]!= Element.WALL)
 		{
 			++y;
 			//Forcer à sortir de fonction redirection en appelant quelque chose
 		}
-		else if(m.getMap()[x][y - 1].getElement() != 1)
+		else if(m.getMap()[x][y - 1]!= Element.WALL)
 		{
 			--y;
 			//Forcer à sortir de fonction redirection en appelant quelque chose
@@ -101,18 +111,29 @@ public class Ghosts extends Characters
 	}
 
 	@Override
-	public void cross(Game g, String direction) 
+	public void cross() 
 	{
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void move(Game g, String direction) 
+	public void move() 
 	{
 		// TODO Auto-generated method stub
-		
+		//switch etat si jamais ralenti etc 
+		switch(state)
+		{
+			case 0 : 
+				redirection();
+				break;
+			case 1 :
+				if(ralenti % 2 == 0)
+					redirection();
+				break;
+		}
 	}
+
 	
 }
 
