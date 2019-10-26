@@ -13,6 +13,7 @@ public class Graph extends JPanel implements Observer
 	private static final int width  = 50 * 10 + 14;
 	private static final int height = 50 * 10 + 37;
 	private static final int SCALE  = 50;
+	private Color customColor = new Color(254,254,173); //jaunepale
 	
 	public Graph(Game g) 
 	{
@@ -61,13 +62,12 @@ public class Graph extends JPanel implements Observer
 			break;
 			
 			case 1 : // invisible
-				g.setColor(Color.PINK);
+				g.setColor(Color.ORANGE);
 				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
-				//jaune pale a chercher
 			break;
 			
 			case 2 : // superpacman
-				g.setColor(Color.ORANGE);
+				g.setColor(customColor);
 				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
 			break;
 		}
