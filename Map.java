@@ -7,7 +7,7 @@ public class Map extends Elements
 			{Element.WALL, Element.WALL, Element.WALL, Element.WALL,  Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL}, 
 			{Element.WALL, Element.GHOST,Element.GUM,  Element.NONE,  Element.NONE, Element.NONE, Element.NONE, Element.NONE, Element.GHOST,Element.WALL}, 
 			{Element.WALL, Element.NONE, Element.NONE, Element.NONE,  Element.GUM,  Element.NONE, Element.NONE, Element.NONE, Element.WALL, Element.WALL},
-			{Element.WALL, Element.NONE, Element.NONE, Element.PLAYER,Element.NONE, Element.WALL, Element.WALL, Element.NONE, Element.WALL, Element.WALL},
+			{Element.WALL, Element.NONE, Element.NONE, Element.NONE,Element.NONE, Element.WALL, Element.WALL, Element.NONE, Element.WALL, Element.WALL},
 			{Element.WALL, Element.NONE, Element.WALL, Element.NONE,  Element.WALL, Element.NONE, Element.NONE, Element.NONE, Element.WALL, Element.WALL},
 			{Element.WALL, Element.NONE, Element.WALL, Element.NONE,  Element.WALL, Element.NONE, Element.WALL, Element.GUM,  Element.WALL, Element.WALL},
 			{Element.WALL, Element.NONE, Element.WALL, Element.NONE,  Element.WALL, Element.NONE, Element.WALL, Element.WALL, Element.WALL, Element.WALL},

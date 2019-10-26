@@ -1,5 +1,7 @@
 package pacman;
 
+import java.util.ArrayList;
+
 import pacman.Characters;
 
 public class Ghosts extends Characters
@@ -10,6 +12,8 @@ public class Ghosts extends Characters
 	private int direction;
 	
 	private int ralenti; // incremente a chaque move et si impair on bouge pas
+
+	private ArrayList<Observer> observers;
 	
 	public Ghosts(Game g, int x, int y)
 	{
@@ -19,6 +23,20 @@ public class Ghosts extends Characters
 		this.y = y;
 		this.ralenti = 0;
 		this.direction = 0;
+		this.observers = new ArrayList<Observer>();
+	}
+
+	public void addObserver(Observer o)
+	{
+		observers.add(o);
+	}
+
+	public void notifyObserver()
+	{
+		for(Observer observer : observers)
+		{
+			observer.update();
+		}
 	}
 	
 	public int getState() 
@@ -35,9 +53,7 @@ public class Ghosts extends Characters
 	{
 		this.state = 1;
 	}
-	
 	////////////////////////////////////////
-	
 	public void backToCenter() 
 	{   
 		// touché par pacman qd vulnerable -> gum orange
@@ -63,12 +79,12 @@ public class Ghosts extends Characters
 				return true;
 			
 			case 2: // up 
-				if(game.getMap().getMap()[x][y + 1] == Element.WALL)
+				if(game.getMap().getMap()[x][y - 1] == Element.WALL)
 					direction = (int) (Math.random() * 3 + 1);
 				return true;
 
 			case 3: // down
-				if(game.getMap().getMap()[x][y - 1] == Element.WALL)
+				if(game.getMap().getMap()[x][y + 1] == Element.WALL)
 					direction = (int) (Math.random() * 3 + 1);
 				return true;
 		
@@ -79,61 +95,8 @@ public class Ghosts extends Characters
 			//on fait random direction
 		}
 		
-		//redirection();
 		return false;
 	}
-	
-	
-//	public void redirection() 
-//	{	
-//		/*
-//		 * utiliser une fonction mathematiques qui me sort un int random entre 0 et 3 
-//		 * pour les 4 directions
-//		 * tant quon touche pas de mur, le fantome contninue a aller dans la direction
-//		 * int direction.
-//		 * on change le champ direction avec un nouveau random quand on touche un mur
-//		 *
-//		 *fonction fait un nouveau random, ca met a jour le champ direction
-//		 *
-//		 */
-//
-//		if(x + 1 < 10)
-//		{
-//			if (game.getMap().getMap()[x + 1][y] != Element.WALL)
-//			{
-//				++x;
-//			// Forcer à sortir de fonction redirection en appelant quelque chose
-//			}
-//		}
-//		else 
-//			if (x - 1 > 0)
-//			{
-//				if(game.getMap().getMap()[x - 1][y]!= Element.WALL)
-//		{
-//			--x;
-//			//Forcer à sortir de fonction redirection en appelant quelque chose
-//		}
-//			}
-//		else 
-//			if(y + 1 < 10)
-//				{if(game.getMap().getMap()[x][y + 1]!= Element.WALL)
-//		{
-//			++y;
-//			//Forcer à sortir de fonction redirection en appelant quelque chose
-//		}
-//				}
-//		else 
-//			if(y - 1 > 0)
-//			{
-//				if(game.getMap().getMap()[x][y - 1]!= Element.WALL)
-//		{
-//			--y;
-//			//Forcer à sortir de fonction redirection en appelant quelque chose
-//		}	
-//			}
-//		// apres avoir atteint le mur, check haut droit gauche droite -> premier de libre et va la bas et continue son
-//		// voyage 
-//	}
 
 	@Override
 	public void cross() 
@@ -145,22 +108,27 @@ public class Ghosts extends Characters
 	@Override	
 	public void move()
 	{
-		//if (!checkWalls())
+		if (!checkWalls())
 		switch(direction)
 		{
 			case 0:   // left
 				if(x - 1 > 0)
 					if(state == 1)
+					{
 						if(ralenti % 2 == 0)
 						{	++ x;
 							++ralenti;
 						}
 						else
 							++ralenti;
+					}
+					else
+						++ x;
 				break;
 			case 1  : //right
 				if(x + 1 < 10)
 					if(state == 1)
+					{
 						if(ralenti % 2 == 0)
 						{
 							-- x;
@@ -168,9 +136,13 @@ public class Ghosts extends Characters
 						}
 						else
 							++ralenti;
+					}
+					else 
+						-- x;
 				break;
 			case 2 :  // up
 				if(y - 1 > 0)
+				{
 					if(ralenti % 2 == 0)
 					{
 						-- y;
@@ -178,9 +150,13 @@ public class Ghosts extends Characters
 					}
 					else
 						++ralenti;
+				}
+				else
+					-- y;
 				break;
 			case 3  : //Down
 				if(y + 1 < 10)
+				{
 					if(ralenti % 2 == 0)
 					{
 						++ y;
@@ -188,8 +164,12 @@ public class Ghosts extends Characters
 					}
 					else
 						++ralenti;
+				}
+				else
+					++ y;
 				break;
 		}
+		notifyObserver();
 	}
 	
 	/*

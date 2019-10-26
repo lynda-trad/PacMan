@@ -173,11 +173,11 @@ public class Pacman extends Characters
 	{
 		switch(direction)
 		{
-			case "RIGHT" :
-				++ x;
-				break;
 			case "LEFT"  :
 				-- x;
+			break;
+			case "RIGHT" :
+				++ x;
 				break;
 			case "UP" :
 				-- y;
