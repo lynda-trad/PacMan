@@ -3,7 +3,6 @@ package pacman;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -102,7 +101,7 @@ public class Graph extends JPanel implements Observer
 		}
 		else
 		if(i == game.getGums()[1].x && j == game.getGums()[1].y)
-		{	g.setColor(Color.MAGENTA); //mettre purple
+		{	g.setColor(Color.MAGENTA);
 			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
 		}
 		else

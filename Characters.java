@@ -11,6 +11,5 @@ public abstract class Characters extends Elements // abstract ou interface?
 	
 	public abstract void move();
 
-//	public abstract void posActu();
 
 }

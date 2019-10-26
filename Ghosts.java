@@ -6,13 +6,11 @@ import pacman.Characters;
 
 public class Ghosts extends Characters
 {
-	private int state ; // 0 = normal, 1 = vulnerable et ralenti
-	//private int element = 3;
+	private int state ; 	// 0 = normal, 1 = vulnerable et ralenti
 	
-
 	private int direction;
 	
-	private int ralenti; // incremente a chaque move et si impair on bouge pas
+	private int ralenti;    // incremente a chaque move et si impair on bouge pas
 
 	private ArrayList<Observer> observers;
 	
@@ -45,7 +43,8 @@ public class Ghosts extends Characters
 		return this.state;
 	}
 	
-	public void setState(int state) {
+	public void setState(int state) 
+	{
 		this.state = state;
 	}
 	
@@ -58,10 +57,11 @@ public class Ghosts extends Characters
 	{
 		this.state = 1;
 	}
+	
 	////////////////////////////////////////
+	
 	public void backToCenter() 
 	{   
-		// touché par pacman qd vulnerable -> gum orange
 		this.x = 3;
 		this.y = 3;
 	}
@@ -172,20 +172,5 @@ public class Ghosts extends Characters
 		notifyObserver();
 	}
 	
-	/*
-	public String toString()
-	{
-		switch(this.state) 
-		{
-		case 0:
-			return "Ghost blanc à l'état Normal";
-		case 1:
-			return "Ghost bleu à l'état Vulnérable";
-		default:
-			return "Ghost blanc à l'état Normal";
-		}
-	
-	}
-	*/
 }
 

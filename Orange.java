@@ -34,19 +34,4 @@ public class Orange extends Gum
 		// TODO Auto-generated method stub
 		
 	}
-	
-	//modifie aspect du pacman
-	//rend fantome mangeable et deux fois plus lents -> fantome gereront eux memes si se font manger
-	
-
-	/*
-	public String toString()
-	{
-			if (this.eaten==true)
-				return "Gum Orange de score " + this.score + " eaten";
-			else
-				return "Gum Orange de score " + this.score + " not eaten";	
-	}
-	 */
-	
 }

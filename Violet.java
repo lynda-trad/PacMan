@@ -26,16 +26,4 @@ public class Violet extends Gum
 		// TODO Auto-generated method stub
 		
 	}
-
-
-	/*
-	public String toString()
-	{
-			if (this.eaten==true)
-				return "Gum Violet de score " + this.score + " eaten";
-			else
-				return "Gum Violet de score " + this.score + " not eaten";
-	}
-	 */
-	
 }

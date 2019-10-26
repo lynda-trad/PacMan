@@ -26,15 +26,5 @@ public class Green extends Gum
 		
 	}
 	
-	/*
-	public String toString()
-	{
-			if (this.eaten == true)
-				return "Gum Green de score " + this.score + " eaten";
-			else
-				return "Gum Green de score " + this.score + " not eaten";
-	}
-	*/
-	
 }
  

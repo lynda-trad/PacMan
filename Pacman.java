@@ -62,7 +62,6 @@ public class Pacman extends Characters
 		this.direction = direction;
 	}
 	
-	
 	/////////////////////////////
 	
 	public void beNormal() 
@@ -84,10 +83,6 @@ public class Pacman extends Characters
 	{
 		observers.add(o);
 	}
-	
-	
-	/////////////////////////////
-	
 
 	public void notifyObserver()
 	{
@@ -97,10 +92,10 @@ public class Pacman extends Characters
 		}
 	}
 	
+	/////////////////////////////
 	
 	public void addScore(Gum g)
 	{ 
-		// apres avoir manger une gum on ajoute son score au score du player
 		this.score += g.getScore();
 	}	
 	
@@ -118,20 +113,9 @@ public class Pacman extends Characters
 		if(this.lives > 0)
 			this.lives--;
 		
-		if(this.lives == 0) //checks if dead
-			gameOver();
-	}
-	
-	
-	public void gameOver()
-	{
-		if(this.lives == 0) 				  //pacman a perdu toutes ses vies, game over
-		{
+		if(this.lives == 0)
 			game.gameOver(0);
-			System.exit(0);
-		}
 	}
-	
 	
 	public void eatGum(Gum g) 
 	{
@@ -175,16 +159,20 @@ public class Pacman extends Characters
 		switch(direction)
 		{
 			case "LEFT"  :
-				-- x;
+				if( x - 1 > 0)
+					-- x;
 			break;
 			case "RIGHT" :
-				++ x;
+				if( x + 1 < 10)
+					++ x;
 				break;
 			case "UP" :
-				-- y;
+				if( y - 1 > 0)
+					-- y;
 				break;
 			case "DOWN"  :
-				++ y;
+				if(y + 1 < 10)
+					++ y;
 				break;
 		}
 		notifyObserver();
@@ -198,11 +186,11 @@ public class Pacman extends Characters
 		
 		switch(direction)
 		{
-			case "RIGHT" :
-				future_x = x + 1;
-				break;
 			case "LEFT"  :
 				future_x = x - 1;
+			break;
+			case "RIGHT" :
+				future_x = x + 1;
 				break;
 			case "UP" :
 				future_y = y - 1;
@@ -212,35 +200,25 @@ public class Pacman extends Characters
 				break;
 		}
 		
-		// Collision fantome ?
-		ghostCollision(future_x, future_y);
-		 
-		//Collision autre ? 
+		// si pas de collision fantome on verifie le reste
+		if(!ghostCollision(future_x, future_y))
 		switch(game.getMap().getMap()[future_x][future_y])
 		{
 			case NONE :
-				// rien donc on peut move
 				move();
-				break;
-			case WALL : 
-				// on ne fait rien pcq mur apres
-				break;
-				
+			break;
 			case GUM :
-				// verifie type de gum
-				// applique pouvoir au joueur
-				//switch(g.getMap()[future_x][future_y].getElement().getType())
-
 				move();
 				for(int i = 0 ; i < game.getGums().length ; ++i)
 					if(game.getGums()[i].x == future_x && game.getGums()[i].y == future_y)
 						eatGum(game.getGums()[i]);
-				
+			break;
+			default : // WALL
 				break;
-		}
-		
+		}	
 	}
-	public void ghostCollision(int future_x, int future_y)
+	
+	public boolean ghostCollision(int future_x, int future_y)
 	{
 		for(int i = 0 ; i < game.getGhosts().length; ++i)
 		{
@@ -251,43 +229,28 @@ public class Pacman extends Characters
 						case 0 : //normal
 							loseLife();
 							restartAfterCollision();
-						break;
+						return true;
 						case 1 : //superpacman
 							move();
 							game.getGhosts()[i].backToCenter();
-						break;
+						return true;
 						case 2 : //invisible
 							move();
-						break;
+						return true;
 					}
 				}
 		}
+		return false;
 	}
+	
 	public void restartAfterCollision()
 	{
 		x = 3;
 		y = 3;
-		direction = "RIGHT";
+		direction = "";
 		state = 0;
 		
 		game.restartAfterCollision();
 	}
 	
-
-	/*
-	public String toString()
-	{
-		switch(this.state) 
-		{
-		case 0:
-			return "Pacman jaune à l'état Normal avec un score de " + this.score + " et " + this.lives + " vies restantes.";
-		case 1:
-			return "Pacman orange à l'état SuperPacman avec un score de " + this.score + " et " + this.lives + " vies restantes.";
-		case 2:
-			return "Pacman jaune pale à l'état Invisible avec un score de " + this.score + " et " +this.lives + " vies restantes.";
-		default:
-			return "Pacman à l'état Normal avec un score de " + this.score + this.lives + " et " + " vies restantes.";
-		}
-	}
-	*/
 }

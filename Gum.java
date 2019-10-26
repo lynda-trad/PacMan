@@ -68,7 +68,6 @@ public abstract class Gum extends Elements
 	public void isEaten() 
 	{
 		-- compteur;
-		//mettre a jour la map , retirer gum qui sest faite manger 
 	}
 	
 	public abstract void effet(); // Effets sur le jeu (et Ghosts) 
@@ -86,12 +85,5 @@ public abstract class Gum extends Elements
 		
 	}
 	*/
-	
-
-	/*
-		Apres qu'une gum ait été consommée on doit  mettre son etat a 0 pour dire
-		quelle ne doit plus apparaitre -> si tt gum mangées alors jeu gagné 
-	*/
-	
 	
 }
