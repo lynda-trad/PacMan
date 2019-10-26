@@ -5,27 +5,28 @@ public class Map extends Elements
 	private Element[][] map = 
 		{ 
 			{Element.WALL, Element.WALL, Element.WALL, Element.WALL,  Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL}, 
-			{Element.WALL, Element.GHOST,Element.GUM,  Element.NONE,  Element.NONE, Element.NONE, Element.NONE, Element.NONE, Element.GHOST,Element.WALL}, 
+			{Element.WALL, Element.NONE, Element.GUM,  Element.NONE,  Element.NONE, Element.NONE, Element.NONE, Element.NONE, Element.NONE, Element.WALL}, 
 			{Element.WALL, Element.NONE, Element.NONE, Element.NONE,  Element.GUM,  Element.NONE, Element.NONE, Element.NONE, Element.WALL, Element.WALL},
-			{Element.WALL, Element.NONE, Element.NONE, Element.NONE,Element.NONE, Element.WALL, Element.WALL, Element.NONE, Element.WALL, Element.WALL},
+			{Element.WALL, Element.NONE, Element.NONE, Element.NONE,  Element.NONE, Element.WALL, Element.WALL, Element.NONE, Element.WALL, Element.WALL},
 			{Element.WALL, Element.NONE, Element.WALL, Element.NONE,  Element.WALL, Element.NONE, Element.NONE, Element.NONE, Element.WALL, Element.WALL},
 			{Element.WALL, Element.NONE, Element.WALL, Element.NONE,  Element.WALL, Element.NONE, Element.WALL, Element.GUM,  Element.WALL, Element.WALL},
 			{Element.WALL, Element.NONE, Element.WALL, Element.NONE,  Element.WALL, Element.NONE, Element.WALL, Element.WALL, Element.WALL, Element.WALL},
 			{Element.WALL, Element.NONE, Element.WALL, Element.NONE,  Element.WALL, Element.NONE, Element.NONE, Element.NONE, Element.WALL, Element.WALL},
-			{Element.WALL, Element.GUM,  Element.NONE, Element.GHOST, Element.WALL, Element.NONE, Element.NONE, Element.NONE, Element.GHOST,Element.WALL},
+			{Element.WALL, Element.GUM,  Element.NONE, Element.NONE,  Element.WALL, Element.NONE, Element.NONE, Element.NONE, Element.NONE, Element.WALL},
 			{Element.WALL, Element.WALL, Element.WALL, Element.WALL,  Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL},
 	};
 	
 	/*
 	 * On met que les pacgum, les murs et le vide 
+	 * 
 	 * comme ca si fantome passe sur pacgum, 
 	 * lemplacement ne devient pas vide quand il se fait manger par superpacman
-	 * 
+	 * et emplacement de gum ne se fait pas ecraser par celui du ghost
 	 */
 
 	public Map()
 	{
-		//map initialiser plus haut 
+		//map initialise plus haut 
 	}
 
 	public void setMap(Element[][] map) 
@@ -49,19 +50,6 @@ public class Map extends Elements
 	{
 		this.map = map;
 	}
-	
-	/*
-	public void printMap()
-	{
-		for(int i = 0; i < 7; ++i)
-		{
-			for(int j = 0; j < 7; ++j)
-			{
-				System.out.println(map[i][j]);
-			}
-		}
-	}
-	*/
 	
 }
 

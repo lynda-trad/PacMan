@@ -1,5 +1,7 @@
 package pacman;
 
+import javax.swing.JOptionPane;
+
 public class Game 
 {
 	private Map map;
@@ -9,6 +11,8 @@ public class Game
 	private Ghosts[] ghosts = new Ghosts[4];
 	
 	private Gum[] gums = new Gum[4];
+	
+	private int compteurGum = 4;
 	
 	public Game()
 	{
@@ -83,10 +87,48 @@ public class Game
 		this.gums = gums;
 	}
 	
+	public void decCompteurGum()
+	{
+		--compteurGum;
+	}
+	
 	////////////////////////////////
+
+	public void restartAfterCollision()
+	{
+		getGhosts()[0].x = 1;
+		getGhosts()[0].y = 1;
+		
+		getGhosts()[1].x = 8;
+		getGhosts()[1].y = 3;
+		
+		getGhosts()[2].x = 1;
+		getGhosts()[2].y = 8;
+		
+		getGhosts()[3].x = 8;
+		getGhosts()[3].y = 8;
+		
+		getGhosts()[0].setState(0);
+		getGhosts()[1].setState(0);
+		getGhosts()[2].setState(0);
+		getGhosts()[3].setState(0);
+	}
+	
+	public void gameOver(int i)
+	{
+		if(i == 0)
+			JOptionPane.showMessageDialog(null, "Game Over ! You lost !");
+		else
+			JOptionPane.showMessageDialog(null, "Game Over ! You won !");
+		System.exit(0);
+	}
 	
 	public void move() 
 	{
+		if(compteurGum == 0)
+		{	
+			gameOver(1);
+		}
 		player.cross();
 		for(int i = 0 ; i < ghosts.length; ++i)
 		{

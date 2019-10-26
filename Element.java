@@ -4,9 +4,10 @@ public enum Element
 {
 	NONE,
 	WALL,
-	PLAYER,
-	GHOST,
 	GUM,
+
+	//PLAYER,
+	//GHOST,
 	
 }
 

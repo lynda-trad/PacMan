@@ -62,7 +62,7 @@ public class Graph extends JPanel implements Observer
 			break;
 			
 			case 1 : // invisible
-				g.setColor(Color.YELLOW);
+				g.setColor(Color.PINK);
 				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
 				//jaune pale a chercher
 			break;
@@ -95,24 +95,25 @@ public class Graph extends JPanel implements Observer
 	
 	public void drawGums(Graphics g, int i, int j)
 	{
+		int minScale = SCALE - 20;
 		if(i == game.getGums()[0].x && j == game.getGums()[0].y)
 		{	g.setColor(Color.BLUE);
-			g.fillOval(i * SCALE, j * SCALE, SCALE, SCALE);
+			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
 		}
 		else
 		if(i == game.getGums()[1].x && j == game.getGums()[1].y)
-		{	g.setColor(Color.BLACK); //mettre purple
-			g.fillOval(i * SCALE, j * SCALE, SCALE, SCALE);
+		{	g.setColor(Color.MAGENTA); //mettre purple
+			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
 		}
 		else
 		if(i == game.getGums()[2].x && j == game.getGums()[2].y)
 		{	g.setColor(Color.ORANGE);
-			g.fillOval(i * SCALE, j * SCALE, SCALE, SCALE);
+			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
 		}
 		else
 		if(i == game.getGums()[3].x && j == game.getGums()[3].y)
 		{	g.setColor(Color.GREEN);
-			g.fillOval(i * SCALE, j * SCALE, SCALE, SCALE);
+			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
 		}
 	}
 	
@@ -120,15 +121,6 @@ public class Graph extends JPanel implements Observer
 	{
 		g.setColor(Color.BLACK);
 		g.fillRect(i * SCALE, j * SCALE, SCALE, SCALE);
-	}
-	
-	public void gameOver(int i)
-	{
-		if(i == 0)
-			JOptionPane.showMessageDialog(this, "Game Over ! You lost !");
-		else
-			JOptionPane.showMessageDialog(this, "Game Over ! You won !");
-		System.exit(0);
 	}
 
 	@Override

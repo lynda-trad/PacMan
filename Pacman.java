@@ -127,7 +127,7 @@ public class Pacman extends Characters
 	{
 		if(this.lives == 0) 				  //pacman a perdu toutes ses vies, game over
 		{
-			//	graph().gameOver(0);
+			game.gameOver(0);
 			System.exit(0);
 		}
 	}
@@ -165,6 +165,7 @@ public class Pacman extends Characters
 			}
 			
 			game.getMap().getMap()[x][y] = Element.NONE;
+			game.decCompteurGum();
 			// ici on met a jour la map on met VIDE aux coordonnées de Gum g
 	}
 	
@@ -211,14 +212,10 @@ public class Pacman extends Characters
 				break;
 		}
 		
-		//on a ses x et y dans elements
-		
-		/*
-		je crois que tout ca equivaut a appeler :
-			g.getMap().getElementCase(future_x, future_y);
-		mais y a un soucis je peux pas 
-		*/
-		
+		// Collision fantome ?
+		ghostCollision(future_x, future_y);
+		 
+		//Collision autre ? 
 		switch(game.getMap().getMap()[future_x][future_y])
 		{
 			case NONE :
@@ -228,33 +225,7 @@ public class Pacman extends Characters
 			case WALL : 
 				// on ne fait rien pcq mur apres
 				break;
-			case PLAYER :
-				// pas possible ici puisque soi meme
-				break;
-			case GHOST :
-				// ghosts
-				// verifie etat
-				// peut perdre une vie
-				switch(state)
-				{
-					case 0 :
-						//normal
-						loseLife();
-						restartAfterCollision();
-						break;
-					case 1 :
-						//superpacman
-						move();
-						for(int i = 0 ; i < game.getGhosts().length; ++i)
-							if(future_x == game.getGhosts()[i].x && future_y == game.getGhosts()[i].y)
-								game.getGhosts()[i].backToCenter();
-						break;
-					case 2 :
-						//invisible
-						move();
-						break;
-				}
-				break;
+				
 			case GUM :
 				// verifie type de gum
 				// applique pouvoir au joueur
@@ -267,24 +238,39 @@ public class Pacman extends Characters
 				
 				break;
 		}
+		
 	}
-	
+	public void ghostCollision(int future_x, int future_y)
+	{
+		for(int i = 0 ; i < game.getGhosts().length; ++i)
+		{
+			if(future_x == game.getGhosts()[i].x && future_y == game.getGhosts()[i].y)
+				{
+					switch(state)
+					{
+						case 0 : //normal
+							loseLife();
+							restartAfterCollision();
+						break;
+						case 1 : //superpacman
+							move();
+							game.getGhosts()[i].backToCenter();
+						break;
+						case 2 : //invisible
+							move();
+						break;
+					}
+				}
+		}
+	}
 	public void restartAfterCollision()
 	{
 		x = 3;
 		y = 3;
+		direction = "RIGHT";
+		state = 0;
 		
-		game.getGhosts()[0].x = 2;
-		game.getGhosts()[0].y = 1;
-		
-		game.getGhosts()[1].x = 1;
-		game.getGhosts()[1].y = 8;
-		
-		game.getGhosts()[2].x = 5;
-		game.getGhosts()[2].y = 7;
-		
-		game.getGhosts()[3].x = 2;
-		game.getGhosts()[3].y = 4;
+		game.restartAfterCollision();
 	}
 	
 

@@ -9,6 +9,7 @@ public class Ghosts extends Characters
 	private int state ; // 0 = normal, 1 = vulnerable et ralenti
 	//private int element = 3;
 	
+
 	private int direction;
 	
 	private int ralenti; // incremente a chaque move et si impair on bouge pas
@@ -42,6 +43,10 @@ public class Ghosts extends Characters
 	public int getState() 
 	{
 		return this.state;
+	}
+	
+	public void setState(int state) {
+		this.state = state;
 	}
 	
 	public void beNormal()
@@ -87,15 +92,10 @@ public class Ghosts extends Characters
 				if(game.getMap().getMap()[x][y + 1] == Element.WALL)
 					direction = (int) (Math.random() * 3 + 1);
 				return true;
-		
-			//on verifie selon la direction si prochain step est un mur 
-		 
-			// en supposant quils vont toujours à droite, on nen sait rien
-			
-			//on fait random direction
+				
+			default :
+				return false;
 		}
-		
-		return false;
 	}
 
 	@Override
