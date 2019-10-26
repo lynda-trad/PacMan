@@ -164,7 +164,7 @@ public class Pacman extends Characters
 				g.isEaten();
 			}
 			
-			game.getMap().getMap()[x][y] = Element.VIDE;
+			game.getMap().getMap()[x][y] = Element.NONE;
 			// ici on met a jour la map on met VIDE aux coordonnées de Gum g
 	}
 	
@@ -221,7 +221,7 @@ public class Pacman extends Characters
 		
 		switch(game.getMap().getMap()[future_x][future_y])
 		{
-			case VIDE :
+			case NONE :
 				// rien donc on peut move
 				move();
 				break;
@@ -264,10 +264,6 @@ public class Pacman extends Characters
 				for(int i = 0 ; i < game.getGums().length ; ++i)
 					if(game.getGums()[i].x == future_x && game.getGums()[i].y == future_y)
 						eatGum(game.getGums()[i]);
-				// appelle eatGum sur gum 
-				//qui a les coordonnées future_x et future_y 
-				
-				
 				
 				break;
 		}

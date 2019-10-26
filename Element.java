@@ -2,7 +2,7 @@ package pacman;
 
 public enum Element 
 {
-	VIDE,
+	NONE,
 	WALL,
 	PLAYER,
 	GHOST,

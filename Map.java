@@ -5,14 +5,14 @@ public class Map extends Elements
 	private Element[][] map = 
 		{ 
 			{Element.WALL, Element.WALL, Element.WALL, Element.WALL,  Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL}, 
-			{Element.WALL, Element.GHOST,Element.GUM,  Element.VIDE,  Element.VIDE, Element.VIDE, Element.VIDE, Element.VIDE, Element.GHOST,Element.WALL}, 
-			{Element.WALL, Element.VIDE, Element.VIDE, Element.VIDE,  Element.GUM,  Element.VIDE, Element.VIDE, Element.VIDE, Element.WALL, Element.WALL},
-			{Element.WALL, Element.VIDE, Element.VIDE, Element.PLAYER,Element.VIDE, Element.WALL, Element.WALL, Element.VIDE, Element.WALL, Element.WALL},
-			{Element.WALL, Element.VIDE, Element.WALL, Element.VIDE,  Element.WALL, Element.VIDE, Element.WALL, Element.VIDE, Element.WALL, Element.WALL},
-			{Element.WALL, Element.VIDE, Element.WALL, Element.VIDE,  Element.WALL, Element.VIDE, Element.WALL, Element.GUM,  Element.WALL, Element.WALL},
-			{Element.WALL, Element.VIDE, Element.WALL, Element.VIDE,  Element.WALL, Element.VIDE, Element.WALL, Element.WALL, Element.WALL, Element.WALL},
-			{Element.WALL, Element.VIDE, Element.WALL, Element.VIDE,  Element.WALL, Element.VIDE, Element.VIDE, Element.VIDE, Element.WALL, Element.WALL},
-			{Element.WALL, Element.GUM,  Element.VIDE, Element.GHOST, Element.WALL, Element.VIDE, Element.VIDE, Element.VIDE, Element.GHOST,Element.WALL},
+			{Element.WALL, Element.GHOST,Element.GUM,  Element.NONE,  Element.NONE, Element.NONE, Element.NONE, Element.NONE, Element.GHOST,Element.WALL}, 
+			{Element.WALL, Element.NONE, Element.NONE, Element.NONE,  Element.GUM,  Element.NONE, Element.NONE, Element.NONE, Element.WALL, Element.WALL},
+			{Element.WALL, Element.NONE, Element.NONE, Element.PLAYER,Element.NONE, Element.WALL, Element.WALL, Element.NONE, Element.WALL, Element.WALL},
+			{Element.WALL, Element.NONE, Element.WALL, Element.NONE,  Element.WALL, Element.NONE, Element.NONE, Element.NONE, Element.WALL, Element.WALL},
+			{Element.WALL, Element.NONE, Element.WALL, Element.NONE,  Element.WALL, Element.NONE, Element.WALL, Element.GUM,  Element.WALL, Element.WALL},
+			{Element.WALL, Element.NONE, Element.WALL, Element.NONE,  Element.WALL, Element.NONE, Element.WALL, Element.WALL, Element.WALL, Element.WALL},
+			{Element.WALL, Element.NONE, Element.WALL, Element.NONE,  Element.WALL, Element.NONE, Element.NONE, Element.NONE, Element.WALL, Element.WALL},
+			{Element.WALL, Element.GUM,  Element.NONE, Element.GHOST, Element.WALL, Element.NONE, Element.NONE, Element.NONE, Element.GHOST,Element.WALL},
 			{Element.WALL, Element.WALL, Element.WALL, Element.WALL,  Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL, Element.WALL},
 	};
 	

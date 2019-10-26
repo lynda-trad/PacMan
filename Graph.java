@@ -36,7 +36,7 @@ public class Graph extends JPanel implements Observer
 				switch(this.game.getMap().getMap()[i][j])
 				{
 					case WALL :
-						drawWalls(g, i, j );
+						drawWalls(g, i, j);
 					break;
 					case GUM : 
 						drawGums(g, i, j);
@@ -101,7 +101,7 @@ public class Graph extends JPanel implements Observer
 		}
 		else
 		if(i == game.getGums()[1].x && j == game.getGums()[1].y)
-		{	g.setColor(Color.PINK); //mettre purple
+		{	g.setColor(Color.BLACK); //mettre purple
 			g.fillOval(i * SCALE, j * SCALE, SCALE, SCALE);
 		}
 		else

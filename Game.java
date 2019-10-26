@@ -20,10 +20,10 @@ public class Game
 	
 	public void initializeGum()
 	{
-		gums[0] = new Blue  (0,1,2); // blue
-		gums[1] = new Violet(1,8,1); // violet
-		gums[2] = new Orange(2,7,5); // orange 
-		gums[3] = new Green (3,4,2); // vert
+		gums[0] = new Blue  (0,1,2); // blue   ok
+		gums[1] = new Violet(1,8,1); // violet ok
+		gums[2] = new Orange(2,5,7); // orange 
+		gums[3] = new Green (3,2,4); // vert
 	}
 
 	public void initializePlayer()
