@@ -80,7 +80,8 @@ public abstract class Gum extends Elements
 	}
 
 	/*
-	public void effet(Pacman p, Ghosts[] ghosts) {
+	public void effet(Pacman p, Ghosts[] ghosts) 
+	{
 		// TODO Auto-generated method stub
 		
 	}

@@ -36,6 +36,163 @@ public class Ghosts extends Characters
 		this.state = 1;
 	}
 	
+	////////////////////////////////////////
+	
+	public void backToCenter() 
+	{   
+		// touché par pacman qd vulnerable -> gum orange
+		this.x = 3;
+		this.y = 3;
+	}
+
+	public boolean checkWalls()
+	{
+		// verifie si ghost touche un mur pour se rediriger si besoin
+		//if calcul collision donne oui 
+		
+		switch(direction)
+		{
+			case 0: // left
+				if(game.getMap().getMap()[x - 1][y] == Element.WALL)
+					direction = (int) (Math.random() * 3 + 1);
+				return true;
+		
+			case 1: // right
+				if(game.getMap().getMap()[x + 1][y] == Element.WALL)
+					direction = (int) (Math.random() * 3 + 1);
+				return true;
+			
+			case 2: // up 
+				if(game.getMap().getMap()[x][y + 1] == Element.WALL)
+					direction = (int) (Math.random() * 3 + 1);
+				return true;
+
+			case 3: // down
+				if(game.getMap().getMap()[x][y - 1] == Element.WALL)
+					direction = (int) (Math.random() * 3 + 1);
+				return true;
+		
+			//on verifie selon la direction si prochain step est un mur 
+		 
+			// en supposant quils vont toujours à droite, on nen sait rien
+			
+			//on fait random direction
+		}
+		
+		//redirection();
+		return false;
+	}
+	
+	
+//	public void redirection() 
+//	{	
+//		/*
+//		 * utiliser une fonction mathematiques qui me sort un int random entre 0 et 3 
+//		 * pour les 4 directions
+//		 * tant quon touche pas de mur, le fantome contninue a aller dans la direction
+//		 * int direction.
+//		 * on change le champ direction avec un nouveau random quand on touche un mur
+//		 *
+//		 *fonction fait un nouveau random, ca met a jour le champ direction
+//		 *
+//		 */
+//
+//		if(x + 1 < 10)
+//		{
+//			if (game.getMap().getMap()[x + 1][y] != Element.WALL)
+//			{
+//				++x;
+//			// Forcer à sortir de fonction redirection en appelant quelque chose
+//			}
+//		}
+//		else 
+//			if (x - 1 > 0)
+//			{
+//				if(game.getMap().getMap()[x - 1][y]!= Element.WALL)
+//		{
+//			--x;
+//			//Forcer à sortir de fonction redirection en appelant quelque chose
+//		}
+//			}
+//		else 
+//			if(y + 1 < 10)
+//				{if(game.getMap().getMap()[x][y + 1]!= Element.WALL)
+//		{
+//			++y;
+//			//Forcer à sortir de fonction redirection en appelant quelque chose
+//		}
+//				}
+//		else 
+//			if(y - 1 > 0)
+//			{
+//				if(game.getMap().getMap()[x][y - 1]!= Element.WALL)
+//		{
+//			--y;
+//			//Forcer à sortir de fonction redirection en appelant quelque chose
+//		}	
+//			}
+//		// apres avoir atteint le mur, check haut droit gauche droite -> premier de libre et va la bas et continue son
+//		// voyage 
+//	}
+
+	@Override
+	public void cross() 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override	
+	public void move()
+	{
+		//if (!checkWalls())
+		switch(direction)
+		{
+			case 0:   // left
+				if(x - 1 > 0)
+					if(state == 1)
+						if(ralenti % 2 == 0)
+						{	++ x;
+							++ralenti;
+						}
+						else
+							++ralenti;
+				break;
+			case 1  : //right
+				if(x + 1 < 10)
+					if(state == 1)
+						if(ralenti % 2 == 0)
+						{
+							-- x;
+							++ralenti;
+						}
+						else
+							++ralenti;
+				break;
+			case 2 :  // up
+				if(y - 1 > 0)
+					if(ralenti % 2 == 0)
+					{
+						-- y;
+						++ralenti;
+					}
+					else
+						++ralenti;
+				break;
+			case 3  : //Down
+				if(y + 1 < 10)
+					if(ralenti % 2 == 0)
+					{
+						++ y;
+						++ralenti;
+					}
+					else
+						++ralenti;
+				break;
+		}
+	}
+	
+	/*
 	public String toString()
 	{
 		switch(this.state) 
@@ -49,125 +206,6 @@ public class Ghosts extends Characters
 		}
 	
 	}
-	
-	////////////////////////////////////////
-	
-	public void backToCenter(int x, int y) 
-	{   // touché par pacman qd vulnerable -> gum orange
-		this.x = this.y = 4;
-		//mettre a jour map graphic -> repaint dans gamegraphics
-	}
-
-	public boolean checkWalls()
-	{
-		// verifie si ghost touche un mur pour se rediriger si besoin
-		//if calcul collision donne oui 
-		
-		//on verifie selon la direction si prochain step est un mur 
-		if(game.getMap().getMap()[x][y] == Element.WALL) 
-			// en supposant quils vont toujours à droite, on nen sait rien
-			
-			//on fait random direction
-			return true;
-		
-		return true;
-		//redirection();
-	}
-	
-	public void redirection() 
-	{
-		/*
-		Chaque fantome se deplace dans une direction jusqu'a ce qu'il atteigne un mur, puis choisit une nouvelle
-		direction aleatoirement.
-		*/
-		
-		/*
-		 * utiliser une fonctioh mathematiques qui me sort un int random entre 0 et 3 
-		 * pour les 4 directions
-		 * 
-		 * tant quon touche pas de mur, le fantome contninue a aller dans la direction
-		 * int direction.
-		 * 
-		 * on change le champ direction avec un nouveau random quand on touche un mur
-		 *
-		 */
-		
-		//utiliser cross avec un mur si collision on fait un random 
-		
-		
-		//fonction fait un nouveau random, ca met a jour le champ direction
-		if(x + 1 < 10)
-		{
-			if (game.getMap().getMap()[x + 1][y] != Element.WALL)
-			{
-				++x;
-			// Forcer à sortir de fonction redirection en appelant quelque chose
-			}
-		}
-		else 
-			if (x - 1 > 0)
-			{
-				if(game.getMap().getMap()[x - 1][y]!= Element.WALL)
-		{
-			--x;
-			//Forcer à sortir de fonction redirection en appelant quelque chose
-		}
-			}
-		else 
-			if(y + 1 < 10)
-				{if(game.getMap().getMap()[x][y + 1]!= Element.WALL)
-		{
-			++y;
-			//Forcer à sortir de fonction redirection en appelant quelque chose
-		}
-				}
-		else 
-			if(y - 1 > 0)
-			{
-				if(game.getMap().getMap()[x][y - 1]!= Element.WALL)
-		{
-			--y;
-			//Forcer à sortir de fonction redirection en appelant quelque chose
-		}	
-			}
-		// apres avoir atteint le mur, check haut droit gauche droite -> premier de libre et va la bas et continue son
-		// voyage 
-	}
-	
-	public void moveSlow()
-	{
-		
-
-	}
-
-	@Override
-	public void cross() 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override	
-	public void move()
-	{
-		if (!checkWalls())
-		switch(direction)
-		{
-			case 0:
-				++ x;
-				break;
-			case 1  : //right
-				-- x;
-				break;
-			case 2 :
-				-- y;
-				break;
-			case 3  : //Down
-				++ y;
-				break;
-		}
-	}
-	
-	
+	*/
 }
 

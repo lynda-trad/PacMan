@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 public class Graph extends JPanel implements Observer
 {
 	private Game game;
-	//private Gui gui; 							// gui a besoin de jpanel pas linverse
+	
 	private static final int width  = 50 * 10 + 14;
 	private static final int height = 50 * 10 + 37;
 	private static final int SCALE  = 50;
@@ -25,14 +25,10 @@ public class Graph extends JPanel implements Observer
 	public void paintComponent(Graphics g) //appelée par repaint 
 	{
 		super.paintComponent(g);
-		//width = getSize().width ;
-		//height= getSize().height;
 		
 		g.setColor(Color.WHITE);
-		//set backgruo d color a gris	
+		//set background color a gris	
 
-		//////////
-		
 		for(int i = 0 ; i < this.game.getMap().getMap().length ; ++i)
 		{
 			for(int j = 0 ; j < this.game.getMap().getMap().length ; ++j)
@@ -43,7 +39,6 @@ public class Graph extends JPanel implements Observer
 						drawWalls(g, i, j );
 					break;
 					case GUM : 
-						System.out.println("gum");
 						drawGums(g, i, j);
 					break;
 					default :
@@ -54,47 +49,25 @@ public class Graph extends JPanel implements Observer
 		
 		drawGhosts(g);
 		drawPacman(g);
-		//pour chaque ghost il va drawGhost();
-		
-		
-		/*
-		 * On va parcourir le tableau delement map et affiche un truc different selon
-		 * lenum -> on utilisera pas des objets pour ca 
-		 * si vide on remplit carré de 20 sur 20 en gris
-		 * si mur on remplit carré de 20 sur 20 en noir
-		 * si pacman on remplit carré de 20 sur 20 par un rond jaune etc 
-		 * a chaque tour on verifie letat du pacman et des fantomes pour changer leur couleur 
-		 * on fait un sleep pour prendre le temps de tout réafficher 
-		 * 
-		 * On parcourt la map et on affiche tout (murs, vide, pacgum) 
-		 * puis on affiche par dessus pacman et fantomes en cherchant leur coordonnées dans Game
-		 * */
 		
 	}
 	
 	public void drawPacman(Graphics g)
 	{
-		// dessiner pacman 
-		
-		//fillOval 
-		//couleur selon le state
-		//afficher a position  [x * scale][ y * scale}
-		
-		//Switch etat 
 		switch(game.getPlayer().getState())
 		{
-			case 0 :
+			case 0 : // normal
 				g.setColor(Color.YELLOW);
 				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
 			break;
 			
-			case 1 :
+			case 1 : // invisible
 				g.setColor(Color.YELLOW);
 				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
 				//jaune pale a chercher
 			break;
 			
-			case 2 :
+			case 2 : // superpacman
 				g.setColor(Color.ORANGE);
 				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
 			break;
@@ -128,7 +101,7 @@ public class Graph extends JPanel implements Observer
 		}
 		else
 		if(i == game.getGums()[1].x && j == game.getGums()[1].y)
-		{	g.setColor(Color.PINK); 						//purple
+		{	g.setColor(Color.PINK); //mettre purple
 			g.fillOval(i * SCALE, j * SCALE, SCALE, SCALE);
 		}
 		else

@@ -7,7 +7,6 @@ public abstract class Characters extends Elements // abstract ou interface?
 	protected int x;
 	protected int y;
 
-
 	public abstract void cross(); 
 	
 	public abstract void move();

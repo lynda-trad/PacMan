@@ -2,7 +2,6 @@ package pacman;
 
 public class Orange extends Gum
 {
-	
 	/*
 		Orange
 		500
@@ -29,18 +28,6 @@ public class Orange extends Gum
 	}
 	*/
 	
-	/*
-	
-	public String toString()
-	{
-			if (this.eaten==true)
-				return "Gum Orange de score " + this.score + " eaten";
-			else
-				return "Gum Orange de score " + this.score + " not eaten";
-			
-	}
-	 */
-	
 	@Override
 	public void effet() 
 	{
@@ -50,5 +37,16 @@ public class Orange extends Gum
 	
 	//modifie aspect du pacman
 	//rend fantome mangeable et deux fois plus lents -> fantome gereront eux memes si se font manger
+	
+
+	/*
+	public String toString()
+	{
+			if (this.eaten==true)
+				return "Gum Orange de score " + this.score + " eaten";
+			else
+				return "Gum Orange de score " + this.score + " not eaten";	
+	}
+	 */
 	
 }

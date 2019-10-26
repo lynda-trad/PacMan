@@ -122,19 +122,16 @@ public class Pacman extends Characters
 			gameOver();
 	}
 	
+	
 	public void gameOver()
 	{
 		if(this.lives == 0) 				  //pacman a perdu toutes ses vies, game over
 		{
-			graph().gameOver(0);
-			System.exit(0);
-		}
-		else 		   						  //quand il n'y a plus de pacgommes, partie gagnee 
-		{
-			graph.gameOver(1);
+			//	graph().gameOver(0);
 			System.exit(0);
 		}
 	}
+	
 	
 	public void eatGum(Gum g) 
 	{
@@ -143,28 +140,32 @@ public class Pacman extends Characters
 				this.addScore(g);
 				g.isEaten();
 			} 
-			else if (g.getType() == 1) 	// Violet = Pacman invisible
+			else if (g.getType() == 1) 	    // Violet = Pacman invisible
 			{
 				this.addScore(g);
 				this.beInvisible(); 
 				g.isEaten();
 			} 
-			else if (g.getType() == 2) 	// Orange 
+			else if (g.getType() == 2) 	    // Orange 
 			{
 				this.addScore(g);
 				this.beSuperPacman();
-				//	g.effet();  		// Marche pas--> SuperPacman et les 4 Ghosts vulnérables
+				//	g.effet();  		    // Marche pas--> SuperPacman et les 4 Ghosts vulnérables
 				g.isEaten();
+				for(int i = 0 ; i < game.getGhosts().length ; ++i)
+				{
+					game.getGhosts()[i].beVulnerable();
+				}
 			}
 			else // Green 
 			{
 				this.addScore(g);
-				//	g.effet(); 			// Marche pas--> New Structure labyrinthe	
+				//	g.effet(); 			    // Marche pas--> New Structure labyrinthe	
 				g.isEaten();
 			}
-					
-			// ici on met a jour la map on met VIDE aux coordonnées de Gum g  
-		
+			
+			game.getMap().getMap()[x][y] = Element.VIDE;
+			// ici on met a jour la map on met VIDE aux coordonnées de Gum g
 	}
 	
 	@Override
@@ -243,7 +244,10 @@ public class Pacman extends Characters
 						break;
 					case 1 :
 						//superpacman
-						//g.getMap()[future_x][future_y].backToCenter();
+						move();
+						for(int i = 0 ; i < game.getGhosts().length; ++i)
+							if(future_x == game.getGhosts()[i].x && future_y == game.getGhosts()[i].y)
+								game.getGhosts()[i].backToCenter();
 						break;
 					case 2 :
 						//invisible
@@ -255,8 +259,13 @@ public class Pacman extends Characters
 				// verifie type de gum
 				// applique pouvoir au joueur
 				//switch(g.getMap()[future_x][future_y].getElement().getType())
-				
-				// appelle eatGum sur gum qui a les coordonnées future_x et future_y 
+
+				move();
+				for(int i = 0 ; i < game.getGums().length ; ++i)
+					if(game.getGums()[i].x == future_x && game.getGums()[i].y == future_y)
+						eatGum(game.getGums()[i]);
+				// appelle eatGum sur gum 
+				//qui a les coordonnées future_x et future_y 
 				
 				
 				
@@ -264,6 +273,25 @@ public class Pacman extends Characters
 		}
 	}
 	
+	public void restartAfterCollision()
+	{
+		x = 3;
+		y = 3;
+		
+		game.getGhosts()[0].x = 2;
+		game.getGhosts()[0].y = 1;
+		
+		game.getGhosts()[1].x = 1;
+		game.getGhosts()[1].y = 8;
+		
+		game.getGhosts()[2].x = 5;
+		game.getGhosts()[2].y = 7;
+		
+		game.getGhosts()[3].x = 2;
+		game.getGhosts()[3].y = 4;
+	}
+	
+
 	/*
 	public String toString()
 	{
@@ -280,22 +308,4 @@ public class Pacman extends Characters
 		}
 	}
 	*/
-	
-	public void restartAfterCollision()
-	{
-		x = 3;
-		y = 3;
-		
-		game.getGhosts()[0].x = 1;
-		game.getGhosts()[0].y = 1;
-		
-		game.getGhosts()[1].x = 0;
-		game.getGhosts()[1].y = 9;
-		
-		game.getGhosts()[2].x = 9;
-		game.getGhosts()[2].y = 1;
-		
-		game.getGhosts()[3].x = 9;
-		game.getGhosts()[3].y = 9;
-	}
 }

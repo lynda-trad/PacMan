@@ -20,6 +20,14 @@ public class Violet extends Gum
 		p.beInvisible();
 	}
 	
+	@Override
+	public void effet() 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	/*
 	public String toString()
 	{
@@ -28,12 +36,6 @@ public class Violet extends Gum
 			else
 				return "Gum Violet de score " + this.score + " not eaten";
 	}
-*/
+	 */
 	
-	@Override
-	public void effet() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

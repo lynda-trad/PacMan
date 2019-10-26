@@ -4,14 +4,22 @@ import javax.swing.JFrame;
 
 public class App 
 {
-
 	public static void main(String[] args) 
 	{
 		// cree un Jframe
 		Game game = new Game();
+		
 		Graph graph = new Graph(game);
+
+		game.getPlayer().addObserver(graph);
+		
+		/*
+		Gui gui = new Gui(game);
+		graph.setGui(gui);
+		*/
 		
 		JFrame frame = new JFrame();
+
 		frame.add(graph);
 		
 		frame.setSize(graph.getSize());
@@ -21,13 +29,13 @@ public class App
 		
 		frame.setVisible(true);
 		
-		game.getPlayer().addObserver(graph);
 		frame.addKeyListener(new MyListener(game.getPlayer()));
 		
 		while(true)
 		{
 			game.move();
 		}
+		
 //		
 ////Test Pacman, différents états 
 //		System.out.println("//////PACMAN///// --> OK!/");
@@ -147,4 +155,4 @@ public class App
 //	}
 
 	}
-	}
+}
