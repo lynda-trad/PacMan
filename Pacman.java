@@ -17,10 +17,10 @@ public class Pacman extends Characters
 
 	public Pacman (Game g)
 	{
+		this.game  = g;
 		this.score = 0;
 		this.lives = 3;
 		this.state = 0;
-		this.game = g;
 		this.direction = "";
 		this.observers = new ArrayList<Observer>();
 	}
@@ -123,34 +123,38 @@ public class Pacman extends Characters
 			{
 				this.addScore(g);
 				g.isEaten();
+
+				game.getMap().getMap()[x][y] = Element.NONE;
+				game.decCompteurGum();
 			} 
 			else if (g.getType() == 1) 	    // Violet = Pacman invisible
 			{
 				this.addScore(g);
 				this.beInvisible(); 
 				g.isEaten();
+
+				game.getMap().getMap()[x][y] = Element.NONE;
+				game.decCompteurGum();
 			} 
 			else if (g.getType() == 2) 	    // Orange 
 			{
 				this.addScore(g);
 				this.beSuperPacman();
-				//	g.effet();  		    // Marche pas--> SuperPacman et les 4 Ghosts vulnérables
 				g.isEaten();
 				for(int i = 0 ; i < game.getGhosts().length ; ++i)
 				{
 					game.getGhosts()[i].beVulnerable();
 				}
+
+				game.getMap().getMap()[x][y] = Element.NONE;
+				game.decCompteurGum();
 			}
-			else // Green 
+			else							 // Green New Structure labyrinthe	
 			{
-				this.addScore(g);
-				//	g.effet(); 			    // Marche pas--> New Structure labyrinthe	
+				this.addScore(g);	    
 				g.isEaten();
+				//change la map completement
 			}
-			
-			game.getMap().getMap()[x][y] = Element.NONE;
-			game.decCompteurGum();
-			// ici on met a jour la map on met VIDE aux coordonnées de Gum g
 	}
 	
 	@Override
@@ -248,8 +252,7 @@ public class Pacman extends Characters
 		x = 3;
 		y = 3;
 		direction = "";
-		state = 0;
-		
+		beNormal();
 		game.restartAfterCollision();
 	}
 	
