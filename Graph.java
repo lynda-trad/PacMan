@@ -25,9 +25,9 @@ public class Graph extends JPanel implements Observer
 	{
 		super.paintComponent(g);
 		
-		g.setColor(Color.WHITE);
+		setBackground(Color.DARK_GRAY);
 		//set background color a gris	
-
+		
 		for(int i = 0 ; i < this.game.getMap().getMap().length ; ++i)
 		{
 			for(int j = 0 ; j < this.game.getMap().getMap().length ; ++j)

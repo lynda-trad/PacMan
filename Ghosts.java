@@ -112,64 +112,91 @@ public class Ghosts extends Characters
 		switch(direction)
 		{
 			case 0:   // left
-				if(x - 1 > 0)
-					if(state == 1)
-					{
-						if(ralenti % 2 == 0)
-						{	++ x;
-							++ralenti;
-						}
-						else
-							++ralenti;
-					}
-					else
-						++ x;
+					left();
 				break;
 			case 1  : //right
-				if(x + 1 < 10)
-					if(state == 1)
-					{
-						if(ralenti % 2 == 0)
-						{
-							-- x;
-							++ralenti;
-						}
-						else
-							++ralenti;
-					}
-					else 
-						-- x;
+					right();
 				break;
 			case 2 :  // up
-				if(y - 1 > 0)
-				{
-					if(ralenti % 2 == 0)
-					{
-						-- y;
-						++ralenti;
-					}
-					else
-						++ralenti;
-				}
-				else
-					-- y;
+					up();
 				break;
 			case 3  : //Down
-				if(y + 1 < 10)
-				{
-					if(ralenti % 2 == 0)
-					{
-						++ y;
-						++ralenti;
-					}
-					else
-						++ralenti;
-				}
-				else
-					++ y;
+					down();
 				break;
 		}
 		notifyObserver();
+	}
+	
+	public void left()
+	{
+		if(x - 1 > 0)
+		{	if(state == 1)
+			{
+				if(ralenti % 2 == 0)
+				{	-- x;
+					++ralenti;
+				}
+				else
+					++ralenti;
+			}
+			else
+				-- x;
+		}
+	}
+	
+	public void right()
+	{
+		if(x + 1 < 10)
+		{
+			if(state == 1)
+			{
+				if(ralenti % 2 == 0)
+				{
+					++ x;
+					++ralenti;
+				}
+				else
+					++ralenti;
+			}
+			else 
+				++ x;
+		}
+	}
+	public void up() 
+	{
+		if(y - 1 > 0)
+		{
+			if(state == 1)
+			{
+				if(ralenti % 2 == 0)
+				{
+					-- y;
+					++ralenti;
+				}
+				else
+					++ralenti;
+			}
+			else 
+				-- y;
+		}
+	}
+	public void down ()
+	{
+		if(y + 1 < 10)
+		{
+			if(state == 1)
+			{
+				if(ralenti % 2 == 0)
+				{
+					++ y;
+					++ralenti;
+				}
+				else
+					++ralenti;
+			}
+			else
+				++ y;
+		}
 	}
 	
 }
