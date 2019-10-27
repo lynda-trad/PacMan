@@ -148,9 +148,10 @@ public class Game
 				ghosts[i].beNormal();
 			}
 		}
+		
 		try 
 		{
-			Thread.sleep(300);
+			Thread.sleep(200);
 		} 
 		catch (InterruptedException e) 
 		{
