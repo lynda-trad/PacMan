@@ -10,7 +10,7 @@ public class Ghosts extends Characters
 	
 	private int ralenti;    // incremente a chaque move et si impair on bouge pas
 	
-	private int direction;
+	private int direction = 0;
 
 	private ArrayList<Observer> observers;
 	
@@ -75,23 +75,39 @@ public class Ghosts extends Characters
 		{
 			case 0: // left
 				if(game.getMap().getMap()[x - 1][y] == Element.WALL)
-					direction = (int) (Math.random() * 3 + 1);
-				return true;
+				{
+					direction = (int) (Math.random() * 4 + 0);
+					return true;
+				}
+				else
+					return false;
 		
 			case 1: // right
 				if(game.getMap().getMap()[x + 1][y] == Element.WALL)
-					direction = (int) (Math.random() * 3 + 1);
-				return true;
+				{
+					direction = (int) (Math.random() * 4 + 0);
+					return true;
+				}
+				else
+					return false;
 			
 			case 2: // up 
 				if(game.getMap().getMap()[x][y - 1] == Element.WALL)
-					direction = (int) (Math.random() * 3 + 1);
-				return true;
-
+				{
+					direction = (int) (Math.random() * 4 + 0);
+					return true;
+				}
+				else
+					return false;
+				
 			case 3: // down
 				if(game.getMap().getMap()[x][y + 1] == Element.WALL)
-					direction = (int) (Math.random() * 3 + 1);
-				return true;
+				{
+					direction = (int) (Math.random() * 4 + 0);
+					return true;
+				}
+				else
+					return false;
 				
 			default :
 				return false;
@@ -101,21 +117,26 @@ public class Ghosts extends Characters
 	@Override	
 	public void move()
 	{
-		if (!checkWalls())
-		switch(direction)
+		if(!checkWalls())
 		{
-			case 0:   // left
+			switch(direction)
+			{
+				case 0:   // left
 					left();
 				break;
-			case 1  : //right
+				
+				case 1  : //right
 					right();
 				break;
-			case 2 :  // up
+				
+				case 2 :  // up
 					up();
 				break;
-			case 3  : //Down
+				
+				case 3  : //Down
 					down();
 				break;
+			}
 		}
 		notifyObserver();
 	}
@@ -155,6 +176,7 @@ public class Ghosts extends Characters
 				++ x;
 		}
 	}
+	
 	public void up() 
 	{
 		if(y - 1 > 0)
@@ -173,6 +195,7 @@ public class Ghosts extends Characters
 				-- y;
 		}
 	}
+	
 	public void down ()
 	{
 		if(y + 1 < 10)
@@ -193,4 +216,3 @@ public class Ghosts extends Characters
 	}
 	
 }
-
