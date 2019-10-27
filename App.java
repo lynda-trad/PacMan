@@ -18,8 +18,8 @@ public class App
 		graph.setGui(gui);
 		*/
 		
-		JFrame frame = new JFrame();
-
+		JFrame frame = new JFrame("Pacman discount");
+		
 		frame.add(graph);
 		
 		frame.setSize(graph.getSize());

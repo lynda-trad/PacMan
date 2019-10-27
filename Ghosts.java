@@ -8,9 +8,9 @@ public class Ghosts extends Characters
 {
 	private int state ; 	// 0 = normal, 1 = vulnerable et ralenti
 	
-	private int direction;
-	
 	private int ralenti;    // incremente a chaque move et si impair on bouge pas
+	
+	private int direction;
 
 	private ArrayList<Observer> observers;
 	
@@ -96,13 +96,6 @@ public class Ghosts extends Characters
 			default :
 				return false;
 		}
-	}
-
-	@Override
-	public void cross() 
-	{
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override	

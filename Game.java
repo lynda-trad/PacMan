@@ -14,6 +14,8 @@ public class Game
 	
 	private int compteurGum = 4;
 	
+	private int powerTimer = 0;
+	
 	public Game()
 	{
 		map = new Map();
@@ -25,7 +27,7 @@ public class Game
 	public void initializeGum()
 	{
 		gums[0] = new Blue  (0,1,2); // blue  
-		gums[1] = new Violet(1,8,1); // violet
+		gums[1] = new Purple(1,8,1); // violet
 		gums[2] = new Orange(2,5,7); // orange 
 		gums[3] = new Green (3,2,4); // vert
 	}
@@ -129,17 +131,39 @@ public class Game
 		{	
 			gameOver(1);
 		}
-		player.cross();
 		for(int i = 0 ; i < ghosts.length; ++i)
 		{
 			ghosts[i].move();
 		}
-		try {
+		
+		player.cross();
+		
+		if(powerTimer > 0)
+			--powerTimer;
+		if(powerTimer == 0)
+		{
+			player.beNormal();
+			for(int i = 0 ; i < ghosts.length; ++i)
+			{
+				ghosts[i].beNormal();
+			}
+		}
+		try 
+		{
 			Thread.sleep(300);
-		} catch (InterruptedException e) 
+		} 
+		catch (InterruptedException e) 
 		{
 			e.printStackTrace();
 		}
+	}
+
+	public int getPowerTimer() {
+		return powerTimer;
+	}
+
+	public void setPowerTimer(int powerTimer) {
+		this.powerTimer = powerTimer;
 	}
 
 }

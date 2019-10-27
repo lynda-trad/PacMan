@@ -1,8 +1,10 @@
 package pacman;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -14,11 +16,16 @@ public class Graph extends JPanel implements Observer
 	private static final int height = 50 * 10 + 37;
 	private static final int SCALE  = 50;
 	private Color customColor = new Color(254,254,173); //jaunepale
+	private JLabel jlabel;
 	
 	public Graph(Game g) 
 	{
 		this.game = g;
-		this.setSize(width, height);
+		this.setSize(width, height + 30);
+
+		jlabel = new JLabel(String.valueOf(game.getPlayer().getScore()) + " - " + String.valueOf(game.getPlayer().getLives()) + " lives left.");
+		jlabel.setFont(new Font("Verdana",1,20));
+		add(jlabel);
 	}
 	
 	@Override
@@ -50,6 +57,7 @@ public class Graph extends JPanel implements Observer
 		drawGhosts(g);
 		drawPacman(g);
 		
+		jlabel.setText(String.valueOf(game.getPlayer().getScore()) + " - " + String.valueOf(game.getPlayer().getLives()) + " lives left.");
 	}
 	
 	public void drawPacman(Graphics g)

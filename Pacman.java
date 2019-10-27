@@ -1,9 +1,8 @@
 package pacman;
 
-import java.util.ArrayList;
-
-import pacman.Characters;
 import pacman.Gum;
+import pacman.Characters;
+import java.util.ArrayList;
 
 public class Pacman extends Characters
 {
@@ -14,6 +13,7 @@ public class Pacman extends Characters
 	private ArrayList<Observer> observers;
 	
 	private String direction;
+	private String previous;
 
 	public Pacman (Game g)
 	{
@@ -22,6 +22,7 @@ public class Pacman extends Characters
 		this.lives = 3;
 		this.state = 0;
 		this.direction = "";
+		this.previous = "";
 		this.observers = new ArrayList<Observer>();
 	}
 	
@@ -60,6 +61,16 @@ public class Pacman extends Characters
 	public void setDirection(String direction)
 	{
 		this.direction = direction;
+	}
+	
+	public String getPrevious() 
+	{
+		return previous;
+	}
+
+	public void setPrevious(String previous) 
+	{
+		this.previous = previous;
 	}
 	
 	/////////////////////////////
@@ -117,72 +128,116 @@ public class Pacman extends Characters
 			game.gameOver(0);
 	}
 	
+	/////////////////////////////
+	
 	public void eatGum(Gum g) 
 	{
-			if(g.getType() == 0) 			// Blue
-			{
-				this.addScore(g);
-				g.isEaten();
-
-				game.getMap().getMap()[x][y] = Element.NONE;
-				game.decCompteurGum();
-			} 
-			else if (g.getType() == 1) 	    // Violet = Pacman invisible
-			{
-				this.addScore(g);
-				this.beInvisible(); 
-				g.isEaten();
-
-				game.getMap().getMap()[x][y] = Element.NONE;
-				game.decCompteurGum();
-			} 
-			else if (g.getType() == 2) 	    // Orange 
-			{
-				this.addScore(g);
-				this.beSuperPacman();
-				g.isEaten();
-				for(int i = 0 ; i < game.getGhosts().length ; ++i)
-				{
-					game.getGhosts()[i].beVulnerable();
-				}
-
-				game.getMap().getMap()[x][y] = Element.NONE;
-				game.decCompteurGum();
-			}
-			else							 // Green New Structure labyrinthe	
-			{
-				this.addScore(g);	    
-				g.isEaten();
-				//change la map completement
-			}
+		switch(g.getType())
+		{
+			case 0 : // Blue
+				eatBlue(g);
+			break;
+		
+			case 1 : // Violet = Pacman invisible
+				eatPurple(g);
+			break;
+			
+			case 2 : // Orange = SuperPacman
+				eatOrange(g);
+			break;
+			
+			case 3 : // Green New Structure labyrinthe
+				eatGreen(g);
+			break;
+		}
 	}
+	
+	public void eatBlue(Gum g)
+	{
+		this.addScore(g);
+		g.isEaten();
+
+		game.getMap().getMap()[x][y] = Element.NONE;
+		game.decCompteurGum();
+	}
+	
+	public void eatPurple(Gum g)
+	{
+		this.addScore(g);
+		this.beInvisible(); 
+		g.isEaten();
+		
+		for(int i = 0 ; i < game.getGhosts().length ; ++i)
+		{
+			game.getGhosts()[i].beNormal();
+		}
+
+		game.getMap().getMap()[x][y] = Element.NONE;
+		game.decCompteurGum();
+		
+		game.setPowerTimer(30);
+	}
+	
+	public void eatOrange(Gum g)
+	{
+		this.addScore(g);
+		this.beSuperPacman();
+		g.isEaten();
+		
+		for(int i = 0 ; i < game.getGhosts().length ; ++i)
+		{
+			game.getGhosts()[i].beVulnerable();
+		}
+
+		game.getMap().getMap()[x][y] = Element.NONE;
+		game.decCompteurGum();
+		
+		game.setPowerTimer(30);
+	}
+	
+	public void eatGreen(Gum g)
+	{
+		this.addScore(g);	    
+		g.isEaten();
+		//change la map completement
+		
+		// game.setMap();
+		
+		game.getMap().getMap()[x][y] = Element.NONE;
+		game.decCompteurGum();
+	}
+
+	/////////////////////////////
 	
 	@Override
 	public void move()
 	{
+		System.out.println(direction);
 		switch(direction)
 		{
 			case "LEFT"  :
-				if( x - 1 > 0)
+				if(x - 1 > 0)
 					-- x;
 			break;
+			
 			case "RIGHT" :
-				if( x + 1 < 10)
+				if(x + 1 < 10)
 					++ x;
-				break;
-			case "UP" :
-				if( y - 1 > 0)
+			break;
+			
+			case "UP"    :
+				if(y - 1 > 0)
 					-- y;
-				break;
+			break;
+			
 			case "DOWN"  :
 				if(y + 1 < 10)
 					++ y;
-				break;
+			break;
 		}
 		notifyObserver();
 	}
 	
-	@Override
 	public void cross()
 	{
 		int future_x = x;
@@ -217,9 +272,40 @@ public class Pacman extends Characters
 					if(game.getGums()[i].x == future_x && game.getGums()[i].y == future_y)
 						eatGum(game.getGums()[i]);
 			break;
-			default : // WALL
-				break;
+			case WALL : // WALL
+				wallCollision();
+			break;
 		}	
+	}
+	
+	public void wallCollision()
+	{
+		int previous_x = 0;
+		int previous_y = 0;
+		switch(previous)
+		{
+			case "LEFT"  :
+				previous_x = x - 1;
+			break;
+			
+			case "RIGHT" :
+				previous_x = x + 1;
+			break;
+			
+			case "UP" :
+				previous_y = y - 1;
+			break;
+			
+			case "DOWN" :
+				previous_y = y + 1;
+			break;
+		}
+		if(game.getMap().getMap()[previous_x][previous_y] != Element.WALL)
+		{
+			setDirection(previous);
+			System.out.println(direction);
+			move();
+		}
 	}
 	
 	public boolean ghostCollision(int future_x, int future_y)
@@ -234,10 +320,12 @@ public class Pacman extends Characters
 							loseLife();
 							restartAfterCollision();
 						return true;
+						
 						case 1 : //superpacman
 							move();
 							game.getGhosts()[i].backToCenter();
 						return true;
+						
 						case 2 : //invisible
 							move();
 						return true;
@@ -255,5 +343,7 @@ public class Pacman extends Characters
 		beNormal();
 		game.restartAfterCollision();
 	}
+
+	
 	
 }

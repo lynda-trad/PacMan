@@ -13,18 +13,6 @@ public class Green extends Gum
 		super(3, x, y);
 	}
 	
-	@Override
-	public void effet()
-	{
-		// GameGraphics.newStructure() 
-		// Nouvelle structure de labyrinthe
-		// Modifie map 
-		
-
-		// devra changer la grille sur laquelle on joue si on touche cette gum
-		// donc il modifiera le tableau dont les cases representent les murs
-		
-	}
 	
 }
  

@@ -11,12 +11,5 @@ public class Blue extends Gum
 	{
 		super(0, x , y);  
 	}
-	
-	@Override
-	public void effet() 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-	
+
 }

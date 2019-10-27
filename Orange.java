@@ -16,22 +16,5 @@ public class Orange extends Gum
 		super(2, x, y); 
 	}
 	
-	// Rendre les 4 Fantomes du jeu vulnérables
-	/*@Override
-	public void effet(Pacman p, Ghosts ghosts[]) 
-	{
-		for(Ghosts g: ghosts)
-		{
-			g.beVulnerable();
-		}
 	
-	}
-	*/
-	
-	@Override
-	public void effet() 
-	{
-		// TODO Auto-generated method stub
-		
-	}
 }

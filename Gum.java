@@ -70,20 +70,4 @@ public abstract class Gum extends Elements
 		-- compteur;
 	}
 	
-	public abstract void effet(); // Effets sur le jeu (et Ghosts) 
-
-	public void effet(Pacman p) 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	/*
-	public void effet(Pacman p, Ghosts[] ghosts) 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-	*/
-	
 }
