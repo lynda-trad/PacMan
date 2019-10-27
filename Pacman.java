@@ -26,7 +26,7 @@ public class Pacman extends Characters
 		this.observers = new ArrayList<Observer>();
 	}
 	
-	// Getter & Setter
+	/////////////////////////////
 	
 	public int getScore() 
 	{
@@ -212,7 +212,6 @@ public class Pacman extends Characters
 	@Override
 	public void move()
 	{
-		System.out.println(direction);
 		switch(direction)
 		{
 			case "LEFT"  :
@@ -266,22 +265,22 @@ public class Pacman extends Characters
 			case NONE :
 				move();
 			break;
-			case GUM :
+			case GUM  :
 				move();
 				for(int i = 0 ; i < game.getGums().length ; ++i)
 					if(game.getGums()[i].x == future_x && game.getGums()[i].y == future_y)
 						eatGum(game.getGums()[i]);
 			break;
-			case WALL : // WALL
-				wallCollision();
+			case WALL :
+			//	wallCollision();
 			break;
 		}	
 	}
 	
 	public void wallCollision()
 	{
-		int previous_x = 0;
-		int previous_y = 0;
+		int previous_x = x;
+		int previous_y = y;
 		switch(previous)
 		{
 			case "LEFT"  :
@@ -300,10 +299,10 @@ public class Pacman extends Characters
 				previous_y = y + 1;
 			break;
 		}
+		
 		if(game.getMap().getMap()[previous_x][previous_y] != Element.WALL)
 		{
 			setDirection(previous);
-			System.out.println(direction);
 			move();
 		}
 	}
