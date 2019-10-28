@@ -23,7 +23,7 @@ public class App
 		frame.add(graph);
 		
 		frame.setSize(graph.getSize());
-		frame.setLocation(100, 100);
+		frame.setLocation(50, 50);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

@@ -26,10 +26,10 @@ public class Game
 	
 	public void initializeGum()
 	{
-		gums[0] = new Blue  (0,1,2); // blue  
-		gums[1] = new Purple(1,8,1); // violet
-		gums[2] = new Orange(2,5,7); // orange 
-		gums[3] = new Green (3,2,4); // vert
+		gums[0] = new Blue  (0,16,3); // blue  
+		gums[1] = new Purple(1,3,9); // violet
+		gums[2] = new Orange(2,7,6); // orange 
+		gums[3] = new Green (3,5,15); // vert
 	}
 
 	public void initializePlayer()
@@ -42,9 +42,9 @@ public class Game
 	public void initializeGhosts()
 	{
 		ghosts[0] = new Ghosts(this, 1, 1);
-		ghosts[1] = new Ghosts(this, 8, 3);
+		ghosts[1] = new Ghosts(this, 16, 3);
 		ghosts[2] = new Ghosts(this, 1, 8);
-		ghosts[3] = new Ghosts(this, 8, 8); 
+		ghosts[3] = new Ghosts(this, 16, 16); 
 	}
 	
 	//Getter & Setter

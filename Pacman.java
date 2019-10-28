@@ -19,7 +19,7 @@ public class Pacman extends Characters
 	{
 		this.game  = g;
 		this.score = 0;
-		this.lives = 3;
+		this.lives = 5;
 		this.state = 0;
 		this.direction = "";
 		this.previous = "";
@@ -220,7 +220,7 @@ public class Pacman extends Characters
 			break;
 			
 			case "RIGHT" :
-				if(x + 1 < 10)
+				if(x + 1 < 18)
 					++ x;
 			break;
 			
@@ -230,7 +230,7 @@ public class Pacman extends Characters
 			break;
 			
 			case "DOWN"  :
-				if(y + 1 < 10)
+				if(y + 1 < 19)
 					++ y;
 			break;
 		}
@@ -262,10 +262,10 @@ public class Pacman extends Characters
 		if(!ghostCollision(future_x, future_y))
 		switch(game.getMap().getMap()[future_x][future_y])
 		{
-			case N :
+			case N :  // nothing
 				move();
 			break;
-			case G  :
+			case G  : // gums
 				move();
 				for(int i = 0 ; i < game.getGums().length ; ++i)
 					if(game.getGums()[i].x == future_x && game.getGums()[i].y == future_y)

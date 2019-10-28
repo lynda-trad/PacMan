@@ -12,9 +12,10 @@ public class Graph extends JPanel implements Observer
 {
 	private Game game;
 	
-	private static final int width  = 50 * 10 + 14;
-	private static final int height = 50 * 10 + 37;
-	private static final int SCALE  = 50;
+	private static final int SCALE  = 20;
+	private static final int width  = SCALE * 18 + 14;
+	private static final int height = SCALE * 18 + 37;
+	
 	private Color customColor = new Color(254,254,173); //jaunepale
 	private JLabel jlabel;
 	
@@ -23,7 +24,8 @@ public class Graph extends JPanel implements Observer
 		this.game = g;
 		this.setSize(width, height + 30);
 
-		jlabel = new JLabel(String.valueOf(game.getPlayer().getScore()) + " - " + String.valueOf(game.getPlayer().getLives()) + " lives left.");
+		jlabel = new JLabel(String.valueOf(game.getPlayer().getScore()));
+		jlabel.setLocation(height + 10, 0);
 		jlabel.setFont(new Font("Verdana",1,20));
 		add(jlabel);
 	}
@@ -36,9 +38,9 @@ public class Graph extends JPanel implements Observer
 		setBackground(Color.DARK_GRAY);
 		//set background color a gris	
 		
-		for(int i = 0 ; i < this.game.getMap().getMap().length ; ++i)
+		for(int i = 0 ; i < this.game.getMap().getLength() ; ++i)
 		{
-			for(int j = 0 ; j < this.game.getMap().getMap().length ; ++j)
+			for(int j = 0 ; j < this.game.getMap().getLength() ; ++j)
 			{
 				switch(this.game.getMap().getMap()[i][j])
 				{
@@ -57,7 +59,14 @@ public class Graph extends JPanel implements Observer
 		drawGhosts(g);
 		drawPacman(g);
 		
-		jlabel.setText(String.valueOf(game.getPlayer().getScore()) + " - " + String.valueOf(game.getPlayer().getLives()) + " lives left.");
+		jlabel.setText(String.valueOf(game.getPlayer().getScore()));
+		
+		// Print lives left
+		for(int i = 0; i < game.getPlayer().getLives() ; ++i)
+		{
+			g.setColor(Color.YELLOW);
+			g.fillOval(1 * i * 2 * (SCALE / 5), 1 * (SCALE / 5), SCALE / 4, SCALE / 4);
+		}
 	}
 	
 	public void drawPacman(Graphics g)
@@ -104,22 +113,27 @@ public class Graph extends JPanel implements Observer
 	{
 		int minScale = SCALE - 20;
 		if(i == game.getGums()[0].x && j == game.getGums()[0].y)
-		{	g.setColor(Color.BLUE);
+		{	
+			System.out.println("blue");
+			g.setColor(Color.BLUE);
 			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
 		}
 		else
 		if(i == game.getGums()[1].x && j == game.getGums()[1].y)
-		{	g.setColor(Color.MAGENTA);
+		{	
+			g.setColor(Color.MAGENTA);
 			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
 		}
 		else
 		if(i == game.getGums()[2].x && j == game.getGums()[2].y)
-		{	g.setColor(Color.ORANGE);
+		{	
+			g.setColor(Color.ORANGE);
 			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
 		}
 		else
 		if(i == game.getGums()[3].x && j == game.getGums()[3].y)
-		{	g.setColor(Color.GREEN);
+		{	
+			g.setColor(Color.GREEN);
 			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
 		}
 	}

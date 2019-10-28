@@ -4,18 +4,26 @@ public class Map extends Elements
 {
 	private Element[][] map = 
 		{ 
-			{Element.W, Element.W, Element.W, Element.W,  Element.W, Element.W, Element.W, Element.W, Element.W, Element.W}, 
-			{Element.W, Element.N, Element.G,  Element.N,  Element.N, Element.N, Element.N, Element.N, Element.N, Element.W}, 
-			{Element.W, Element.N, Element.N, Element.N,  Element.G,  Element.N, Element.N, Element.N, Element.W, Element.W},
-			{Element.W, Element.N, Element.N, Element.N,  Element.N, Element.W, Element.W, Element.N, Element.W, Element.W},
-			{Element.W, Element.N, Element.W, Element.N,  Element.W, Element.N, Element.N, Element.N, Element.W, Element.W},
-			{Element.W, Element.N, Element.W, Element.N,  Element.W, Element.N, Element.W, Element.G,  Element.W, Element.W},
-			{Element.W, Element.N, Element.W, Element.N,  Element.W, Element.N, Element.W, Element.W, Element.W, Element.W},
-			{Element.W, Element.N, Element.W, Element.N,  Element.W, Element.N, Element.N, Element.N, Element.W, Element.W},
-			{Element.W, Element.G,  Element.N, Element.N,  Element.W, Element.N, Element.N, Element.N, Element.N, Element.W},
-			{Element.W, Element.W, Element.W, Element.W,  Element.W, Element.W, Element.W, Element.W, Element.W, Element.W},
+			{Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W}, 
+			{Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W}, 
+			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.G, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.G, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.N, Element.N, Element.W, Element.G, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W},
+			{Element.W, Element.W, Element.W, Element.G, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
+			{Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W},
 	};
-	
+	private int length = 18;
 	/*
 	 * On met que les pacgum, les murs et le vide 
 	 * 
@@ -49,6 +57,10 @@ public class Map extends Elements
 	public void setNewMap(Element[][] map) 
 	{
 		this.map = map;
+	}
+
+	public int getLength() {
+		return length;
 	}
 	
 }

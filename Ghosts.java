@@ -74,7 +74,7 @@ public class Ghosts extends Characters
 		switch(direction)
 		{
 			case 0: // left
-				if(game.getMap().getMap()[x - 1][y] == Element.W)
+				if(game.getMap().getMap()[x - 1][y] == Element.W || y - 1 < 0)
 				{
 					direction = (int) (Math.random() * 4 + 0);
 					return true;
@@ -83,7 +83,7 @@ public class Ghosts extends Characters
 					return false;
 		
 			case 1: // right
-				if(game.getMap().getMap()[x + 1][y] == Element.W)
+				if(game.getMap().getMap()[x + 1][y] == Element.W || x + 1 > 18)
 				{
 					direction = (int) (Math.random() * 4 + 0);
 					return true;
@@ -92,7 +92,7 @@ public class Ghosts extends Characters
 					return false;
 			
 			case 2: // up 
-				if(game.getMap().getMap()[x][y - 1] == Element.W)
+				if(game.getMap().getMap()[x][y - 1] == Element.W || y - 1 < 0)
 				{
 					direction = (int) (Math.random() * 4 + 0);
 					return true;
@@ -101,7 +101,7 @@ public class Ghosts extends Characters
 					return false;
 				
 			case 3: // down
-				if(game.getMap().getMap()[x][y + 1] == Element.W)
+				if(game.getMap().getMap()[x][y + 1] == Element.W || y + 1 > 18)
 				{
 					direction = (int) (Math.random() * 4 + 0);
 					return true;
@@ -160,7 +160,7 @@ public class Ghosts extends Characters
 	
 	public void right()
 	{
-		if(x + 1 < 10)
+		if(x + 1 < 18)
 		{
 			if(state == 1)
 			{
@@ -198,7 +198,7 @@ public class Ghosts extends Characters
 	
 	public void down ()
 	{
-		if(y + 1 < 10)
+		if(y + 1 < 18)
 		{
 			if(state == 1)
 			{
