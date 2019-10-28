@@ -114,30 +114,55 @@ public class Graph extends JPanel implements Observer
 	
 	public void drawGums(Graphics g, int i, int j)
 	{
-		int minScale = SCALE - 20;
-		if(i == game.getGums()[0].x && j == game.getGums()[0].y)
-		{	
-			g.setColor(Color.BLUE);
-			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
+		for(int k = 0 ; k < game.getCompteurGum(); ++k)
+		{
+			if(i == game.getGums()[k].x && j == game.getGums()[k].y)
+			{
+				switch(game.getGums()[k].getType())
+				{
+				case 0 :
+					drawBlueGum(g, i, j);
+				break;
+				case 1 :
+					drawPurpleGum(g, i ,j);
+				break;
+				case 2 :
+					drawOrangeGum(g, i ,j);
+				break;
+				case 3 :
+					drawGreenGum(g, i ,j);
+				break;
+				}
+			}			
 		}
-		else
-		if(i == game.getGums()[1].x && j == game.getGums()[1].y)
-		{	
-			g.setColor(Color.MAGENTA);
-			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
-		}
-		else
-		if(i == game.getGums()[2].x && j == game.getGums()[2].y)
-		{	
-			g.setColor(Color.ORANGE);
-			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
-		}
-		else
-		if(i == game.getGums()[3].x && j == game.getGums()[3].y)
-		{	
-			g.setColor(Color.GREEN);
-			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
-		}
+	}
+
+	public void drawBlueGum(Graphics g, int i, int j)
+	{
+		int minScale = SCALE - SCALE/2;
+		g.setColor(Color.BLUE);
+		g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
+	}
+	
+	public void drawPurpleGum(Graphics g, int i, int j)
+	{
+		int minScale = SCALE - SCALE/2;
+		g.setColor(Color.MAGENTA);
+		g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
+	}
+	
+	public void drawOrangeGum(Graphics g, int i, int j)
+	{
+		int minScale = SCALE - SCALE/2;
+		g.setColor(Color.ORANGE);
+		g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
+	}
+	
+	public void drawGreenGum(Graphics g,int i, int j)
+	{
+		int minScale = SCALE - SCALE/2;
+		g.setColor(Color.GREEN);
+		g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
 	}
 	
 	public void drawWalls(Graphics g, int i, int j)

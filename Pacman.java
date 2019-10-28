@@ -343,7 +343,5 @@ public class Pacman extends Characters
 		beNormal();
 		game.restartAfterCollision();
 	}
-
-	
 	
 }

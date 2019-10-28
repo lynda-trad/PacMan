@@ -9,10 +9,10 @@ public class Game
 	private Pacman player;
 
 	private Ghosts[] ghosts = new Ghosts[4];
-	
-	private Gum[] gums = new Gum[4];
-	
-	private int compteurGum = 4;
+
+	private int compteurGum = 8;
+
+	private Gum[] gums = new Gum[compteurGum];
 	
 	private int powerTimer = 0;
 	
@@ -26,11 +26,15 @@ public class Game
 	
 	public void initializeGum()
 	{
-		System.out.println("initialize");
 		gums[0] = new Blue  (0,1,1); // blue  
 		gums[1] = new Purple(1,16,1); // violet
 		gums[2] = new Orange(2,1,16); // orange 
 		gums[3] = new Green (3,16,16); // vert
+
+		gums[4] = new Blue  (0,3,9); // blue  
+		gums[5] = new Purple(1,10,7); // violet
+		gums[6] = new Orange(2,15,5); // orange 
+		gums[7] = new Green (3,13,10); // vert
 	}
 
 	public void initializePlayer()
@@ -49,6 +53,11 @@ public class Game
 	}
 	
 	//Getter & Setter
+
+	public int getCompteurGum() 
+	{
+		return compteurGum;
+	}
 	
 	public Map getMap() 
 	{

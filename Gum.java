@@ -11,7 +11,7 @@ public abstract class Gum extends Elements
 	
 	public Gum(int type, int x, int y)
 	{
-		this.type  = type;
+		this.type = type;
 		this.x = x; 
 		this.y = y;
 		
@@ -19,16 +19,20 @@ public abstract class Gum extends Elements
 		{
 			case 0:
 				this.score = 100;
-				break;
+			break;
+			
 			case 1:
 				this.score = 300;
-				break;	
+			break;
+			
 			case 2:
 				this.score = 500;
-				break;
+			break;
+			
 			case 3:
 				this.score = 1000;
-				break;
+			break;
+			
 			default:
 				this.score = 100;
 		}
