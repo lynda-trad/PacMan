@@ -157,7 +157,7 @@ public class Pacman extends Characters
 		this.addScore(g);
 		g.isEaten();
 
-		game.getMap().getMap()[x][y] = Element.NONE;
+		game.getMap().getMap()[x][y] = Element.N;
 		game.decCompteurGum();
 	}
 	
@@ -172,7 +172,7 @@ public class Pacman extends Characters
 			game.getGhosts()[i].beNormal();
 		}
 
-		game.getMap().getMap()[x][y] = Element.NONE;
+		game.getMap().getMap()[x][y] = Element.N;
 		game.decCompteurGum();
 		
 		game.setPowerTimer(30);
@@ -189,7 +189,7 @@ public class Pacman extends Characters
 			game.getGhosts()[i].beVulnerable();
 		}
 
-		game.getMap().getMap()[x][y] = Element.NONE;
+		game.getMap().getMap()[x][y] = Element.N;
 		game.decCompteurGum();
 		
 		game.setPowerTimer(30);
@@ -203,7 +203,7 @@ public class Pacman extends Characters
 		
 		// game.setMap();
 		
-		game.getMap().getMap()[x][y] = Element.NONE;
+		game.getMap().getMap()[x][y] = Element.N;
 		game.decCompteurGum();
 	}
 
@@ -262,17 +262,18 @@ public class Pacman extends Characters
 		if(!ghostCollision(future_x, future_y))
 		switch(game.getMap().getMap()[future_x][future_y])
 		{
-			case NONE :
+			case N :
 				move();
 			break;
-			case GUM  :
+			case G  :
 				move();
 				for(int i = 0 ; i < game.getGums().length ; ++i)
 					if(game.getGums()[i].x == future_x && game.getGums()[i].y == future_y)
 						eatGum(game.getGums()[i]);
 			break;
-			case WALL :
+			case W :
 			//	wallCollision();
+				direction = "";
 			break;
 		}	
 	}
@@ -300,7 +301,7 @@ public class Pacman extends Characters
 			break;
 		}
 		
-		if(game.getMap().getMap()[previous_x][previous_y] != Element.WALL)
+		if(game.getMap().getMap()[previous_x][previous_y] != Element.W)
 		{
 			setDirection(previous);
 			move();

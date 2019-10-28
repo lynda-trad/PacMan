@@ -74,7 +74,7 @@ public class Ghosts extends Characters
 		switch(direction)
 		{
 			case 0: // left
-				if(game.getMap().getMap()[x - 1][y] == Element.WALL)
+				if(game.getMap().getMap()[x - 1][y] == Element.W)
 				{
 					direction = (int) (Math.random() * 4 + 0);
 					return true;
@@ -83,7 +83,7 @@ public class Ghosts extends Characters
 					return false;
 		
 			case 1: // right
-				if(game.getMap().getMap()[x + 1][y] == Element.WALL)
+				if(game.getMap().getMap()[x + 1][y] == Element.W)
 				{
 					direction = (int) (Math.random() * 4 + 0);
 					return true;
@@ -92,7 +92,7 @@ public class Ghosts extends Characters
 					return false;
 			
 			case 2: // up 
-				if(game.getMap().getMap()[x][y - 1] == Element.WALL)
+				if(game.getMap().getMap()[x][y - 1] == Element.W)
 				{
 					direction = (int) (Math.random() * 4 + 0);
 					return true;
@@ -101,7 +101,7 @@ public class Ghosts extends Characters
 					return false;
 				
 			case 3: // down
-				if(game.getMap().getMap()[x][y + 1] == Element.WALL)
+				if(game.getMap().getMap()[x][y + 1] == Element.W)
 				{
 					direction = (int) (Math.random() * 4 + 0);
 					return true;
