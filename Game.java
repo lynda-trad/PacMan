@@ -26,10 +26,11 @@ public class Game
 	
 	public void initializeGum()
 	{
-		gums[0] = new Blue  (0,16,3); // blue  
-		gums[1] = new Purple(1,3,9); // violet
-		gums[2] = new Orange(2,7,6); // orange 
-		gums[3] = new Green (3,5,15); // vert
+		System.out.println("initialize");
+		gums[0] = new Blue  (0,1,1); // blue  
+		gums[1] = new Purple(1,16,1); // violet
+		gums[2] = new Orange(2,1,16); // orange 
+		gums[3] = new Green (3,16,16); // vert
 	}
 
 	public void initializePlayer()

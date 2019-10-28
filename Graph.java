@@ -25,7 +25,8 @@ public class Graph extends JPanel implements Observer
 		this.setSize(width, height + 30);
 
 		jlabel = new JLabel(String.valueOf(game.getPlayer().getScore()));
-		jlabel.setLocation(height + 10, 0);
+		jlabel.setLocation(0, 0);
+		jlabel.setForeground(Color.WHITE);
 		jlabel.setFont(new Font("Verdana",1,20));
 		add(jlabel);
 	}
@@ -59,7 +60,9 @@ public class Graph extends JPanel implements Observer
 		drawGhosts(g);
 		drawPacman(g);
 		
+		// Print score
 		jlabel.setText(String.valueOf(game.getPlayer().getScore()));
+		jlabel.setLocation(0, 0);
 		
 		// Print lives left
 		for(int i = 0; i < game.getPlayer().getLives() ; ++i)
@@ -114,7 +117,6 @@ public class Graph extends JPanel implements Observer
 		int minScale = SCALE - 20;
 		if(i == game.getGums()[0].x && j == game.getGums()[0].y)
 		{	
-			System.out.println("blue");
 			g.setColor(Color.BLUE);
 			g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
 		}
