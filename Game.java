@@ -145,6 +145,7 @@ public class Game
 		{	
 			gameOver(1);
 		}
+		
 		for(int i = 0 ; i < ghosts.length; ++i)
 		{
 			ghosts[i].move();

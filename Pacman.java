@@ -229,7 +229,7 @@ public class Pacman extends Characters
 			break;
 			
 			case "UP"    :
-				if(y - 1 > 0)
+				if(y - 1 >= 0)
 					-- y;
 			break;
 			
@@ -257,9 +257,11 @@ public class Pacman extends Characters
 				future_x = x + 1;
 				break;
 			case "UP" :
+				specialUp();
 				future_y = y - 1;
 				break;
 			case "DOWN" :
+				specialDown();
 				future_y = y + 1;
 				break;
 		}
@@ -394,6 +396,24 @@ public class Pacman extends Characters
 		{
 			x = -1;
 			y =  8;
+		}
+	}
+	
+	public void specialUp() 
+	{
+		if( y - 1 < 0 && x == 7)
+		{
+			x = 7 ;
+			y = 18;
+		}
+	}
+	
+	public void specialDown()
+	{
+		if( y + 1 > 17 && x == 7)
+		{
+			x =  7;
+			y = -1;
 		}
 	}
 	

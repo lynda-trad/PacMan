@@ -11,7 +11,7 @@ public class Map extends Elements
 			{Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
 			{Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.W},
 			{Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W},
-			{Element.W, Element.N, Element.N, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W},
+			{Element.N, Element.N, Element.N, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N},
 			{Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.W},
 			{Element.W, Element.G, Element.W, Element.G, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
 			{Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W, Element.G, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
