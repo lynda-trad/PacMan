@@ -62,8 +62,8 @@ public class Ghosts extends Characters
 	
 	public void backToCenter() 
 	{   
-		this.x = 3;
-		this.y = 5;
+		this.x = 9;
+		this.y = 9;
 	}
 
 	public boolean checkWalls()
