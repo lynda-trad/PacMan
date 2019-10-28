@@ -2,25 +2,26 @@ package pacman;
 
 public class Map extends Elements
 {
+	
 	private Element[][] map = 
-		{ /////////////////////////////////////////////////////////////////////////////////////////// passage secret ici
+		{
 			{Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W}, 
-			{Element.W, Element.G, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.G, Element.W}, 
-			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W},
-			{Element.W, Element.N, Element.W, Element.G, Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.W},
-			{Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
-			{Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.W},
+			{Element.W, Element.G, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.G, Element.W, Element.G, Element.N, Element.N, Element.N, Element.N, Element.N, Element.G, Element.W}, 
+			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.G, Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.G, Element.N, Element.N, Element.W, Element.G, Element.W},
+			{Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W},
+			{Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.W},
 			{Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W},
 			{Element.N, Element.N, Element.N, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N},
-			{Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.W, Element.G, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.W},
 			{Element.W, Element.G, Element.W, Element.G, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
 			{Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W, Element.G, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
-			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.N, Element.W, Element.N, Element.N, Element.G, Element.W, Element.G, Element.W, Element.N, Element.W},
+			{Element.W, Element.G, Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.N, Element.W, Element.N, Element.N, Element.G, Element.W, Element.G, Element.W, Element.N, Element.W},
 			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W},
-			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W},
-			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W},
-			{Element.W, Element.N, Element.N, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W},
-			{Element.W, Element.N, Element.N, Element.G, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.G, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W, Element.G, Element.N, Element.N, Element.W},
+			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.G, Element.W, Element.W, Element.W, Element.N, Element.W},
+			{Element.W, Element.N, Element.N, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.W},
+			{Element.W, Element.N, Element.N, Element.G, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.W, Element.G, Element.W, Element.G, Element.W},
 			{Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W},
 	};
 	
@@ -36,14 +37,9 @@ public class Map extends Elements
 
 	public Map()
 	{
-		//map initialise plus haut 
+		//map initialise plus haut
 	}
-
-	public void setMap(Element[][] map) 
-	{
-		this.map = map;
-	}
-
+	
 	public Element[][] getMap() 
 	{
 		return map;
@@ -56,9 +52,24 @@ public class Map extends Elements
 	
 	////////////////////////////////////////////////
 	
-	public void setNewMap(Element[][] map) 
+	public void setNewMap() 
 	{
-		this.map = map;
+		map[7][6]  = Element.N;
+		map[1][16] = Element.N;
+		map[2][16] = Element.N;
+		map[9][8]  = Element.N;
+		map[10][8] = Element.N;
+		map[9][10] = Element.N;
+		map[10][10]= Element.N;
+		map[16][15]= Element.N;
+		map[12][7] = Element.N;
+		map[2][8] = Element.N;
+		map[14][8] = Element.N;
+		map[5][9] = Element.N;
+
+		//map[13][11]= Element.W;
+		map[14][3] = Element.W;
+		
 	}
 
 	public int getLength() 

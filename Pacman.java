@@ -19,12 +19,12 @@ public class Pacman extends Characters
 	
 	public Pacman (Game g)
 	{
-		this.game  = g;
-		this.score = 0;
-		this.lives = 5;
-		this.state = 0;
+		this.game  	   =  g;
+		this.score 	   =  0;
+		this.state     =  0;
+		this.lives 	   =  3;
 		this.direction = "";
-		this.previous = "";
+		this.previous  = "";
 		this.observers = new ArrayList<Observer>();
 	}
 	
@@ -110,10 +110,11 @@ public class Pacman extends Characters
 	public void addScore(Gum g)
 	{ 
 		this.score += g.getScore();
+		newLife();
 	}	
 	
 	public void newLife()
-	{	//Si le joueur depasse les 5000 points, il obtient une vie supplementaire.
+	{
 		if(this.score > 5000)
 		{
 			score = 0;
@@ -124,7 +125,7 @@ public class Pacman extends Characters
 	public void loseLife() 
 	{
 		if(this.lives > 0)
-			this.lives--;
+			--this.lives;
 		
 		if(this.lives == 0)
 			game.gameOver(0);
@@ -157,8 +158,7 @@ public class Pacman extends Characters
 	public void eatBlue(Gum g)
 	{
 		this.addScore(g);
-		g.isEaten();
-
+		
 		game.getMap().getMap()[x][y] = Element.N;
 		game.decCompteurGum();
 	}
@@ -167,7 +167,6 @@ public class Pacman extends Characters
 	{
 		this.addScore(g);
 		this.beInvisible(); 
-		g.isEaten();
 		
 		for(int i = 0 ; i < game.getGhosts().length ; ++i)
 		{
@@ -184,7 +183,6 @@ public class Pacman extends Characters
 	{
 		this.addScore(g);
 		this.beSuperPacman();
-		g.isEaten();
 		
 		for(int i = 0 ; i < game.getGhosts().length ; ++i)
 		{
@@ -200,10 +198,8 @@ public class Pacman extends Characters
 	public void eatGreen(Gum g)
 	{
 		this.addScore(g);	    
-		g.isEaten();
-		//change la map completement
 		
-		// game.setMap();
+		game.getMap().setNewMap();
 		
 		game.getMap().getMap()[x][y] = Element.N;
 		game.decCompteurGum();
@@ -223,9 +219,7 @@ public class Pacman extends Characters
 			
 			case "RIGHT" :
 				if(x + 1 < 18)
-				{	
 					++ x;
-				}
 			break;
 			
 			case "UP"    :
@@ -364,7 +358,17 @@ public class Pacman extends Characters
 						
 						case 2 : //invisible
 							if(!wallCollisionPower())
-								move();
+							{
+								if(game.getMap().getMap()[future_x][future_y] == Element.G)
+								{
+									move();
+									for(int j = 0 ; j < game.getGums().length ; ++j)
+									if(game.getGums()[j].x == future_x && game.getGums()[j].y == future_y)
+										eatGum(game.getGums()[j]);
+								}
+								else
+									move();
+							}
 						return true;
 					}
 				}
@@ -416,15 +420,5 @@ public class Pacman extends Characters
 			y = -1;
 		}
 	}
-	
-	/*
-	 pour left 
-	 cas special, 
-	 si x - 1 == 0 et y == 8 on peut aller a position 16 ; 8
-	 
-	 pour right cas special
-	 si x + 1 == 17 et y == 8 on peut aller a position 0 ; 8
-	 
-	 */
 	
 }

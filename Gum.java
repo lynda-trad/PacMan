@@ -4,7 +4,6 @@ public abstract class Gum extends Elements
 {
 	protected int 	  type;     			// 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert
 	protected int 	  score; 				// 100 = Blue, 300 = Violet, 500 = Orange, 1000 = Vert
-	protected int     compteur = 0;
 	
 	protected int 	  x;
 	protected int     y;
@@ -37,20 +36,9 @@ public abstract class Gum extends Elements
 				this.score = 100;
 		}
 		
-		++ this.compteur;
 	}
 	
 	// Setter & Getter
-	
-	public int getCompteur()
-	{
-		return compteur;
-	}
-	
-	public void setCompteur(int nbGum) 
-	{
-		compteur = nbGum;
-	}
 	
 	public int getType() 
 	{
@@ -69,9 +57,5 @@ public abstract class Gum extends Elements
 
 	/////////////////////////////////////
 	
-	public void isEaten() 
-	{
-		-- compteur;
-	}
 	
 }

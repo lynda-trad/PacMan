@@ -10,9 +10,11 @@ public class Game
 
 	private Ghosts[] ghosts = new Ghosts[4];
 
-	private int compteurGum = 11;
+	private int compteurGum = 21;
+	
+	private int gum = 21;
 
-	private Gum[] gums = new Gum[compteurGum];
+	private Gum[] gums = new Gum[gum];
 	
 	private int powerTimer = 0;
 	
@@ -26,19 +28,32 @@ public class Game
 	
 	public void initializeGum()
 	{
-		gums[0]  = new Blue  (0,1,1); 	// blue  
-		gums[1]  = new Purple(1,9,1); 	// violet
-		gums[2]  = new Orange(2,1,16); 	// orange 
-		gums[3]  = new Green (3,16,16); // vert
-
-		gums[4]  = new Blue  (0,11,12); // blue  
-		gums[5]  = new Purple(1,10,7); 	// violet
-		gums[6]  = new Orange(2,15,5); 	// orange 
-		gums[7]  = new Green (3,5,12); 	// vert
+		gums[0]  = new Blue  (0,1,1)  ; 	// blue 
+		gums[1]  = new Blue  (0,11,12); 	// blue  
+		gums[2]  = new Blue  (0,3,3)  ; 	// blue  
+		gums[3]  = new Blue  (0,1,8)  ; 	// blue  
+		gums[4]  = new Blue  (0,5,8)  ; 	// blue 
+		gums[5]  = new Blue  (0,3,16) ; 	// blue 
+		gums[6]  = new Blue  (0,3,12) ; 	// blue  
+		gums[7]  = new Blue  (0,8,10) ; 	// blue  
 		
-		gums[8]  = new Blue  (0,3,5); 	// blue  
-		gums[9]  = new Purple(1,11,14); // violet
-		gums[10] = new Orange(2,7,5); 	// orange 
+		gums[8]  = new Blue  (0,14,12); 	// blue  
+		gums[9]  = new Blue  (0,15,10); 	// blue  
+		gums[10] = new Blue  (0,11,1) ; 	// blue 
+		gums[11] = new Blue  (0,13,14) ; 	// blue  
+		
+		
+		gums[12] = new Orange(2,1,16) ; 	// orange 
+		gums[13] = new Orange(2,15,5) ; 	// orange
+		gums[14] = new Orange(2,7,5)  ;  	// orange
+		gums[15] = new Orange(2,16,14);		// orange
+	
+		gums[16] = new Purple(1,9,1)  ;  	// violet
+		gums[17] = new Purple(1,10,7) ; 	// violet
+		gums[18] = new Purple(1,11,14);		// violet
+		gums[19] = new Purple(1,1,10) ;		// violet
+	
+		gums[20]  = new Green(3,16,16);		// vert
 	}
 
 	public void initializePlayer()
@@ -50,10 +65,10 @@ public class Game
 	
 	public void initializeGhosts()
 	{
-		ghosts[0] = new Ghosts(this, 8, 5);
+		ghosts[0] = new Ghosts(this, 5, 1);
 		ghosts[1] = new Ghosts(this, 16, 3);
 		ghosts[2] = new Ghosts(this, 5, 12);
-		ghosts[3] = new Ghosts(this, 14, 10); 
+		ghosts[3] = new Ghosts(this, 15, 10); 
 	}
 	
 	//Getter & Setter
@@ -112,17 +127,17 @@ public class Game
 
 	public void restartAfterCollision()
 	{
-		getGhosts()[0].x = 1;
+		getGhosts()[0].x = 5;
 		getGhosts()[0].y = 1;
 		
-		getGhosts()[1].x = 8;
+		getGhosts()[1].x = 16;
 		getGhosts()[1].y = 3;
 		
-		getGhosts()[2].x = 1;
-		getGhosts()[2].y = 8;
+		getGhosts()[2].x = 5;
+		getGhosts()[2].y = 12;
 		
-		getGhosts()[3].x = 8;
-		getGhosts()[3].y = 8;
+		getGhosts()[3].x = 15;
+		getGhosts()[3].y = 10;
 		
 		getGhosts()[0].setState(0);
 		getGhosts()[1].setState(0);
