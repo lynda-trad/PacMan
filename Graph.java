@@ -114,7 +114,7 @@ public class Graph extends JPanel implements Observer
 	
 	public void drawGums(Graphics g, int i, int j)
 	{
-		for(int k = 0 ; k < game.getCompteurGum(); ++k)
+		for(int k = 0 ; k < game.getGums().length; ++k)
 		{
 			if(i == game.getGums()[k].x && j == game.getGums()[k].y)
 			{

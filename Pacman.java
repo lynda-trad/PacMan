@@ -15,6 +15,8 @@ public class Pacman extends Characters
 	private String direction;
 	private String previous;
 
+	private static final int fullTimer = 60;
+	
 	public Pacman (Game g)
 	{
 		this.game  = g;
@@ -175,7 +177,7 @@ public class Pacman extends Characters
 		game.getMap().getMap()[x][y] = Element.N;
 		game.decCompteurGum();
 		
-		game.setPowerTimer(30);
+		game.setPowerTimer(fullTimer);
 	}
 	
 	public void eatOrange(Gum g)
@@ -192,7 +194,7 @@ public class Pacman extends Characters
 		game.getMap().getMap()[x][y] = Element.N;
 		game.decCompteurGum();
 		
-		game.setPowerTimer(30);
+		game.setPowerTimer(fullTimer);
 	}
 	
 	public void eatGreen(Gum g)

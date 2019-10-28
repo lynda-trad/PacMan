@@ -31,7 +31,7 @@ public class Game
 		gums[2] = new Orange(2,1,16); // orange 
 		gums[3] = new Green (3,16,16); // vert
 
-		gums[4] = new Blue  (0,3,9); // blue  
+		gums[4] = new Blue  (0,9,3); // blue  
 		gums[5] = new Purple(1,10,7); // violet
 		gums[6] = new Orange(2,15,5); // orange 
 		gums[7] = new Green (3,13,10); // vert
