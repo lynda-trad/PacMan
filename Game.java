@@ -26,15 +26,15 @@ public class Game
 	
 	public void initializeGum()
 	{
-		gums[0] = new Blue  (0,1,1); // blue  
-		gums[1] = new Purple(1,16,1); // violet
-		gums[2] = new Orange(2,1,16); // orange 
-		gums[3] = new Green (3,16,16); // vert
+		gums[0] = new Blue  (0,1,1); 	// blue  
+		gums[1] = new Purple(1,16,1); 	// violet
+		gums[2] = new Orange(2,1,16); 	// orange 
+		gums[3] = new Green (3,16,16); 	// vert
 
-		gums[4] = new Blue  (0,9,3); // blue  
-		gums[5] = new Purple(1,10,7); // violet
-		gums[6] = new Orange(2,15,5); // orange 
-		gums[7] = new Green (3,13,10); // vert
+		gums[4] = new Blue  (0,9,3); 	// blue  
+		gums[5] = new Purple(1,10,7); 	// violet
+		gums[6] = new Orange(2,15,5); 	// orange 
+		gums[7] = new Green (3,13,10); 	// vert
 	}
 
 	public void initializePlayer()
