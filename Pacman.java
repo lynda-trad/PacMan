@@ -218,7 +218,9 @@ public class Pacman extends Characters
 		{
 			case "LEFT"  :
 				if(x - 1 > 0)
+				{
 					-- x;
+				}	
 			break;
 			
 			case "RIGHT" :
@@ -232,7 +234,7 @@ public class Pacman extends Characters
 			break;
 			
 			case "DOWN"  :
-				if(y + 1 < 19)
+				if(y + 1 < 18)
 					++ y;
 			break;
 		}
@@ -247,9 +249,11 @@ public class Pacman extends Characters
 		switch(direction)
 		{
 			case "LEFT"  :
+				specialLeft();
 				future_x = x - 1;
 			break;
 			case "RIGHT" :
+				specialRight();
 				future_x = x + 1;
 				break;
 			case "UP" :
@@ -261,7 +265,7 @@ public class Pacman extends Characters
 		}
 		
 		// si pas de collision fantome on verifie le reste
-		if(!ghostCollision(future_x, future_y))
+		if(!ghostCollision(future_x, future_y) && !ghostCollision(x,y))
 		switch(game.getMap().getMap()[future_x][future_y])
 		{
 			case N :  // nothing
@@ -345,5 +349,33 @@ public class Pacman extends Characters
 		beNormal();
 		game.restartAfterCollision();
 	}
+	
+	public void specialLeft()
+	{
+		if( x - 1 < 0 && y == 8)
+		{
+			x = 18;
+			y = 8 ;
+		}
+	}
+	
+	public void specialRight()
+	{
+		if( x + 1 > 17 && y == 8)
+		{
+			x = -1;
+			y = 8;
+		}
+	}
+	
+	/*
+	 pour left 
+	 cas special, 
+	 si x - 1 == 0 et y == 8 on peut aller a position 16 ; 8
+	 
+	 pour right cas special
+	 si x + 1 == 17 et y == 8 on peut aller a position 0 ; 8
+	 
+	 */
 	
 }

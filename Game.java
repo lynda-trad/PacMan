@@ -10,7 +10,7 @@ public class Game
 
 	private Ghosts[] ghosts = new Ghosts[4];
 
-	private int compteurGum = 8;
+	private int compteurGum = 11;
 
 	private Gum[] gums = new Gum[compteurGum];
 	
@@ -26,30 +26,34 @@ public class Game
 	
 	public void initializeGum()
 	{
-		gums[0] = new Blue  (0,1,1); 	// blue  
-		gums[1] = new Purple(1,16,1); 	// violet
-		gums[2] = new Orange(2,1,16); 	// orange 
-		gums[3] = new Green (3,16,16); 	// vert
+		gums[0]  = new Blue  (0,1,1); 	// blue  
+		gums[1]  = new Purple(1,9,1); 	// violet
+		gums[2]  = new Orange(2,1,16); 	// orange 
+		gums[3]  = new Green (3,16,16); // vert
 
-		gums[4] = new Blue  (0,9,3); 	// blue  
-		gums[5] = new Purple(1,10,7); 	// violet
-		gums[6] = new Orange(2,15,5); 	// orange 
-		gums[7] = new Green (3,13,10); 	// vert
+		gums[4]  = new Blue  (0,11,12); // blue  
+		gums[5]  = new Purple(1,10,7); 	// violet
+		gums[6]  = new Orange(2,15,5); 	// orange 
+		gums[7]  = new Green (3,5,12); 	// vert
+		
+		gums[8]  = new Blue  (0,3,5); 	// blue  
+		gums[9]  = new Purple(1,11,14); // violet
+		gums[10] = new Orange(2,7,5); 	// orange 
 	}
 
 	public void initializePlayer()
 	{
 		player = new Pacman(this);
 		player.x = 3;
-		player.y = 3;
+		player.y = 5;
 	}
 	
 	public void initializeGhosts()
 	{
-		ghosts[0] = new Ghosts(this, 1, 1);
+		ghosts[0] = new Ghosts(this, 8, 5);
 		ghosts[1] = new Ghosts(this, 16, 3);
-		ghosts[2] = new Ghosts(this, 1, 8);
-		ghosts[3] = new Ghosts(this, 16, 16); 
+		ghosts[2] = new Ghosts(this, 5, 12);
+		ghosts[3] = new Ghosts(this, 14, 10); 
 	}
 	
 	//Getter & Setter
@@ -169,11 +173,13 @@ public class Game
 		}
 	}
 
-	public int getPowerTimer() {
+	public int getPowerTimer() 
+	{
 		return powerTimer;
 	}
 
-	public void setPowerTimer(int powerTimer) {
+	public void setPowerTimer(int powerTimer) 
+	{
 		this.powerTimer = powerTimer;
 	}
 
