@@ -217,13 +217,15 @@ public class Pacman extends Characters
 		switch(direction)
 		{
 			case "LEFT"  :
-				if(x - 1 > 0)
-					-- x;	
+				if(x - 1 >= 0)
+					-- x;
 			break;
 			
 			case "RIGHT" :
 				if(x + 1 < 18)
+				{	
 					++ x;
+				}
 			break;
 			
 			case "UP"    :
