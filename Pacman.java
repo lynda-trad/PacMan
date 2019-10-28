@@ -218,9 +218,7 @@ public class Pacman extends Characters
 		{
 			case "LEFT"  :
 				if(x - 1 > 0)
-				{
-					-- x;
-				}	
+					-- x;	
 			break;
 			
 			case "RIGHT" :
@@ -314,6 +312,34 @@ public class Pacman extends Characters
 		}
 	}
 	
+	public boolean wallCollisionPower()
+	{
+		int future_x = x;
+		int future_y = y;
+		
+		switch(direction)
+		{
+			case "LEFT"  :
+				future_x = x - 1;
+			break;
+			case "RIGHT" :
+				future_x = x + 1;
+				break;
+			case "UP" :
+				future_y = y - 1;
+				break;
+			case "DOWN" :
+				future_y = y + 1;
+				break;
+		}
+		if(game.getMap().getMap()[future_x][future_y] == Element.W)
+		{
+			return true;
+		}
+		else
+			return false;
+	}
+	
 	public boolean ghostCollision(int future_x, int future_y)
 	{
 		for(int i = 0 ; i < game.getGhosts().length; ++i)
@@ -333,7 +359,8 @@ public class Pacman extends Characters
 						return true;
 						
 						case 2 : //invisible
-							move();
+							if(!wallCollisionPower())
+								move();
 						return true;
 					}
 				}
@@ -364,7 +391,7 @@ public class Pacman extends Characters
 		if( x + 1 > 17 && y == 8)
 		{
 			x = -1;
-			y = 8;
+			y =  8;
 		}
 	}
 	
