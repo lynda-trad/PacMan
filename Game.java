@@ -10,9 +10,9 @@ public class Game
 
 	private Ghosts[] ghosts = new Ghosts[4];
 
-	private int compteurGum = 21;
+	private int compteurGum = 23;
 	
-	private int gum = 21;
+	private int gum = 23;
 
 	private Gum[] gums = new Gum[gum];
 	
@@ -30,30 +30,30 @@ public class Game
 	{
 		gums[0]  = new Blue  (0,1,1)  ; 	// blue 
 		gums[1]  = new Blue  (0,11,12); 	// blue  
-		gums[2]  = new Blue  (0,3,3)  ; 	// blue  
-		gums[3]  = new Blue  (0,1,8)  ; 	// blue  
+		gums[2]  = new Blue  (0,3,3)  ; 	// blue 
+		gums[3]  = new Blue  (0,1,8)  ; 	// blue 
 		gums[4]  = new Blue  (0,5,8)  ; 	// blue 
 		gums[5]  = new Blue  (0,3,16) ; 	// blue 
 		gums[6]  = new Blue  (0,3,12) ; 	// blue  
 		gums[7]  = new Blue  (0,8,10) ; 	// blue  
-		
 		gums[8]  = new Blue  (0,14,12); 	// blue  
 		gums[9]  = new Blue  (0,15,10); 	// blue  
-		gums[10] = new Blue  (0,11,1) ; 	// blue 
-		gums[11] = new Blue  (0,13,14) ; 	// blue  
-		
+		gums[10] = new Blue  (0,11,1) ; 	// blue  
+		gums[11] = new Blue  (0,13,14); 	// blue  
 		
 		gums[12] = new Orange(2,1,16) ; 	// orange 
 		gums[13] = new Orange(2,15,5) ; 	// orange
 		gums[14] = new Orange(2,7,5)  ;  	// orange
 		gums[15] = new Orange(2,16,14);		// orange
+		gums[16] = new Orange(2,5,12);		// orange
 	
-		gums[16] = new Purple(1,9,1)  ;  	// violet
-		gums[17] = new Purple(1,10,7) ; 	// violet
-		gums[18] = new Purple(1,11,14);		// violet
-		gums[19] = new Purple(1,1,10) ;		// violet
+		gums[17] = new Purple(1,9,1)  ;  	// violet
+		gums[18] = new Purple(1,10,7) ; 	// violet
+		gums[19] = new Purple(1,11,14);		// violet
+		gums[20] = new Purple(1,1,10) ;		// violet
+		gums[21] = new Purple(1,5,1) ;		// violet
 	
-		gums[20]  = new Green(3,16,16);		// vert
+		gums[22]  = new Green(3,16,16);		// vert
 	}
 
 	public void initializePlayer()

@@ -10,7 +10,7 @@ public class Map extends Elements
 			{Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W},
 			{Element.W, Element.N, Element.W, Element.G, Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.G, Element.N, Element.N, Element.W, Element.G, Element.W},
 			{Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.N, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W},
-			{Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.W},
+			{Element.W, Element.G, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.W},
 			{Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.N, Element.W, Element.N, Element.W, Element.W, Element.W, Element.N, Element.W},
 			{Element.N, Element.N, Element.N, Element.N, Element.N, Element.G, Element.W, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.N, Element.N, Element.N},
 			{Element.W, Element.N, Element.W, Element.N, Element.N, Element.N, Element.W, Element.N, Element.N, Element.N, Element.G, Element.N, Element.N, Element.N, Element.N, Element.W, Element.N, Element.W},
@@ -55,7 +55,6 @@ public class Map extends Elements
 	public void setNewMap() 
 	{
 		map[7][6]  = Element.N;
-		map[1][16] = Element.N;
 		map[2][16] = Element.N;
 		map[9][8]  = Element.N;
 		map[10][8] = Element.N;
@@ -63,12 +62,13 @@ public class Map extends Elements
 		map[10][10]= Element.N;
 		map[16][15]= Element.N;
 		map[12][7] = Element.N;
-		map[2][8] = Element.N;
+		map[2][8]  = Element.N;
 		map[14][8] = Element.N;
-		map[5][9] = Element.N;
+		map[5][9]  = Element.N;
 
 		//map[13][11]= Element.W;
 		map[14][3] = Element.W;
+		map[9][7]  = Element.W;
 		
 	}
 
