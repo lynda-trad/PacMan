@@ -1,6 +1,6 @@
 package pacman;
 
-import javax.swing.JButton;
+//import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class Game 
@@ -11,9 +11,9 @@ public class Game
 
 	private Ghosts[] ghosts = new Ghosts[4];
 
-	private int compteurGum = 23;
+	private int gum = 28;
 	
-	private int gum = 23;
+	private int compteurGum = gum;
 
 	private Gum[] gums = new Gum[gum];
 	
@@ -41,20 +41,25 @@ public class Game
 		gums[9]  = new Blue  (0,15,10); 	// blue  
 		gums[10] = new Blue  (0,11,1) ; 	// blue  
 		gums[11] = new Blue  (0,13,14); 	// blue  
+		gums[12] = new Blue  (0,13,7) ; 	// blue    
+		gums[13] = new Blue  (0,11,8) ; 	// blue    
+		gums[14] = new Blue  (0,16,1) ; 	// blue    
+		gums[15] = new Blue  (0,10,3) ; 	// blue    
+		gums[16] = new Blue  (0,5,16) ; 	// blue  
 		
-		gums[12] = new Orange(2,1,16) ; 	// orange 
-		gums[13] = new Orange(2,15,5) ; 	// orange
-		gums[14] = new Orange(2,7,5)  ;  	// orange
-		gums[15] = new Orange(2,16,14);		// orange
-		gums[16] = new Orange(2,5,12);		// orange
+		gums[17] = new Orange(2,1,16) ; 	// orange 
+		gums[18] = new Orange(2,15,5) ; 	// orange
+		gums[19] = new Orange(2,7,5)  ;  	// orange
+		gums[20] = new Orange(2,16,14);		// orange
+		gums[21] = new Orange(2,5,12);		// orange
 	
-		gums[17] = new Purple(1,9,1)  ;  	// violet
-		gums[18] = new Purple(1,10,7) ; 	// violet
-		gums[19] = new Purple(1,11,14);		// violet
-		gums[20] = new Purple(1,1,10) ;		// violet
-		gums[21] = new Purple(1,5,1) ;		// violet
+		gums[22] = new Purple(1,9,1)  ;  	// violet
+		gums[23] = new Purple(1,10,7) ; 	// violet
+		gums[24] = new Purple(1,11,14);		// violet
+		gums[25] = new Purple(1,1,10) ;		// violet
+		gums[26] = new Purple(1,5,1) ;		// violet
 	
-		gums[22]  = new Green(3,16,16);		// vert
+		gums[27]  = new Green(3,16,16);		// vert
 	}
 
 	public void initializePlayer()
@@ -66,9 +71,9 @@ public class Game
 	
 	public void initializeGhosts()
 	{
-		ghosts[0] = new Ghosts(this, 5, 1);
+		ghosts[0] = new Ghosts(this, 3, 3);
 		ghosts[1] = new Ghosts(this, 16, 3);
-		ghosts[2] = new Ghosts(this, 5, 12);
+		ghosts[2] = new Ghosts(this, 3, 16);
 		ghosts[3] = new Ghosts(this, 15, 10); 
 	}
 	
@@ -128,14 +133,14 @@ public class Game
 
 	public void restartAfterCollision()
 	{
-		getGhosts()[0].x = 5;
-		getGhosts()[0].y = 1;
+		getGhosts()[0].x = 3;
+		getGhosts()[0].y = 3;
 		
 		getGhosts()[1].x = 16;
 		getGhosts()[1].y = 3;
 		
-		getGhosts()[2].x = 5;
-		getGhosts()[2].y = 12;
+		getGhosts()[2].x = 3;
+		getGhosts()[2].y = 16;
 		
 		getGhosts()[3].x = 15;
 		getGhosts()[3].y = 10;

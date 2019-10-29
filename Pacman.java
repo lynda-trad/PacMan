@@ -352,23 +352,11 @@ public class Pacman extends Characters
 						return true;
 						
 						case 1 : //superpacman
-							move();
-							game.getGhosts()[i].backToCenter();
+							ghostSuperPacman(i, future_x, future_y);
 						return true;
 						
 						case 2 : //invisible
-							if(!wallCollisionPower())
-							{
-								if(game.getMap().getMap()[future_x][future_y] == Element.G)
-								{
-									move();
-									for(int j = 0 ; j < game.getGums().length ; ++j)
-									if(game.getGums()[j].x == future_x && game.getGums()[j].y == future_y)
-										eatGum(game.getGums()[j]);
-								}
-								else
-									move();
-							}
+							ghostInvisible(future_x, future_y);
 						return true;
 					}
 				}
@@ -376,10 +364,50 @@ public class Pacman extends Characters
 		return false;
 	}
 	
+	public void ghostInvisible(int future_x, int future_y)
+	{
+		if(!wallCollisionPower())
+		{
+			if(game.getMap().getMap()[future_x][future_y] == Element.G)
+			{
+				move();
+				for(int j = 0 ; j < game.getGums().length ; ++j)
+					if(game.getGums()[j].x == future_x && game.getGums()[j].y == future_y)
+						eatGum(game.getGums()[j]);
+			}
+			else
+				move();
+		}
+	}
+	
+	public void ghostSuperPacman(int i, int future_x, int future_y)
+	{
+		if(!wallCollisionPower())
+		{
+		if(game.getMap().getMap()[future_x][future_y] == Element.G)
+		{
+			move();
+			game.getGhosts()[i].backToCenter();
+			for(int j = 0 ; j < game.getGums().length ; ++j)
+			{
+				if(game.getGums()[j].x == future_x && game.getGums()[j].y == future_y)
+				{
+					eatGum(game.getGums()[j]);
+				}
+			}
+		}
+		else
+		{
+			move();
+			game.getGhosts()[i].backToCenter();
+		}
+		}
+	}
+	
 	public void restartAfterCollision()
 	{
 		x = 3;
-		y = 3;
+		y = 5;
 		direction = "";
 		beNormal();
 		game.restartAfterCollision();

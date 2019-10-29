@@ -1,11 +1,9 @@
 package pacman;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
+//import javax.swing.JButton;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -17,18 +15,17 @@ public class Graph extends JPanel implements Observer
 	private static final int width  = SCALE * 18 + 14;
 	private static final int height = SCALE * 18 + 37;
 	
-	private Color customColor = new Color(254,254,173); //jaunepale
-	private JLabel jlabel;
-	private JButton jbutton;
+	private Color paleYellow = new Color(254,254,173);
+	private Color pacSpawn   = new Color(0,153,0);
+	private Color ghostSpawn = new Color(102,0,0);
+	
+	//private JButton jbutton;
 	
 	public Graph(Game g) 
 	{
 		this.game = g;
 		this.setSize(width, height + 30);
 
-		jlabel = new JLabel(String.valueOf(game.getPlayer().getScore()));
-		jlabel.setFont(new Font("Verdana",1,20));
-		
 		//jlabel.setLocation(0, 0);
 		//jlabel.setForeground(Color.WHITE);
 	}
@@ -59,13 +56,19 @@ public class Graph extends JPanel implements Observer
 			}
 		}
 		
+		//Spawn pacman
+		g.setColor(pacSpawn);
+		g.fillRect(3 * SCALE, 5 * SCALE, SCALE, SCALE);
+		
+		//Spawn ghosts
+		g.setColor(ghostSpawn);
+		g.fillRect(9 * SCALE, 9 * SCALE, SCALE, SCALE);
+		
 		drawGhosts(g);
 		drawPacman(g);
 		
 		// Print score
-		jlabel.setText(String.valueOf(game.getPlayer().getScore()));
-		System.out.println(game.getPlayer().getScore());
-		jlabel.setLocation(1, 93);
+		g.drawString(String.valueOf(game.getPlayer().getScore()), 300, 380);
 		
 		// Print lives left
 		for(int i = 0; i < game.getPlayer().getLives() ; ++i)
@@ -90,7 +93,7 @@ public class Graph extends JPanel implements Observer
 			break;
 			
 			case 2 : // superpacman
-				g.setColor(customColor);
+				g.setColor(paleYellow);
 				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
 			break;
 		}
