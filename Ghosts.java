@@ -74,6 +74,8 @@ public class Ghosts extends Characters
 		switch(direction)
 		{
 			case 0: // left
+				if(x == 0)
+					specialLeft();
 				if(game.getMap().getMap()[x - 1][y] == Element.W || x - 1 < 0)
 				{
 					direction = (int) (Math.random() * 4 + 0);
@@ -92,6 +94,8 @@ public class Ghosts extends Characters
 					return false;
 			
 			case 2: // up 
+				if(y == 0)
+					specialUp();
 				if(game.getMap().getMap()[x][y - 1] == Element.W || y - 1 < 0)
 				{
 					direction = (int) (Math.random() * 4 + 0);
@@ -113,13 +117,11 @@ public class Ghosts extends Characters
 				return false;
 		}
 	}
-
+	
 	@Override	
 	public void move()
 	{
-		specialLeft();
 		specialRight();
-		specialUp();
 		specialDown();
 		
 		if(!checkWalls())
@@ -148,8 +150,11 @@ public class Ghosts extends Characters
 	
 	public void left()
 	{
-		if(x - 1 > 0)
-		{	if(state == 1)
+		if(x - 1 >= 0)
+		{
+			if(x == 0)
+				specialLeft();
+			if(state == 1)
 			{
 				if(ralenti % 2 == 0)
 				{	-- x;
@@ -184,7 +189,9 @@ public class Ghosts extends Characters
 	
 	public void up() 
 	{
-		if(y - 1 > 0)
+		if(y == 0)
+			specialUp();
+		if(y - 1 >= 0)
 		{
 			if(state == 1)
 			{
@@ -224,7 +231,7 @@ public class Ghosts extends Characters
 	{
 		if( x - 1 < 0 && y == 8) 		// NOT ok
 		{
-			x = 18;
+			x = 17;
 			y = 8 ;
 		}
 	}
@@ -242,9 +249,8 @@ public class Ghosts extends Characters
 	{
 		if( y - 1 < 0 && x == 7)
 		{
-			System.out.println("up");
 			x = 7 ;
-			y = 18;
+			y = 17;
 		}
 	}
 	
@@ -256,5 +262,4 @@ public class Ghosts extends Characters
 			y =  0;
 		}
 	}
-	
 }

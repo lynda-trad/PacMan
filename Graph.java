@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,6 +19,7 @@ public class Graph extends JPanel implements Observer
 	
 	private Color customColor = new Color(254,254,173); //jaunepale
 	private JLabel jlabel;
+	//private JButton jbutton ;
 	
 	public Graph(Game g) 
 	{
@@ -28,7 +30,6 @@ public class Graph extends JPanel implements Observer
 		jlabel.setLocation(0, 0);
 		jlabel.setForeground(Color.WHITE);
 		jlabel.setFont(new Font("Verdana",1,20));
-		add(jlabel);
 	}
 	
 	@Override
