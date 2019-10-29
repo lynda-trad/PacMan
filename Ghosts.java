@@ -229,14 +229,14 @@ public class Ghosts extends Characters
 	
 	public void specialLeft()
 	{
-		if( x - 1 < 0 && y == 8) 		// NOT ok
+		if( x - 1 < 0 && y == 8)
 		{
 			x = 17;
 			y = 8 ;
 		}
 	}
 	
-	public void specialRight() 			// ok
+	public void specialRight()
 	{
 		if( x + 1 > 17 && y == 8)
 		{
@@ -245,7 +245,7 @@ public class Ghosts extends Characters
 		}
 	}
 	
-	public void specialUp() 			// NOT ok
+	public void specialUp()
 	{
 		if( y - 1 < 0 && x == 7)
 		{
@@ -254,7 +254,7 @@ public class Ghosts extends Characters
 		}
 	}
 	
-	public void specialDown() 			// ok
+	public void specialDown()
 	{
 		if( y + 1 > 17 && x == 7)
 		{

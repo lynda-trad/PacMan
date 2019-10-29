@@ -19,7 +19,7 @@ public class Graph extends JPanel implements Observer
 	
 	private Color customColor = new Color(254,254,173); //jaunepale
 	private JLabel jlabel;
-	//private JButton jbutton ;
+	private JButton jbutton;
 	
 	public Graph(Game g) 
 	{
@@ -27,9 +27,10 @@ public class Graph extends JPanel implements Observer
 		this.setSize(width, height + 30);
 
 		jlabel = new JLabel(String.valueOf(game.getPlayer().getScore()));
-		jlabel.setLocation(0, 0);
-		jlabel.setForeground(Color.WHITE);
 		jlabel.setFont(new Font("Verdana",1,20));
+		
+		//jlabel.setLocation(0, 0);
+		//jlabel.setForeground(Color.WHITE);
 	}
 	
 	@Override
@@ -63,13 +64,14 @@ public class Graph extends JPanel implements Observer
 		
 		// Print score
 		jlabel.setText(String.valueOf(game.getPlayer().getScore()));
-		jlabel.setLocation(0, 0);
+		System.out.println(game.getPlayer().getScore());
+		jlabel.setLocation(1, 93);
 		
 		// Print lives left
 		for(int i = 0; i < game.getPlayer().getLives() ; ++i)
 		{
 			g.setColor(Color.YELLOW);
-			g.fillOval(1 * i * 2 * (SCALE / 5), 1 * (SCALE / 5), SCALE / 4, SCALE / 4);
+			g.fillOval(1 * i * 4 * (SCALE / 5), 93 * (SCALE / 5), SCALE / 2, SCALE / 2);
 		}
 	}
 	
