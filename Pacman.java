@@ -1,7 +1,6 @@
 package pacman;
 
-import pacman.Gum;
-import pacman.Characters;
+
 import java.util.ArrayList;
 
 public class Pacman extends Characters
@@ -15,7 +14,7 @@ public class Pacman extends Characters
 	private String direction;
 	private String previous;
 
-	private static final int fullTimer = 60;
+	private static final int fullTimer = 50;
 	
 	public Pacman (Game g)
 	{
@@ -115,9 +114,8 @@ public class Pacman extends Characters
 	
 	public void newLife()
 	{
-		if(this.score > 5000)
+		if(this.score == 5000)
 		{
-			score = 0;
 			++this.lives;
 		}
 	}	

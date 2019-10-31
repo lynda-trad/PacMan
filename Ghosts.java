@@ -2,8 +2,6 @@ package pacman;
 
 import java.util.ArrayList;
 
-import pacman.Characters;
-
 public class Ghosts extends Characters
 {
 	private int state ; 	// 0 = normal, 1 = vulnerable et ralenti

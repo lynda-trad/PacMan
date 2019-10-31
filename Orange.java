@@ -1,5 +1,6 @@
 package pacman;
 
+
 public class Orange extends Gum
 {
 	/*

@@ -1,5 +1,6 @@
 package pacman;
 
+
 public abstract class Gum extends Elements
 {
 	protected int 	  type;     			// 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert

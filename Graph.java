@@ -1,5 +1,6 @@
 package pacman;
 
+
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -15,9 +16,11 @@ public class Graph extends JPanel implements Observer
 	private static final int width  = SCALE * 18 + 14;
 	private static final int height = SCALE * 18 + 37;
 	
-	private Color paleYellow = new Color(254,254,173);
+	private Color paleYellow = new Color(255,255,173);
+	private Color purple 	 = new Color(174,54,250);
 	private Color pacSpawn   = new Color(0,153,0);
-	private Color ghostSpawn = new Color(102,0,0);
+	private Color ghostSpawn = new Color(114,0,0);
+	private Color blue_gum	 = new Color(60,180,217);
 	
 	//private JButton jbutton;
 	
@@ -35,7 +38,7 @@ public class Graph extends JPanel implements Observer
 	{
 		super.paintComponent(g);
 		
-		setBackground(Color.DARK_GRAY);
+		setBackground(Color.BLACK);
 		//set background color a gris	
 		
 		for(int i = 0 ; i < this.game.getMap().getLength() ; ++i)
@@ -146,34 +149,42 @@ public class Graph extends JPanel implements Observer
 	public void drawBlueGum(Graphics g, int i, int j)
 	{
 		int minScale = SCALE - SCALE/2;
-		g.setColor(Color.BLUE);
-		g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
+		int i_center = i * SCALE + 5;
+		int j_center = j * SCALE + 5;
+		g.setColor(blue_gum);
+		g.fillOval(i_center, j_center, minScale, minScale);
 	}
 	
 	public void drawPurpleGum(Graphics g, int i, int j)
 	{
 		int minScale = SCALE - SCALE/2;
-		g.setColor(Color.MAGENTA);
-		g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
+		int i_center = i * SCALE + 5;
+		int j_center = j * SCALE + 5;
+		g.setColor(purple);
+		g.fillOval(i_center, j_center, minScale, minScale);
 	}
 	
 	public void drawOrangeGum(Graphics g, int i, int j)
 	{
 		int minScale = SCALE - SCALE/2;
+		int i_center = i * SCALE + 5;
+		int j_center = j * SCALE + 5;
 		g.setColor(Color.ORANGE);
-		g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
+		g.fillOval(i_center, j_center, minScale, minScale);
 	}
 	
-	public void drawGreenGum(Graphics g,int i, int j)
+	public void drawGreenGum(Graphics g, int i, int j)
 	{
 		int minScale = SCALE - SCALE/2;
+		int i_center = i * SCALE + 5;
+		int j_center = j * SCALE + 5;
 		g.setColor(Color.GREEN);
-		g.fillOval(i * SCALE, j * SCALE, minScale, minScale);
+		g.fillOval(i_center, j_center, minScale, minScale);
 	}
 	
 	public void drawWalls(Graphics g, int i, int j)
 	{
-		g.setColor(Color.BLACK);
+		g.setColor(Color.DARK_GRAY);
 		g.fillRect(i * SCALE, j * SCALE, SCALE, SCALE);
 	}
 
