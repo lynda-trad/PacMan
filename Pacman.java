@@ -217,22 +217,22 @@ public class Pacman extends Characters
 		switch(direction)
 		{
 			case "LEFT"  :
-				if(x - 1 >= 0)
+				if(x - 1 >= 0 && game.getMap().getMap()[x - 1][y] != Element.W)
 					-- x;
 			break;
 			
 			case "RIGHT" :
-				if(x + 1 < 18)
+				if(x + 1 < 18 && game.getMap().getMap()[x + 1][y] != Element.W)
 					++ x;
 			break;
 			
 			case "UP"    :
-				if(y - 1 >= 0)
+				if(y - 1 >= 0 && game.getMap().getMap()[x][y - 1] != Element.W)
 					-- y;
 			break;
 			
 			case "DOWN"  :
-				if(y + 1 < 18)
+				if(y + 1 < 18 && game.getMap().getMap()[x][y + 1] != Element.W)
 					++ y;
 			break;
 		}
@@ -329,23 +329,23 @@ public class Pacman extends Characters
 		for(int i = 0 ; i < game.getGhosts().length; ++i)
 		{
 			if(future_x == game.getGhosts()[i].x && future_y == game.getGhosts()[i].y)
+			{
+				switch(state)
 				{
-					switch(state)
-					{
-						case 0 : //normal
-							loseLife();
-							restartAfterCollision();
-						return true;
-						
-						case 1 : //superpacman
-							ghostSuperPacman(i, future_x, future_y);
-						return true;
-						
-						case 2 : //invisible
-							ghostInvisible(future_x, future_y);
-						return true;
-					}
+				case 0 : //normal
+					loseLife();
+					restartAfterCollision();
+					return true;
+
+				case 1 : //superpacman
+					ghostSuperPacman(i, future_x, future_y);
+					return true;
+
+				case 2 : //invisible
+					ghostInvisible(future_x, future_y);
+					return true;
 				}
+			}
 		}
 		return false;
 	}
@@ -369,23 +369,19 @@ public class Pacman extends Characters
 	{
 		if(!wallCollisionPower(future_x, future_y))
 		{
-			if(game.getMap().getMap()[x][y] == Element.G)
+			move();
+			game.getGhosts()[i].backToCenter();
+			if(game.getMap().getMap()[future_x][future_y] == Element.G)
 			{
-				game.getGhosts()[i].backToCenter();
 				for(int j = 0 ; j < game.getGums().length ; ++j)
 				{
-					if(game.getGums()[j].x == x && game.getGums()[j].y == y)
+					if(game.getGums()[j].x == future_x && game.getGums()[j].y == future_y)
 					{
 						eatGum(game.getGums()[j]);
 					}
 				}
-				move();
 			}
-			else
-			{
-				move();
-				game.getGhosts()[i].backToCenter();
-			}
+			notifyObserver();
 		}
 	}
 	

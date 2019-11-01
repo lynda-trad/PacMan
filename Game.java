@@ -137,7 +137,7 @@ public class Game
 		gums[70] = new Blue  (0,13,16) ; 	// blue 		   
 
 		
-		gums[71] = new Green (3,15,16) ;	// vert //elle qui pose problème
+		gums[71] = new Green (3,15,16) ;	// vert 
 
 	}
 
@@ -233,9 +233,9 @@ public class Game
 	public void gameOver(int i)
 	{
 		if(i == 0)
-			JOptionPane.showMessageDialog(null, "Too bad, you lost !");
+			JOptionPane.showMessageDialog(null, "Too bad, you lost ! Your score : " + player.getScore());
 		else
-			JOptionPane.showMessageDialog(null, "Great job, you won !");
+			JOptionPane.showMessageDialog(null, "Great job, you won ! Your score : " + player.getScore());
 		System.exit(0);
 	}
 	

@@ -36,5 +36,6 @@ public class MyListener extends KeyAdapter
 	    		p.setDirection("RIGHT");
 	        break;
 	     }
+	    p.notifyObserver();
 	}	
 }

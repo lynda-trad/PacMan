@@ -1,4 +1,3 @@
-package pacman;
 
 import javax.swing.JFrame;
 

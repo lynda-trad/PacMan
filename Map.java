@@ -54,6 +54,9 @@ public class Map extends Elements
 	
 	public void setNewMap() 
 	{
+
+		map[4] [3]  = Element.N;
+		
 		map[7][6]  = Element.N;
 		
 		map[12][7] = Element.N;
@@ -67,10 +70,11 @@ public class Map extends Elements
 		
 		map[9][10] = Element.N;
 		map[10][10]= Element.N;
+
+		map[3] [11] = Element.N;
 		
 		map[16][15]= Element.N;
 		
-
 		//map[13][11]= Element.W;
 		map[14][3] = Element.W;
 		map[9][7]  = Element.W;
