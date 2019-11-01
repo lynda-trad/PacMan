@@ -16,7 +16,7 @@ public class App
 		graph.setGui(gui);
 		*/
 		
-		JFrame frame = new JFrame("Pacman discount");
+		JFrame frame = new JFrame("Pacman");
 		
 		frame.add(graph);
 		
