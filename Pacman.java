@@ -1,5 +1,3 @@
-package pacman;
-
 
 import java.util.ArrayList;
 
@@ -15,6 +13,8 @@ public class Pacman extends Characters
 	private String previous;
 
 	private static final int fullTimer = 50;
+
+	private int newLife = 0;
 	
 	public Pacman (Game g)
 	{
@@ -114,25 +114,31 @@ public class Pacman extends Characters
 	
 	public void newLife()
 	{
-		if(this.score == 5000)
+		if(this.score >= 5000 && newLife == 0)
 		{
 			++this.lives;
+			newLife = 1;
 		}
 	}	
 	
 	public void loseLife() 
 	{
+		notifyObserver();
 		if(this.lives > 0)
+		{
 			--this.lives;
-		
+		}
 		if(this.lives == 0)
+		{	
 			game.gameOver(0);
+		}
 	}
 	
 	/////////////////////////////
 	
 	public void eatGum(Gum g) 
 	{
+		notifyObserver();
 		switch(g.getType())
 		{
 			case 0 : // Blue
@@ -308,26 +314,8 @@ public class Pacman extends Characters
 		}
 	}
 	
-	public boolean wallCollisionPower()
+	public boolean wallCollisionPower(int future_x, int future_y)
 	{
-		int future_x = x;
-		int future_y = y;
-		
-		switch(direction)
-		{
-			case "LEFT"  :
-				future_x = x - 1;
-			break;
-			case "RIGHT" :
-				future_x = x + 1;
-				break;
-			case "UP" :
-				future_y = y - 1;
-				break;
-			case "DOWN" :
-				future_y = y + 1;
-				break;
-		}
 		if(game.getMap().getMap()[future_x][future_y] == Element.W)
 		{
 			return true;
@@ -364,41 +352,40 @@ public class Pacman extends Characters
 	
 	public void ghostInvisible(int future_x, int future_y)
 	{
-		if(!wallCollisionPower())
+		if(!wallCollisionPower(future_x, future_y))
 		{
+			move();
 			if(game.getMap().getMap()[future_x][future_y] == Element.G)
 			{
-				move();
 				for(int j = 0 ; j < game.getGums().length ; ++j)
 					if(game.getGums()[j].x == future_x && game.getGums()[j].y == future_y)
 						eatGum(game.getGums()[j]);
 			}
-			else
-				move();
+			notifyObserver();
 		}
 	}
 	
 	public void ghostSuperPacman(int i, int future_x, int future_y)
 	{
-		if(!wallCollisionPower())
+		if(!wallCollisionPower(future_x, future_y))
 		{
-		if(game.getMap().getMap()[future_x][future_y] == Element.G)
-		{
-			move();
-			game.getGhosts()[i].backToCenter();
-			for(int j = 0 ; j < game.getGums().length ; ++j)
+			if(game.getMap().getMap()[x][y] == Element.G)
 			{
-				if(game.getGums()[j].x == future_x && game.getGums()[j].y == future_y)
+				game.getGhosts()[i].backToCenter();
+				for(int j = 0 ; j < game.getGums().length ; ++j)
 				{
-					eatGum(game.getGums()[j]);
+					if(game.getGums()[j].x == x && game.getGums()[j].y == y)
+					{
+						eatGum(game.getGums()[j]);
+					}
 				}
+				move();
 			}
-		}
-		else
-		{
-			move();
-			game.getGhosts()[i].backToCenter();
-		}
+			else
+			{
+				move();
+				game.getGhosts()[i].backToCenter();
+			}
 		}
 	}
 	

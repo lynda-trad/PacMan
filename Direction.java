@@ -1,5 +1,3 @@
-package pacman;
-
 public class Direction 
 {
 	

@@ -1,5 +1,3 @@
-package pacman;
-
 
 public abstract class Gum extends Elements
 {

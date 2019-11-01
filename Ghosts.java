@@ -1,5 +1,3 @@
-package pacman;
-
 import java.util.ArrayList;
 
 public class Ghosts extends Characters

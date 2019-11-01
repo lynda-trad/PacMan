@@ -1,5 +1,4 @@
-package pacman;
-
+//import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class Game 

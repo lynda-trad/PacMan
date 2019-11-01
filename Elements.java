@@ -1,5 +1,3 @@
-package pacman;
-
 public abstract class Elements 
 {
 	/*Chaque element sera reconnu par un int qui lui correspond

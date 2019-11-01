@@ -1,5 +1,3 @@
-package pacman;
-
 import javax.swing.JFrame;
 
 public class App 
