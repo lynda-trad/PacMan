@@ -81,19 +81,19 @@ public class Graph extends JPanel implements Observer
 	
 	public void drawPacman(Graphics g)
 	{
-		switch(game.getPlayer().getState())
+		switch(game.getPlayer().nameState())
 		{
-			case 0 : // normal
+			case NORMAL : // normal
 				g.setColor(Color.YELLOW);
 				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
 			break;
 			
-			case 1 : // invisible
+			case SUPERPACMAN : // superpacman 
 				g.setColor(Color.ORANGE);
 				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
 			break;
 			
-			case 2 : // superpacman
+			case INVISIBLE : // invisible
 				g.setColor(paleYellow);
 				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
 			break;
@@ -103,14 +103,14 @@ public class Graph extends JPanel implements Observer
 	public void drawGhosts(Graphics g)
 	{
 		for(int i = 0 ; i < 4 ; ++i)
-		switch(game.getGhosts()[i].getState())
+		switch(game.getGhosts()[i].nameState())
 			{
-				case 0 :
+				case NORMAL :
 					g.setColor(Color.RED);
 					g.fillOval(game.getGhosts()[i].x * SCALE, game.getGhosts()[i].y * SCALE, SCALE, SCALE);
 				break;
 				
-				case 1 :
+				case VULNERABLE :
 					g.setColor(Color.BLUE);
 					g.fillOval(game.getGhosts()[i].x * SCALE, game.getGhosts()[i].y * SCALE, SCALE, SCALE);
 				break;

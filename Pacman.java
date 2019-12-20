@@ -5,7 +5,9 @@ public class Pacman extends Characters
 {
 	private int score;	    // score du player
 	private int lives; 		// initialement trois vies
-	private int state;  	// 0 = normal, 1 = superPacman, 2 = invisible
+//	private int state;  	// 0 = normal, 1 = superPacman, 2 = invisible
+    private PacmanState state;
+    
 
 	private ArrayList<Observer> observers;
 	
@@ -20,7 +22,8 @@ public class Pacman extends Characters
 	{
 		this.game  	   =  g;
 		this.score 	   =  0;
-		this.state     =  0;
+//		this.state     =  0;
+		this.state = new PacmanNormalState(this);
 		this.lives 	   =  3;
 		this.direction = "";
 		this.previous  = "";
@@ -49,9 +52,19 @@ public class Pacman extends Characters
 		this.lives = lives;
 	}
 	
-	public int getState() 
+/*	public int getState() 
 	{
 		return this.state;
+	}
+*/
+	void changeState(PacmanState state)
+	{
+		this.state = state;
+	}
+	
+	public PacmanState.PState nameState() 
+	{
+		return state.getState();
 	}
 	
 	public String getDirection() 
@@ -78,17 +91,22 @@ public class Pacman extends Characters
 	
 	public void beNormal() 
 	{
-		this.state = 0;
+//		this.state = 0;
+		this.changeState(new PacmanNormalState(this) );
 	}
 	
 	public void beSuperPacman() 
 	{
-		this.state = 1;
+//		this.state = 1;
+		this.changeState(new SuperPacmanState(this) );
+
 	}
 	
 	public void beInvisible() 
 	{
-		this.state = 2;
+//		this.state = 2;
+		this.changeState(new InvisibleState(this) );
+
 	}
 	
 	public void addObserver(Observer o)
@@ -330,19 +348,23 @@ public class Pacman extends Characters
 		{
 			if(future_x == game.getGhosts()[i].x && future_y == game.getGhosts()[i].y)
 			{
-				switch(state)
+// on peut faire directement state.ghostCollision(future_x, future_y) mais pb pour superpacman car un arg i en +
+				switch(this.nameState())
 				{
-				case 0 : //normal
-					loseLife();
-					restartAfterCollision();
+				case NORMAL : //normal
+					//loseLife();
+					//restartAfterCollision();
+					state.ghostCollision(i,future_x, future_y);	
 					return true;
 
-				case 1 : //superpacman
-					ghostSuperPacman(i, future_x, future_y);
+				case SUPERPACMAN : //superpacman
+					//ghostSuperPacman(i, future_x, future_y);
+					state.ghostCollision(i, future_x, future_y);	
 					return true;
 
-				case 2 : //invisible
-					ghostInvisible(future_x, future_y);
+				case INVISIBLE : //invisible
+					//ghostInvisible(future_x, future_y);
+					state.ghostCollision(i, future_x, future_y);	
 					return true;
 				}
 			}
@@ -350,7 +372,7 @@ public class Pacman extends Characters
 		return false;
 	}
 	
-	public void ghostInvisible(int future_x, int future_y)
+/*	public void ghostInvisible(int future_x, int future_y)
 	{
 		if(!wallCollisionPower(future_x, future_y))
 		{
@@ -363,9 +385,9 @@ public class Pacman extends Characters
 			}
 			notifyObserver();
 		}
-	}
+	} */
 	
-	public void ghostSuperPacman(int i, int future_x, int future_y)
+	/*public void ghostSuperPacman(int i, int future_x, int future_y)
 	{
 		if(!wallCollisionPower(future_x, future_y))
 		{
@@ -383,7 +405,7 @@ public class Pacman extends Characters
 			}
 			notifyObserver();
 		}
-	}
+	}*/
 	
 	public void restartAfterCollision()
 	{

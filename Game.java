@@ -224,10 +224,10 @@ public class Game
 		getGhosts()[3].x = 15;
 		getGhosts()[3].y = 10;
 		
-		getGhosts()[0].setState(0);
-		getGhosts()[1].setState(0);
-		getGhosts()[2].setState(0);
-		getGhosts()[3].setState(0);
+		getGhosts()[0].beNormal();
+		getGhosts()[1].beNormal();
+		getGhosts()[2].beNormal();
+		getGhosts()[3].beNormal();
 	}
 	
 	public void gameOver(int i)
