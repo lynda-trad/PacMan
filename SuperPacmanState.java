@@ -2,13 +2,13 @@
 public class SuperPacmanState extends PacmanState 
 {
 	
-	private static final int TIMEOUT = 50;
-	private int timer;
+	//private static final int TIMEOUT = 50;
+	//private int timer;
 	
 	protected SuperPacmanState(Pacman pacman) 
 	{
 		super(pacman);
-		timer = TIMEOUT;
+		//timer = TIMEOUT;
 	}
 		
 	@Override

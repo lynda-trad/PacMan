@@ -9,10 +9,11 @@ public class GhostNormalState extends GhostState
 	@Override
 	public void move() 
 	{
-		if(!ghost.game.isOut(ghost.x + ghost.getDirection().getX(), ghost.y + ghost.getDirection().getY()))
+		if(!ghost.game.isOut(ghost.c.getX() + ghost.getDirection().getX(), ghost.c.getY() + ghost.getDirection().getY()))
 		{
-			ghost.x += ghost.getDirection().getX();
-			ghost.y += ghost.getDirection().getY();
+			ghost.c = new Coordinate(ghost.c.getX() + ghost.getDirection().getX(), ghost.c.getY() + ghost.getDirection().getY());
+			//ghost.x += ghost.getDirection().getX();
+			//ghost.y += ghost.getDirection().getY();
 		}	
 	}
 	

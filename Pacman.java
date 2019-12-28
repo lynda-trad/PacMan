@@ -170,7 +170,7 @@ public class Pacman extends Characters
 	{
 		this.addScore(g);
 		
-		game.getMap().getMap()[x][y] = Element.N;
+		game.getMap().getMap()[c.getX()][c.getY()] = Element.N;
 		game.decCompteurGum();
 	}
 	
@@ -184,7 +184,7 @@ public class Pacman extends Characters
 			game.getGhosts()[i].beNormal();
 		}
 
-		game.getMap().getMap()[x][y] = Element.N;
+		game.getMap().getMap()[c.getX()][c.getY()] = Element.N;
 		game.decCompteurGum();
 		
 		game.setPowerTimer(fullTimer);
@@ -200,7 +200,7 @@ public class Pacman extends Characters
 			game.getGhosts()[i].beVulnerable();
 		}
 
-		game.getMap().getMap()[x][y] = Element.N;
+		game.getMap().getMap()[c.getX()][c.getY()] = Element.N;
 		game.decCompteurGum();
 		
 		game.setPowerTimer(fullTimer);
@@ -212,7 +212,7 @@ public class Pacman extends Characters
 		
 		game.getMap().setNewMap();
 		
-		game.getMap().getMap()[x][y] = Element.N;
+		game.getMap().getMap()[c.getX()][c.getY()] = Element.N;
 		game.decCompteurGum();
 	}
 
@@ -221,10 +221,11 @@ public class Pacman extends Characters
 	@Override
 	public void move()
 	{
-		if(!game.isOut(x + direction.getX(), y + direction.getY()) && game.getMap().getMap()[x + direction.getX()][y + direction.getY()] != Element.W) 
+		if(!game.isOut(c.getX() + direction.getX(), c.getY() + direction.getY()) && game.getMap().getMap()[c.getX() + direction.getX()][c.getY() + direction.getY()] != Element.W) 
 		{
-				x += direction.getX();
-				y += direction.getY();
+			c = new Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
+			//c.x += direction.getX();
+			//c.y += direction.getY();
 			
 		}
 		
@@ -233,31 +234,31 @@ public class Pacman extends Characters
 	
 	public void cross()
 	{
-		int future_x = x;
-		int future_y = y;
+		int future_x = c.getX();
+		int future_y = c.getY();
 		
 		switch(direction)
 		{
 			case Left  :
 				specialLeft();
-				future_x = x - 1;
+				future_x = c.getX() - 1;
 			break;
 			case Right :
 				specialRight();
-				future_x = x + 1;
+				future_x = c.getX() + 1;
 				break;
 			case Up :
 				specialUp();
-				future_y = y - 1;
+				future_y = c.getY() - 1;
 				break;
 			case Down :
 				specialDown();
-				future_y = y + 1;
+				future_y = c.getY() + 1;
 				break;
 		}
 		
 		// si pas de collision fantome on verifie le reste
-		if(!ghostCollision(future_x, future_y) && !ghostCollision(x,y))
+		if(!ghostCollision(future_x, future_y) && !ghostCollision(c.getX(),c.getY()))
 		switch(game.getMap().getMap()[future_x][future_y])
 		{
 			case N :  // nothing
@@ -278,24 +279,24 @@ public class Pacman extends Characters
 	
 	public void wallCollision()
 	{
-		int previous_x = x;
-		int previous_y = y;
+		int previous_x = c.getX();
+		int previous_y = c.getY();
 		switch(previous)
 		{
 			case Left  :
-				previous_x = x - 1;
+				previous_x = c.getX() - 1;
 			break;
 			
 			case Right :
-				previous_x = x + 1;
+				previous_x = c.getX() + 1;
 			break;
 			
 			case Up :
-				previous_y = y - 1;
+				previous_y = c.getY() - 1;
 			break;
 			
 			case Down :
-				previous_y = y + 1;
+				previous_y = c.getY() + 1;
 			break;
 		}
 		
@@ -320,7 +321,7 @@ public class Pacman extends Characters
 	{
 		for(int i = 0 ; i < game.getGhosts().length; ++i)
 		{
-			if(future_x == game.getGhosts()[i].x && future_y == game.getGhosts()[i].y)
+			if(future_x == game.getGhosts()[i].c.getX() && future_y == game.getGhosts()[i].c.getY())
 			{
 				state.ghostCollision(i, future_x, future_y);		
 				return true;
@@ -331,8 +332,9 @@ public class Pacman extends Characters
 	
 	public void restartAfterCollision()
 	{
-		x = 3;
-		y = 5;
+		c = new Coordinate (3, 5);
+		//x = 3;
+		//y = 5;
 		direction = Direction.Still;
 		beNormal();
 		game.restartAfterCollision();
@@ -340,37 +342,41 @@ public class Pacman extends Characters
 	
 	public void specialLeft()
 	{
-		if( x - 1 < 0 && y == 8)
+		if( c.getX() - 1 < 0 && c.getY() == 8)
 		{
-			x = 18;
-			y = 8 ;
+			c = new Coordinate (18, 8);
+			//x = 18;
+			//y = 8 ;
 		}
 	}
 	
 	public void specialRight()
 	{
-		if( x + 1 > 17 && y == 8)
+		if(  c.getX() + 1 > 17 &&  c.getY() == 8)
 		{
-			x = -1;
-			y =  8;
+			c = new Coordinate (-1, 8);
+			//x = -1;
+			//y =  8;
 		}
 	}
 	
 	public void specialUp() 
 	{
-		if( y - 1 < 0 && x == 7)
+		if( c.getY()  - 1 < 0 && c.getX() == 7)
 		{
-			x = 7 ;
-			y = 18;
+			c = new Coordinate (7, 18);
+			//x = 7 ;
+			//y = 18;
 		}
 	}
 	
 	public void specialDown()
 	{
-		if( y + 1 > 17 && x == 7)
+		if( c.getY()  + 1 > 17 && c.getX() == 7)
 		{
-			x =  7;
-			y = -1;
+			c = new Coordinate (7, -1);
+			//x =  7;
+			//y = -1;
 		}
 	}
 	

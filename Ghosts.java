@@ -14,8 +14,9 @@ public class Ghosts extends Characters
 	{
 		this.game = g;
 		this.state = new GhostNormalState(this);
-		this.x = x;
-		this.y = y;
+		this.c = new Coordinate(x, y);
+		//this.x = x;
+		//this.y = y;
 		this.ralenti = 0;
 		this.direction = Direction.Left;
 		this.observers = new ArrayList<Observer>();
@@ -84,10 +85,11 @@ public class Ghosts extends Characters
 	
 	public void backToCenter() 
 	{   
-		this.x = 9;
-		this.y = 9;
+		c = new Coordinate (9, 9);
+		//this.x = 9;
+		//this.y = 9;
 	}
-	
+	;
 	public void randomDirection() 
 	{
 		int dir = (int) (Math.random() * 4 + 0);
@@ -120,9 +122,9 @@ public class Ghosts extends Characters
 		switch(direction)
 		{
 			case Left: // left
-				if(x == 0)
+				if(c.getX() == 0)
 					specialLeft();
-				if(game.getMap().getMap()[x - 1][y] == Element.W || x - 1 < 0)
+				if(game.getMap().getMap()[c.getX() - 1][c.getY()] == Element.W || c.getX() - 1 < 0)
 				{
 					randomDirection();
 					return true;
@@ -131,7 +133,7 @@ public class Ghosts extends Characters
 					return false;
 		
 			case Right: // right
-				if(game.getMap().getMap()[x + 1][y] == Element.W || x + 1 > 18)
+				if(game.getMap().getMap()[c.getX() + 1][c.getY()] == Element.W || c.getX() + 1 > 18)
 				{
 					randomDirection();
 					return true;
@@ -140,9 +142,9 @@ public class Ghosts extends Characters
 					return false;
 			
 			case Up: // up 
-				if(y == 0)
+				if(c.getY() == 0)
 					specialUp();
-				if(game.getMap().getMap()[x][y - 1] == Element.W || y - 1 < 0)
+				if(game.getMap().getMap()[c.getX()][c.getY() - 1] == Element.W || c.getY() - 1 < 0)
 				{
 					randomDirection();
 					return true;
@@ -151,7 +153,7 @@ public class Ghosts extends Characters
 					return false;
 				
 			case Down: // down
-				if(game.getMap().getMap()[x][y + 1] == Element.W || y + 1 > 18)
+				if(game.getMap().getMap()[c.getX()][c.getY() + 1] == Element.W || c.getY() + 1 > 18)
 				{
 					randomDirection();
 					return true;
@@ -174,8 +176,8 @@ public class Ghosts extends Characters
 		{
 			switch(direction)
 			{
-				case Left: 
-					if(x == 0) 
+				case Left	: 
+					if(c.getX() == 0) 
 						specialLeft();
 					state.move();
 				break;
@@ -184,13 +186,13 @@ public class Ghosts extends Characters
 					state.move();
 				break;
 				
-				case Up :
-					if(y == 0) 
+				case Up 	:
+					if(c.getY() == 0) 
 						specialUp();
 					state.move();
 				break;
 				
-				case Down  : 
+				case Down  	: 
 					state.move();
 				break;
 			}
@@ -200,37 +202,41 @@ public class Ghosts extends Characters
 
 	public void specialLeft()
 	{
-		if( x - 1 < 0 && y == 8)
+		if( c.getX() - 1 < 0 && c.getY() == 8)
 		{
-			x = 17;
-			y = 8 ;
+			c = new Coordinate(17, 8);
+			//x = 17;
+			//y = 8 ;
 		}
 	}
 	
 	public void specialRight()
 	{
-		if( x + 1 > 17 && y == 8)
+		if( c.getX() + 1 > 17 && c.getY() == 8)
 		{
-			x =  0;
-			y =  8;
+			c = new Coordinate(0, 8);
+			//x =  0;
+			//y =  8;
 		}
 	}
 	
 	public void specialUp()
 	{
-		if( y - 1 < 0 && x == 7)
+		if( c.getY() - 1 < 0 && c.getX() == 7)
 		{
-			x = 7 ;
-			y = 17;
+			c = new Coordinate(7, 17);
+			//x = 7 ;
+			//y = 17;
 		}
 	}
 	
 	public void specialDown()
 	{
-		if( y + 1 > 17 && x == 7)
+		if( c.getY() + 1 > 17 && c.getX() == 7)
 		{
-			x =  7;
-			y =  0;
+			c = new Coordinate(7, 0);
+			//x =  7;
+			//y =  0;
 		}
 	}
 }

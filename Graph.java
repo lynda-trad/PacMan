@@ -85,17 +85,17 @@ public class Graph extends JPanel implements Observer
 		{
 			case NORMAL : // normal
 				g.setColor(Color.YELLOW);
-				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
+				g.fillOval(game.getPlayer().c.getX() * SCALE, game.getPlayer().c.getY() * SCALE, SCALE, SCALE);
 			break;
 			
 			case SUPERPACMAN : // superpacman 
 				g.setColor(Color.ORANGE);
-				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
+				g.fillOval(game.getPlayer().c.getX() * SCALE, game.getPlayer().c.getY() * SCALE, SCALE, SCALE);
 			break;
 			
 			case INVISIBLE : // invisible
 				g.setColor(paleYellow);
-				g.fillOval(game.getPlayer().x * SCALE, game.getPlayer().y * SCALE, SCALE, SCALE);
+				g.fillOval(game.getPlayer().c.getX() * SCALE, game.getPlayer().c.getY() * SCALE, SCALE, SCALE);
 			break;
 		}
 	}
@@ -107,12 +107,12 @@ public class Graph extends JPanel implements Observer
 			{
 				case NORMAL :
 					g.setColor(Color.RED);
-					g.fillOval(game.getGhosts()[i].x * SCALE, game.getGhosts()[i].y * SCALE, SCALE, SCALE);
+					g.fillOval(game.getGhosts()[i].c.getX() * SCALE, game.getGhosts()[i].c.getY() * SCALE, SCALE, SCALE);
 				break;
 				
 				case VULNERABLE :
 					g.setColor(Color.BLUE);
-					g.fillOval(game.getGhosts()[i].x * SCALE, game.getGhosts()[i].y * SCALE, SCALE, SCALE);
+					g.fillOval(game.getGhosts()[i].c.getX() * SCALE, game.getGhosts()[i].c.getY() * SCALE, SCALE, SCALE);
 				break;
 			}
 

@@ -1,10 +1,8 @@
 public abstract class Characters extends Elements 
 {
 	protected Game game;
+	protected Coordinate c;
 	
-	protected int x;
-	protected int y;
-
 	public abstract void move();
 	
 }
