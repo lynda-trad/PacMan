@@ -18,22 +18,22 @@ public class MyListener extends KeyAdapter
 	    { 
 	        case KeyEvent.VK_UP:
 	        	p.setPrevious(p.getDirection());
-	    		p.setDirection("UP");
+	    		p.setDirection(Direction.Up);
 	        break;
 	            
 	        case KeyEvent.VK_DOWN:
 	        	p.setPrevious(p.getDirection());
-	    		p.setDirection("DOWN");
+	    		p.setDirection(Direction.Down);
 	        break;
 	        
 	        case KeyEvent.VK_LEFT:
 	        	p.setPrevious(p.getDirection());
-	    		p.setDirection("LEFT");
+	    		p.setDirection(Direction.Left);
 	        break;
 	        
 	        case KeyEvent.VK_RIGHT :
 	        	p.setPrevious(p.getDirection());
-	    		p.setDirection("RIGHT");
+	    		p.setDirection(Direction.Right);
 	        break;
 	     }
 	    p.notifyObserver();

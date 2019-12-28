@@ -1,18 +1,17 @@
-
 import java.util.ArrayList;
 
 public class Pacman extends Characters
 {
 	private int score;	    // score du player
 	private int lives; 		// initialement trois vies
-//	private int state;  	// 0 = normal, 1 = superPacman, 2 = invisible
     private PacmanState state;
     
 
 	private ArrayList<Observer> observers;
 	
-	private String direction;
-	private String previous;
+	private Direction direction;
+	
+	private Direction previous;
 
 	private static final int fullTimer = 50;
 
@@ -22,11 +21,10 @@ public class Pacman extends Characters
 	{
 		this.game  	   =  g;
 		this.score 	   =  0;
-//		this.state     =  0;
 		this.state = new PacmanNormalState(this);
 		this.lives 	   =  3;
-		this.direction = "";
-		this.previous  = "";
+		this.direction = Direction.Still;
+		this.previous  = Direction.Still;		
 		this.observers = new ArrayList<Observer>();
 	}
 	
@@ -52,11 +50,6 @@ public class Pacman extends Characters
 		this.lives = lives;
 	}
 	
-/*	public int getState() 
-	{
-		return this.state;
-	}
-*/
 	void changeState(PacmanState state)
 	{
 		this.state = state;
@@ -67,44 +60,40 @@ public class Pacman extends Characters
 		return state.getState();
 	}
 	
-	public String getDirection() 
+	public Direction getDirection() 
 	{
 		return direction;
 	}
 
-	public void setDirection(String direction)
+	public void setDirection(Direction direction)
 	{
 		this.direction = direction;
 	}
 	
-	public String getPrevious() 
+	public Direction getPrevious() 
 	{
 		return previous;
 	}
 
-	public void setPrevious(String previous) 
+	public void setPrevious(Direction previous) 
 	{
 		this.previous = previous;
 	}
-	
 	/////////////////////////////
 	
 	public void beNormal() 
 	{
-//		this.state = 0;
 		this.changeState(new PacmanNormalState(this) );
 	}
 	
 	public void beSuperPacman() 
 	{
-//		this.state = 1;
 		this.changeState(new SuperPacmanState(this) );
 
 	}
 	
 	public void beInvisible() 
 	{
-//		this.state = 2;
 		this.changeState(new InvisibleState(this) );
 
 	}
@@ -232,28 +221,13 @@ public class Pacman extends Characters
 	@Override
 	public void move()
 	{
-		switch(direction)
+		if(!game.isOut(x + direction.getX(), y + direction.getY()) && game.getMap().getMap()[x + direction.getX()][y + direction.getY()] != Element.W) 
 		{
-			case "LEFT"  :
-				if(x - 1 >= 0 && game.getMap().getMap()[x - 1][y] != Element.W)
-					-- x;
-			break;
+				x += direction.getX();
+				y += direction.getY();
 			
-			case "RIGHT" :
-				if(x + 1 < 18 && game.getMap().getMap()[x + 1][y] != Element.W)
-					++ x;
-			break;
-			
-			case "UP"    :
-				if(y - 1 >= 0 && game.getMap().getMap()[x][y - 1] != Element.W)
-					-- y;
-			break;
-			
-			case "DOWN"  :
-				if(y + 1 < 18 && game.getMap().getMap()[x][y + 1] != Element.W)
-					++ y;
-			break;
 		}
+		
 		notifyObserver();
 	}
 	
@@ -264,19 +238,19 @@ public class Pacman extends Characters
 		
 		switch(direction)
 		{
-			case "LEFT"  :
+			case Left  :
 				specialLeft();
 				future_x = x - 1;
 			break;
-			case "RIGHT" :
+			case Right :
 				specialRight();
 				future_x = x + 1;
 				break;
-			case "UP" :
+			case Up :
 				specialUp();
 				future_y = y - 1;
 				break;
-			case "DOWN" :
+			case Down :
 				specialDown();
 				future_y = y + 1;
 				break;
@@ -297,7 +271,7 @@ public class Pacman extends Characters
 			break;
 			case W :
 			//	wallCollision();
-				direction = "";
+				direction = Direction.Still;
 			break;
 		}	
 	}
@@ -308,19 +282,19 @@ public class Pacman extends Characters
 		int previous_y = y;
 		switch(previous)
 		{
-			case "LEFT"  :
+			case Left  :
 				previous_x = x - 1;
 			break;
 			
-			case "RIGHT" :
+			case Right :
 				previous_x = x + 1;
 			break;
 			
-			case "UP" :
+			case Up :
 				previous_y = y - 1;
 			break;
 			
-			case "DOWN" :
+			case Down :
 				previous_y = y + 1;
 			break;
 		}
@@ -348,70 +322,18 @@ public class Pacman extends Characters
 		{
 			if(future_x == game.getGhosts()[i].x && future_y == game.getGhosts()[i].y)
 			{
-// on peut faire directement state.ghostCollision(future_x, future_y) mais pb pour superpacman car un arg i en +
-				switch(this.nameState())
-				{
-				case NORMAL : //normal
-					//loseLife();
-					//restartAfterCollision();
-					state.ghostCollision(i,future_x, future_y);	
-					return true;
-
-				case SUPERPACMAN : //superpacman
-					//ghostSuperPacman(i, future_x, future_y);
-					state.ghostCollision(i, future_x, future_y);	
-					return true;
-
-				case INVISIBLE : //invisible
-					//ghostInvisible(future_x, future_y);
-					state.ghostCollision(i, future_x, future_y);	
-					return true;
-				}
+				state.ghostCollision(i, future_x, future_y);		
+				return true;
 			}
 		}
 		return false;
 	}
 	
-/*	public void ghostInvisible(int future_x, int future_y)
-	{
-		if(!wallCollisionPower(future_x, future_y))
-		{
-			move();
-			if(game.getMap().getMap()[future_x][future_y] == Element.G)
-			{
-				for(int j = 0 ; j < game.getGums().length ; ++j)
-					if(game.getGums()[j].x == future_x && game.getGums()[j].y == future_y)
-						eatGum(game.getGums()[j]);
-			}
-			notifyObserver();
-		}
-	} */
-	
-	/*public void ghostSuperPacman(int i, int future_x, int future_y)
-	{
-		if(!wallCollisionPower(future_x, future_y))
-		{
-			move();
-			game.getGhosts()[i].backToCenter();
-			if(game.getMap().getMap()[future_x][future_y] == Element.G)
-			{
-				for(int j = 0 ; j < game.getGums().length ; ++j)
-				{
-					if(game.getGums()[j].x == future_x && game.getGums()[j].y == future_y)
-					{
-						eatGum(game.getGums()[j]);
-					}
-				}
-			}
-			notifyObserver();
-		}
-	}*/
-	
 	public void restartAfterCollision()
 	{
 		x = 3;
 		y = 5;
-		direction = "";
+		direction = Direction.Still;
 		beNormal();
 		game.restartAfterCollision();
 	}

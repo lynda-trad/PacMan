@@ -1,4 +1,4 @@
-public abstract class Characters extends Elements // abstract ou interface?
+public abstract class Characters extends Elements 
 {
 	protected Game game;
 	

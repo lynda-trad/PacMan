@@ -209,7 +209,16 @@ public class Game
 	}
 	
 	////////////////////////////////
-
+	
+	boolean isOut(int x, int y)  //indique si la position suivante du pacman ou du ghost sort de l'écran
+	{
+		if (x < 0 || y < 0)
+			return true;
+		if (x >= 18 || y >= 18)
+			return true;
+		return false;
+	}
+	
 	public void restartAfterCollision()
 	{
 		getGhosts()[0].x = 3;
@@ -283,5 +292,6 @@ public class Game
 	{
 		this.powerTimer = powerTimer;
 	}
-
+	
+	
 }

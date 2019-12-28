@@ -7,48 +7,13 @@ public class GhostNormalState extends GhostState
 	}
 		
 	@Override
-	public void left() 
+	public void move() 
 	{
-		if(ghost.x - 1 >= 0)
+		if(!ghost.game.isOut(ghost.x + ghost.getDirection().getX(), ghost.y + ghost.getDirection().getY()))
 		{
-			if(ghost.x == 0)
-			{
-				ghost.specialLeft();
-			}
-			-- ghost.x;
-
+			ghost.x += ghost.getDirection().getX();
+			ghost.y += ghost.getDirection().getY();
 		}	
-	}
-	
-	@Override
-	public void right() 
-	{
-		if(ghost.x + 1 < 18)
-		{
-			++ ghost.x;
-
-		}	
-	}
-	
-	@Override
-	public void up() 
-	{
-		if(ghost.y == 0)
-			ghost.specialUp();
-		
-		if(ghost.y - 1 >= 0)
-		{
-			-- ghost.y;
-		}
-	}
-		
-	@Override
-	public void down()
-	{
-		if(ghost.y + 1 < 18)
-		{
-			++ ghost.y;
-		}
 	}
 	
 	@Override

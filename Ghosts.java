@@ -2,32 +2,35 @@ import java.util.ArrayList;
 
 public class Ghosts extends Characters
 {
-//	private int state ; 	// 0 = normal, 1 = vulnerable et ralenti
 	private GhostState state;
 
 	private int ralenti;    // incremente a chaque move et si impair on bouge pas
 	
-	private int direction = 0;
+	private Direction direction;
 
 	private ArrayList<Observer> observers;
 	
 	public Ghosts(Game g, int x, int y)
 	{
 		this.game = g;
-//		this.state = 0;
 		this.state = new GhostNormalState(this);
 		this.x = x;
 		this.y = y;
 		this.ralenti = 0;
-		this.direction = 0;
+		this.direction = Direction.Left;
 		this.observers = new ArrayList<Observer>();
 	}
 	
-	public int getDirection() 
+	public Direction getDirection() 
 	{
-		return this.direction;
+		return direction;
 	}
 
+	public void setDirection(Direction direction)
+	{
+		this.direction = direction;
+	}
+	
 	public void addObserver(Observer o)
 	{
 		observers.add(o);
@@ -51,11 +54,6 @@ public class Ghosts extends Characters
 		this.ralenti = ralenti;
 	} 
 	
-/*	public int getState() 
-	{
-		return this.state;
-	}
-*/	
 	public GhostState getGhostState() 
 	{
 		return this.state;
@@ -71,21 +69,13 @@ public class Ghosts extends Characters
 		return state.getState();
 	}
 	
-	
-/*	public void setState(int state) 
-	{
-		this.state = state;
-	}
-*/	
 	public void beNormal()
 	{
-		//this.state = 0;
 		this.changeState(new GhostNormalState(this) );
 	}
 	
 	public void beVulnerable()
 	{
-		//this.state = 1;
 		this.changeState(new VulnerableState(this) );
 
 	}
@@ -97,7 +87,31 @@ public class Ghosts extends Characters
 		this.x = 9;
 		this.y = 9;
 	}
+	
+	public void randomDirection() 
+	{
+		int dir = (int) (Math.random() * 4 + 0);
+		
+		switch(dir)
+		{
+			case 0: 
+				direction = Direction.Left;
+				break;
 
+			case 1: 
+				direction = Direction.Right;
+				break;
+
+			case 2:
+				direction =  Direction.Up;
+				break;
+
+			case 3: 
+				direction = Direction.Down;
+				break;
+		}
+	}
+	
 	public boolean checkWalls()
 	{
 		// verifie si ghost touche un mur pour se rediriger si besoin
@@ -105,41 +119,41 @@ public class Ghosts extends Characters
 		
 		switch(direction)
 		{
-			case 0: // left
+			case Left: // left
 				if(x == 0)
 					specialLeft();
 				if(game.getMap().getMap()[x - 1][y] == Element.W || x - 1 < 0)
 				{
-					direction = (int) (Math.random() * 4 + 0);
+					randomDirection();
 					return true;
 				}
 				else
 					return false;
 		
-			case 1: // right
+			case Right: // right
 				if(game.getMap().getMap()[x + 1][y] == Element.W || x + 1 > 18)
 				{
-					direction = (int) (Math.random() * 4 + 0);
+					randomDirection();
 					return true;
 				}
 				else
 					return false;
 			
-			case 2: // up 
+			case Up: // up 
 				if(y == 0)
 					specialUp();
 				if(game.getMap().getMap()[x][y - 1] == Element.W || y - 1 < 0)
 				{
-					direction = (int) (Math.random() * 4 + 0);
+					randomDirection();
 					return true;
 				}
 				else
 					return false;
 				
-			case 3: // down
+			case Down: // down
 				if(game.getMap().getMap()[x][y + 1] == Element.W || y + 1 > 18)
 				{
-					direction = (int) (Math.random() * 4 + 0);
+					randomDirection();
 					return true;
 				}
 				else
@@ -160,105 +174,30 @@ public class Ghosts extends Characters
 		{
 			switch(direction)
 			{
-				case 0:   // left
-					state.left();
+				case Left: 
+					if(x == 0) 
+						specialLeft();
+					state.move();
 				break;
 				
-				case 1  : //right
-					state.right();
+				case Right  : 
+					state.move();
 				break;
 				
-				case 2 :  // up
-					state.up();
+				case Up :
+					if(y == 0) 
+						specialUp();
+					state.move();
 				break;
 				
-				case 3  : //Down
-					state.down();
+				case Down  : 
+					state.move();
 				break;
 			}
 		}
 		notifyObserver();
 	}
-	/*
-	public void left()
-	{
-		if(x - 1 >= 0)
-		{
-			if(x == 0)
-				specialLeft();
-			if(this.nameState() == GhostState.GState.VULNERABLE)
-			{
-				if(ralenti % 2 == 0)
-				{	-- x;
-					++ralenti;
-				}
-				else
-					++ralenti;
-			}
-			else
-				-- x;
-		}
-	} 
-	
-	public void right()
-	{
-		if(x + 1 < 18)
-		{
-			if(this.nameState() == GhostState.GState.VULNERABLE)
-			{
-				if(ralenti % 2 == 0)
-				{
-					++ x;
-					++ralenti;
-				}
-				else
-					++ralenti;
-			}
-			else 
-				++ x;
-		}
-	}
-	
-	public void up() 
-	{
-		if(y == 0)
-			specialUp();
-		if(y - 1 >= 0)
-		{
-			if(this.nameState() == GhostState.GState.VULNERABLE)
-			{
-				if(ralenti % 2 == 0)
-				{
-					-- y;
-					++ralenti;
-				}
-				else
-					++ralenti;
-			}
-			else 
-				-- y;
-		}
-	}
-	
-	public void down()
-	{
-		if(y + 1 < 18)
-		{
-			if(this.nameState() == GhostState.GState.VULNERABLE)
-			{
-				if(ralenti % 2 == 0)
-				{
-					++ y;
-					++ralenti;
-				}
-				else
-					++ralenti;
-			}
-			else
-				++ y;
-		}
-	}
-	*/
+
 	public void specialLeft()
 	{
 		if( x - 1 < 0 && y == 8)
