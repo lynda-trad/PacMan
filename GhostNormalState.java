@@ -12,8 +12,6 @@ public class GhostNormalState extends GhostState
 		if(!ghost.game.isOut(ghost.c.getX() + ghost.getDirection().getX(), ghost.c.getY() + ghost.getDirection().getY()))
 		{
 			ghost.c = new Coordinate(ghost.c.getX() + ghost.getDirection().getX(), ghost.c.getY() + ghost.getDirection().getY());
-			//ghost.x += ghost.getDirection().getX();
-			//ghost.y += ghost.getDirection().getY();
 		}	
 	}
 	

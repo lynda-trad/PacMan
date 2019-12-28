@@ -10,13 +10,11 @@ public class Ghosts extends Characters
 
 	private ArrayList<Observer> observers;
 	
-	public Ghosts(Game g, int x, int y)
+	public Ghosts(Game g, Coordinate c)
 	{
 		this.game = g;
 		this.state = new GhostNormalState(this);
-		this.c = new Coordinate(x, y);
-		//this.x = x;
-		//this.y = y;
+		this.c = c;
 		this.ralenti = 0;
 		this.direction = Direction.Left;
 		this.observers = new ArrayList<Observer>();
@@ -121,7 +119,7 @@ public class Ghosts extends Characters
 		
 		switch(direction)
 		{
-			case Left: // left
+			case Left	:
 				if(c.getX() == 0)
 					specialLeft();
 				if(game.getMap().getMap()[c.getX() - 1][c.getY()] == Element.W || c.getX() - 1 < 0)
@@ -132,7 +130,7 @@ public class Ghosts extends Characters
 				else
 					return false;
 		
-			case Right: // right
+			case Right	: 
 				if(game.getMap().getMap()[c.getX() + 1][c.getY()] == Element.W || c.getX() + 1 > 18)
 				{
 					randomDirection();
@@ -141,7 +139,7 @@ public class Ghosts extends Characters
 				else
 					return false;
 			
-			case Up: // up 
+			case Up		: 
 				if(c.getY() == 0)
 					specialUp();
 				if(game.getMap().getMap()[c.getX()][c.getY() - 1] == Element.W || c.getY() - 1 < 0)
@@ -152,7 +150,7 @@ public class Ghosts extends Characters
 				else
 					return false;
 				
-			case Down: // down
+			case Down	:
 				if(game.getMap().getMap()[c.getX()][c.getY() + 1] == Element.W || c.getY() + 1 > 18)
 				{
 					randomDirection();
@@ -205,8 +203,6 @@ public class Ghosts extends Characters
 		if( c.getX() - 1 < 0 && c.getY() == 8)
 		{
 			c = new Coordinate(17, 8);
-			//x = 17;
-			//y = 8 ;
 		}
 	}
 	
@@ -215,8 +211,6 @@ public class Ghosts extends Characters
 		if( c.getX() + 1 > 17 && c.getY() == 8)
 		{
 			c = new Coordinate(0, 8);
-			//x =  0;
-			//y =  8;
 		}
 	}
 	
@@ -225,8 +219,6 @@ public class Ghosts extends Characters
 		if( c.getY() - 1 < 0 && c.getX() == 7)
 		{
 			c = new Coordinate(7, 17);
-			//x = 7 ;
-			//y = 17;
 		}
 	}
 	
@@ -235,8 +227,6 @@ public class Ghosts extends Characters
 		if( c.getY() + 1 > 17 && c.getX() == 7)
 		{
 			c = new Coordinate(7, 0);
-			//x =  7;
-			//y =  0;
 		}
 	}
 }

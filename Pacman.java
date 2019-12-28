@@ -224,9 +224,6 @@ public class Pacman extends Characters
 		if(!game.isOut(c.getX() + direction.getX(), c.getY() + direction.getY()) && game.getMap().getMap()[c.getX() + direction.getX()][c.getY() + direction.getY()] != Element.W) 
 		{
 			c = new Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
-			//c.x += direction.getX();
-			//c.y += direction.getY();
-			
 		}
 		
 		notifyObserver();
@@ -333,8 +330,6 @@ public class Pacman extends Characters
 	public void restartAfterCollision()
 	{
 		c = new Coordinate (3, 5);
-		//x = 3;
-		//y = 5;
 		direction = Direction.Still;
 		beNormal();
 		game.restartAfterCollision();
@@ -345,8 +340,6 @@ public class Pacman extends Characters
 		if( c.getX() - 1 < 0 && c.getY() == 8)
 		{
 			c = new Coordinate (18, 8);
-			//x = 18;
-			//y = 8 ;
 		}
 	}
 	
@@ -355,8 +348,6 @@ public class Pacman extends Characters
 		if(  c.getX() + 1 > 17 &&  c.getY() == 8)
 		{
 			c = new Coordinate (-1, 8);
-			//x = -1;
-			//y =  8;
 		}
 	}
 	
@@ -365,8 +356,6 @@ public class Pacman extends Characters
 		if( c.getY()  - 1 < 0 && c.getX() == 7)
 		{
 			c = new Coordinate (7, 18);
-			//x = 7 ;
-			//y = 18;
 		}
 	}
 	
@@ -375,8 +364,6 @@ public class Pacman extends Characters
 		if( c.getY()  + 1 > 17 && c.getX() == 7)
 		{
 			c = new Coordinate (7, -1);
-			//x =  7;
-			//y = -1;
 		}
 	}
 	

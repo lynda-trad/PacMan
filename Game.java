@@ -145,16 +145,15 @@ public class Game
 	{
 		player = new Pacman(this);
 		player.c = new Coordinate(3, 5);
-		//player.x = 3;
-		//player.y = 5;
 	}
 	
 	public void initializeGhosts()
 	{
-		ghosts[0] = new Ghosts(this, 3, 3);
-		ghosts[1] = new Ghosts(this, 16, 3);
-		ghosts[2] = new Ghosts(this, 3, 16);
-		ghosts[3] = new Ghosts(this, 15, 10); 
+		ghosts[0] = new Ghosts(this, new Coordinate(3, 3));
+		ghosts[1] = new Ghosts(this, new Coordinate(16, 3));
+		ghosts[2] = new Ghosts(this, new Coordinate(3, 16));
+		ghosts[3] = new Ghosts(this, new Coordinate(15, 10)); 
+		
 	}
 	
 	//Getter & Setter
@@ -223,20 +222,9 @@ public class Game
 	public void restartAfterCollision()
 	{
 		getGhosts()[0].c = new Coordinate (3, 3);
-		//getGhosts()[0].x = 3;
-		//getGhosts()[0].y = 3;
-		
 		getGhosts()[1].c = new Coordinate (16, 3);
-		//getGhosts()[1].x = 16;
-		//getGhosts()[1].y = 3;
-		
-		getGhosts()[1].c = new Coordinate (3, 16);
-		//getGhosts()[2].x = 3;
-		//getGhosts()[2].y = 16;
-		
-		getGhosts()[1].c = new Coordinate (15, 10);
-		//getGhosts()[3].x = 15;
-		//getGhosts()[3].y = 10;
+		getGhosts()[2].c = new Coordinate (3, 16);
+		getGhosts()[3].c = new Coordinate (15, 10);
 		
 		getGhosts()[0].beNormal();
 		getGhosts()[1].beNormal();
