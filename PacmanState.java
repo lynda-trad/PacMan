@@ -15,7 +15,7 @@ public abstract class PacmanState
 	}
 		
 	public abstract PState getState();
-	public abstract void ghostCollision(int i, int x, int y);
+	public abstract void ghostCollision(int i, Coordinate c);
 		
 }
 		

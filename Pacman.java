@@ -6,7 +6,6 @@ public class Pacman extends Characters
 	private int lives; 		// initialement trois vies
     private PacmanState state;
     
-
 	private ArrayList<Observer> observers;
 	
 	private Direction direction;
@@ -221,9 +220,12 @@ public class Pacman extends Characters
 	@Override
 	public void move()
 	{
-		if(!game.isOut(c.getX() + direction.getX(), c.getY() + direction.getY()) && game.getMap().getMap()[c.getX() + direction.getX()][c.getY() + direction.getY()] != Element.W) 
+		Coordinate dir = new  Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
+		
+		// Si la position suivante du pacman ne sort pas de l'écran et ne correspond pas à un mur
+		if(!game.isOut(dir) && game.getMap().getMap()[dir.getX()][dir.getY()] != Element.W) 
 		{
-			c = new Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
+			c = dir;
 		}
 		
 		notifyObserver();
@@ -231,82 +233,61 @@ public class Pacman extends Characters
 	
 	public void cross()
 	{
-		int future_x = c.getX();
-		int future_y = c.getY();
+		Coordinate current = new Coordinate (c.getX(), c.getY());
+		Coordinate future = new Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
 		
 		switch(direction)
 		{
 			case Left  :
 				specialLeft();
-				future_x = c.getX() - 1;
-			break;
+				break;
 			case Right :
 				specialRight();
-				future_x = c.getX() + 1;
 				break;
 			case Up :
 				specialUp();
-				future_y = c.getY() - 1;
 				break;
 			case Down :
 				specialDown();
-				future_y = c.getY() + 1;
 				break;
 		}
 		
 		// si pas de collision fantome on verifie le reste
-		if(!ghostCollision(future_x, future_y) && !ghostCollision(c.getX(),c.getY()))
-		switch(game.getMap().getMap()[future_x][future_y])
+		if(!ghostCollision(future) && !ghostCollision(current))
 		{
-			case N :  // nothing
-				move();
-			break;
-			case G  : // gums
-				move();
-				for(int i = 0 ; i < game.getGums().length ; ++i)
-					if(game.getGums()[i].x == future_x && game.getGums()[i].y == future_y)
-						eatGum(game.getGums()[i]);
-			break;
-			case W :
-			//	wallCollision();
-				direction = Direction.Still;
-			break;
+			switch(game.getMap().getMap()[c.getX() + direction.getX()][c.getY() + direction.getY()])
+			{
+				case N :  // nothing
+					move();
+					break;
+				case G  : // gums
+					move();
+					for(int i = 0 ; i < game.getGums().length ; ++i)
+						if(game.getGums()[i].c.equals(future))
+							eatGum(game.getGums()[i]);
+					break;
+				case W :
+					//	wallCollision();
+					direction = Direction.Still;
+					break;
+			}
 		}	
 	}
 	
 	public void wallCollision()
 	{
-		int previous_x = c.getX();
-		int previous_y = c.getY();
-		switch(previous)
-		{
-			case Left  :
-				previous_x = c.getX() - 1;
-			break;
-			
-			case Right :
-				previous_x = c.getX() + 1;
-			break;
-			
-			case Up :
-				previous_y = c.getY() - 1;
-			break;
-			
-			case Down :
-				previous_y = c.getY() + 1;
-			break;
-		}
+		Coordinate dir = new  Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
 		
-		if(game.getMap().getMap()[previous_x][previous_y] != Element.W)
+		if(game.getMap().getMap()[dir.getX()][dir.getY()] != Element.W)
 		{
 			setDirection(previous);
 			move();
 		}
 	}
 	
-	public boolean wallCollisionPower(int future_x, int future_y)
+	public boolean wallCollisionPower(Coordinate future)
 	{
-		if(game.getMap().getMap()[future_x][future_y] == Element.W)
+		if(game.getMap().getMap()[future.getX()][future.getY()] == Element.W)
 		{
 			return true;
 		}
@@ -314,13 +295,13 @@ public class Pacman extends Characters
 			return false;
 	}
 	
-	public boolean ghostCollision(int future_x, int future_y)
+	public boolean ghostCollision(Coordinate c)
 	{
 		for(int i = 0 ; i < game.getGhosts().length; ++i)
 		{
-			if(future_x == game.getGhosts()[i].c.getX() && future_y == game.getGhosts()[i].c.getY())
+			if(game.getGhosts()[i].c.equals(c))
 			{
-				state.ghostCollision(i, future_x, future_y);		
+				state.ghostCollision(i, c);		
 				return true;
 			}
 		}

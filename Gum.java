@@ -3,15 +3,12 @@ public abstract class Gum extends Elements
 {
 	protected int 	  type;     			// 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert
 	protected int 	  score; 				// 100 = Blue, 300 = Violet, 500 = Orange, 1000 = Vert
+	protected Coordinate c;
 	
-	protected int 	  x;
-	protected int     y;
-	
-	public Gum(int type, int x, int y)
+	public Gum(int type, Coordinate c)
 	{
 		this.type = type;
-		this.x = x; 
-		this.y = y;
+		this.c = c;
 		
 		switch(type)
 		{

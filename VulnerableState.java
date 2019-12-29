@@ -9,12 +9,14 @@ public class VulnerableState extends GhostState
 	@Override
 	public void move() 
 	{
-		if(!ghost.game.isOut(ghost.c.getX() + ghost.getDirection().getX(), ghost.c.getY() + ghost.getDirection().getY()))
+		Coordinate dir = new  Coordinate (ghost.c.getX() + ghost.getDirection().getX(), ghost.c.getY() + ghost.getDirection().getY());
+
+		if(!ghost.game.isOut(dir))
 		{
 			int ralenti = ghost.getRalenti();
 			if(ralenti % 2 == 0)
 			{
-				ghost.c = new Coordinate(ghost.c.getX() + ghost.getDirection().getX(), ghost.c.getY() + ghost.getDirection().getY());
+				ghost.c = dir;
 				ghost.setRalenti(++ ralenti);
 			}
 			else

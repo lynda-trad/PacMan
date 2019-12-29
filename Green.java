@@ -7,9 +7,9 @@ public class Green extends Gum
 		Modifie la structure du labyrinthe
 	*/
 	
-	public Green(int type, int x, int y) 
+	public Green(int type, Coordinate c) 
 	{	
-		super(3, x, y);
+		super(3, c);
 	}
 	
 	

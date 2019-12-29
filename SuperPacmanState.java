@@ -8,17 +8,17 @@ public class SuperPacmanState extends PacmanState
 	}
 		
 	@Override
-	public void ghostCollision(int i, int future_x, int future_y) 
+	public void ghostCollision(int i, Coordinate c) 
 	{
-		if(!pacman.wallCollisionPower(future_x, future_y))
+		if(!pacman.wallCollisionPower(c))
 		{
 			pacman.move();
 			pacman.game.getGhosts()[i].backToCenter();
-			if(pacman.game.getMap().getMap()[future_x][future_y] == Element.G)
+			if(pacman.game.getMap().getMap()[c.getX()][c.getY()] == Element.G)
 			{
 				for(int j = 0 ; j < pacman.game.getGums().length ; ++j)
 				{
-					if(pacman.game.getGums()[j].x == future_x && pacman.game.getGums()[j].y == future_y)
+					if(pacman.game.getGums()[j].c.equals(c))
 					{
 						pacman.eatGum(pacman.game.getGums()[j]);
 					}
@@ -26,9 +26,8 @@ public class SuperPacmanState extends PacmanState
 			}
 			pacman.notifyObserver();
 		}
-			
-		
 	}
+	
 	@Override
 	public PState getState()
 	{

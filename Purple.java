@@ -8,9 +8,9 @@ public class Purple extends Gum
 		Quand le pacman est invisible, il pourra traverser les fantomes sans perdre de vie.
 	*/
 	
-	public Purple(int type, int x, int y)
+	public Purple(int type, Coordinate c)
 	{
-		super(1,x,y);
+		super(1, c);
 	}
 	
 }

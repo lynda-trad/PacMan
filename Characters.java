@@ -1,4 +1,4 @@
-public abstract class Characters extends Elements 
+public abstract class Characters
 {
 	protected Game game;
 	protected Coordinate c;

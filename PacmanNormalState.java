@@ -7,7 +7,7 @@ public class PacmanNormalState extends PacmanState
 	} 
 		
 	@Override
-	public void ghostCollision(int i, int x, int y) 
+	public void ghostCollision(int i, Coordinate c) 
 	{
 		pacman.loseLife();
 		pacman.restartAfterCollision();	

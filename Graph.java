@@ -83,17 +83,17 @@ public class Graph extends JPanel implements Observer
 	{
 		switch(game.getPlayer().nameState())
 		{
-			case NORMAL : // normal
+			case NORMAL : 
 				g.setColor(Color.YELLOW);
 				g.fillOval(game.getPlayer().c.getX() * SCALE, game.getPlayer().c.getY() * SCALE, SCALE, SCALE);
 			break;
 			
-			case SUPERPACMAN : // superpacman 
+			case SUPERPACMAN : 
 				g.setColor(Color.ORANGE);
 				g.fillOval(game.getPlayer().c.getX() * SCALE, game.getPlayer().c.getY() * SCALE, SCALE, SCALE);
 			break;
 			
-			case INVISIBLE : // invisible
+			case INVISIBLE : 
 				g.setColor(paleYellow);
 				g.fillOval(game.getPlayer().c.getX() * SCALE, game.getPlayer().c.getY() * SCALE, SCALE, SCALE);
 			break;
@@ -123,7 +123,7 @@ public class Graph extends JPanel implements Observer
 	{
 		for(int k = 0 ; k < game.getGums().length; ++k)
 		{
-			if(i == game.getGums()[k].x && j == game.getGums()[k].y)
+			if(i == game.getGums()[k].c.getX() && j == game.getGums()[k].c.getY())
 			{
 				switch(game.getGums()[k].getType())
 				{

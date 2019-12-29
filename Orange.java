@@ -10,9 +10,9 @@ public class Orange extends Gum
 		ghosts reviennent au centre du labyrinthe si ils sont touches par le pacman.
 	*/
 	
-	public Orange(int type, int x, int y)
+	public Orange(int type, Coordinate c)
 	{
-		super(2, x, y); 
+		super(2, c); 
 	}
 	
 	

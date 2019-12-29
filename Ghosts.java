@@ -3,13 +3,13 @@ import java.util.ArrayList;
 public class Ghosts extends Characters
 {
 	private GhostState state;
-
+	
 	private int ralenti;    // incremente a chaque move et si impair on bouge pas
 	
 	private Direction direction;
-
-	private ArrayList<Observer> observers;
 	
+	private ArrayList<Observer> observers;
+
 	public Ghosts(Game g, Coordinate c)
 	{
 		this.game = g;
@@ -84,10 +84,8 @@ public class Ghosts extends Characters
 	public void backToCenter() 
 	{   
 		c = new Coordinate (9, 9);
-		//this.x = 9;
-		//this.y = 9;
 	}
-	;
+	
 	public void randomDirection() 
 	{
 		int dir = (int) (Math.random() * 4 + 0);
@@ -96,19 +94,19 @@ public class Ghosts extends Characters
 		{
 			case 0: 
 				direction = Direction.Left;
-				break;
+			break;
 
 			case 1: 
 				direction = Direction.Right;
-				break;
+			break;
 
 			case 2:
 				direction =  Direction.Up;
-				break;
+			break;
 
 			case 3: 
 				direction = Direction.Down;
-				break;
+			break;
 		}
 	}
 	
@@ -122,46 +120,21 @@ public class Ghosts extends Characters
 			case Left	:
 				if(c.getX() == 0)
 					specialLeft();
-				if(game.getMap().getMap()[c.getX() - 1][c.getY()] == Element.W || c.getX() - 1 < 0)
-				{
-					randomDirection();
-					return true;
-				}
-				else
-					return false;
-		
-			case Right	: 
-				if(game.getMap().getMap()[c.getX() + 1][c.getY()] == Element.W || c.getX() + 1 > 18)
-				{
-					randomDirection();
-					return true;
-				}
-				else
-					return false;
-			
+			break;
 			case Up		: 
 				if(c.getY() == 0)
 					specialUp();
-				if(game.getMap().getMap()[c.getX()][c.getY() - 1] == Element.W || c.getY() - 1 < 0)
-				{
-					randomDirection();
-					return true;
-				}
-				else
-					return false;
-				
-			case Down	:
-				if(game.getMap().getMap()[c.getX()][c.getY() + 1] == Element.W || c.getY() + 1 > 18)
-				{
-					randomDirection();
-					return true;
-				}
-				else
-					return false;
-				
-			default :
-				return false;
+			break;
 		}
+		
+		Coordinate dir = new  Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
+		if(game.getMap().getMap()[dir.getX()][ dir.getY()] == Element.W || game.isOut(dir))
+		{
+			randomDirection();
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	@Override	
@@ -177,24 +150,17 @@ public class Ghosts extends Characters
 				case Left	: 
 					if(c.getX() == 0) 
 						specialLeft();
-					state.move();
-				break;
-				
-				case Right  : 
-					state.move();
 				break;
 				
 				case Up 	:
 					if(c.getY() == 0) 
 						specialUp();
-					state.move();
-				break;
-				
-				case Down  	: 
-					state.move();
 				break;
 			}
+	
+			state.move();
 		}
+		
 		notifyObserver();
 	}
 
