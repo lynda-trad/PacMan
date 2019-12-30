@@ -11,7 +11,7 @@ public class VulnerableState extends GhostState
 	{
 		Coordinate dir = new  Coordinate (ghost.c.getX() + ghost.getDirection().getX(), ghost.c.getY() + ghost.getDirection().getY());
 
-		if(!ghost.game.isOut(dir))
+		if(!ghost.isOut(dir))
 		{
 			int ralenti = ghost.getRalenti();
 			if(ralenti % 2 == 0)
