@@ -1,5 +1,5 @@
 
-public abstract class Gum extends Elements
+public abstract class Gum
 {
 	protected int 	  type;     			// 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert
 	protected int 	  score; 				// 100 = Blue, 300 = Violet, 500 = Orange, 1000 = Vert

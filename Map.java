@@ -1,5 +1,5 @@
 
-public class Map extends Elements
+public class Map
 {
 	
 	private Element[][] map = 
@@ -24,6 +24,13 @@ public class Map extends Elements
 			{Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.N, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W, Element.W},
 	};
 	
+	/*Chaque element sera reconnu par un int qui lui correspond
+	 Rien   = 0
+	 Murs 	= 1
+	 Joueur = 2
+	 Ghosts = 3
+	 Gums 	= 4
+	 */
 	
 	private int length = 18;
 	
@@ -43,11 +50,6 @@ public class Map extends Elements
 	public Element[][] getMap() 
 	{
 		return map;
-	}
-	
-	public Element getElement() 
-	{
-		return this.element;
 	}
 	
 	////////////////////////////////////////////////
