@@ -210,14 +210,6 @@ public class Game
 	
 	////////////////////////////////
 	
-	boolean isOut(Coordinate c)  //indique si la position du pacman ou du ghost sort de l'écran
-	{
-		if (c.getX() < 0 || c.getY() < 0)
-			return true;
-		if (c.getX() >= 18 || c.getY() >= 18)
-			return true;
-		return false;
-	}
 	
 	public void restartAfterCollision()
 	{

@@ -223,7 +223,7 @@ public class Pacman extends Characters
 		Coordinate dir = new  Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
 		
 		// Si la position suivante du pacman ne sort pas de l'écran et ne correspond pas à un mur
-		if(!game.isOut(dir) && game.getMap().getMap()[dir.getX()][dir.getY()] != Element.W) 
+		if(!isOut(dir) && game.getMap().getMap()[dir.getX()][dir.getY()] != Element.W) 
 		{
 			c = dir;
 		}
@@ -231,6 +231,7 @@ public class Pacman extends Characters
 		notifyObserver();
 	}
 	
+	@SuppressWarnings("incomplete-switch")
 	public void cross()
 	{
 		Coordinate current = new Coordinate (c.getX(), c.getY());
@@ -249,6 +250,8 @@ public class Pacman extends Characters
 				break;
 			case Down :
 				specialDown();
+				break;
+			default:
 				break;
 		}
 		

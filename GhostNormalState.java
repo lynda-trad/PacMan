@@ -11,7 +11,7 @@ public class GhostNormalState extends GhostState
 	{
 		Coordinate dir = new  Coordinate (ghost.c.getX() + ghost.getDirection().getX(), ghost.c.getY() + ghost.getDirection().getY());
 
-		if(!ghost.game.isOut(dir))
+		if(!ghost.isOut(dir))
 		{
 			ghost.c = dir;
 		}	

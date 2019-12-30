@@ -110,6 +110,7 @@ public class Ghosts extends Characters
 		}
 	}
 	
+	@SuppressWarnings("incomplete-switch")
 	public boolean checkWalls()
 	{
 		// verifie si ghost touche un mur pour se rediriger si besoin
@@ -117,18 +118,21 @@ public class Ghosts extends Characters
 		
 		switch(direction)
 		{
-			case Left	:
+			case Left:
 				if(c.getX() == 0)
 					specialLeft();
 			break;
-			case Up		: 
+			case Up	: 
 				if(c.getY() == 0)
 					specialUp();
 			break;
+
+			default:
+				break;
 		}
 		
 		Coordinate dir = new  Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
-		if(game.getMap().getMap()[dir.getX()][ dir.getY()] == Element.W || game.isOut(dir))
+		if(game.getMap().getMap()[dir.getX()][ dir.getY()] == Element.W || isOut(dir))
 		{
 			randomDirection();
 			return true;
@@ -137,6 +141,7 @@ public class Ghosts extends Characters
 			return false;
 	}
 	
+	@SuppressWarnings("incomplete-switch")
 	@Override	
 	public void move()
 	{
@@ -147,15 +152,18 @@ public class Ghosts extends Characters
 		{
 			switch(direction)
 			{
-				case Left	: 
+				case Left: 
 					if(c.getX() == 0) 
 						specialLeft();
 				break;
 				
-				case Up 	:
+				case Up:
 					if(c.getY() == 0) 
 						specialUp();
 				break;
+
+				default:
+					break;
 			}
 	
 			state.move();
