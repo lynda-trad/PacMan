@@ -45,10 +45,10 @@ public class Graph extends JPanel implements Observer
 			{
 				switch(this.game.getMap().getMap()[i][j])
 				{
-					case W :
+					case Map.W :
 						drawWalls(g, i, j);
 					break;
-					case G : 
+					case Map.G : 
 						drawGums(g, i, j);
 					break;
 					default :

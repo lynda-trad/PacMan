@@ -169,7 +169,7 @@ public class Pacman extends Characters
 	{
 		this.addScore(g);
 		
-		game.getMap().getMap()[c.getX()][c.getY()] = Element.N;
+		game.getMap().getMap()[c.getX()][c.getY()] = Map.N;
 		game.decCompteurGum();
 	}
 	
@@ -183,7 +183,7 @@ public class Pacman extends Characters
 			game.getGhosts()[i].beNormal();
 		}
 
-		game.getMap().getMap()[c.getX()][c.getY()] = Element.N;
+		game.getMap().getMap()[c.getX()][c.getY()] = Map.N;
 		game.decCompteurGum();
 		
 		game.setPowerTimer(fullTimer);
@@ -199,7 +199,7 @@ public class Pacman extends Characters
 			game.getGhosts()[i].beVulnerable();
 		}
 
-		game.getMap().getMap()[c.getX()][c.getY()] = Element.N;
+		game.getMap().getMap()[c.getX()][c.getY()] = Map.N;
 		game.decCompteurGum();
 		
 		game.setPowerTimer(fullTimer);
@@ -211,7 +211,7 @@ public class Pacman extends Characters
 		
 		game.getMap().setNewMap();
 		
-		game.getMap().getMap()[c.getX()][c.getY()] = Element.N;
+		game.getMap().getMap()[c.getX()][c.getY()] = Map.N;
 		game.decCompteurGum();
 	}
 
@@ -223,7 +223,7 @@ public class Pacman extends Characters
 		Coordinate dir = new  Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
 		
 		// Si la position suivante du pacman ne sort pas de l'écran et ne correspond pas à un mur
-		if(!isOut(dir) && game.getMap().getMap()[dir.getX()][dir.getY()] != Element.W) 
+		if(!isOut(dir) && game.getMap().getMap()[dir.getX()][dir.getY()] != Map.W) 
 		{
 			c = dir;
 		}
@@ -260,16 +260,16 @@ public class Pacman extends Characters
 		{
 			switch(game.getMap().getMap()[c.getX() + direction.getX()][c.getY() + direction.getY()])
 			{
-				case N :  // nothing
+				case Map.N :  // nothing
 					move();
 					break;
-				case G  : // gums
+				case Map.G  : // gums
 					move();
 					for(int i = 0 ; i < game.getGums().length ; ++i)
 						if(game.getGums()[i].c.equals(future))
 							eatGum(game.getGums()[i]);
 					break;
-				case W :
+				case Map.W :
 					//	wallCollision();
 					direction = Direction.Still;
 					break;
@@ -281,7 +281,7 @@ public class Pacman extends Characters
 	{
 		Coordinate dir = new  Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
 		
-		if(game.getMap().getMap()[dir.getX()][dir.getY()] != Element.W)
+		if(game.getMap().getMap()[dir.getX()][dir.getY()] != Map.W)
 		{
 			setDirection(previous);
 			move();
@@ -290,7 +290,7 @@ public class Pacman extends Characters
 	
 	public boolean wallCollisionPower(Coordinate future)
 	{
-		if(game.getMap().getMap()[future.getX()][future.getY()] == Element.W)
+		if(game.getMap().getMap()[future.getX()][future.getY()] == Map.W)
 		{
 			return true;
 		}

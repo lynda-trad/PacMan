@@ -132,7 +132,7 @@ public class Ghosts extends Characters
 		}
 		
 		Coordinate dir = new  Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
-		if(game.getMap().getMap()[dir.getX()][ dir.getY()] == Element.W || isOut(dir))
+		if(game.getMap().getMap()[dir.getX()][ dir.getY()] == Map.W || isOut(dir))
 		{
 			randomDirection();
 			return true;

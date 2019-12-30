@@ -14,7 +14,7 @@ public class SuperPacmanState extends PacmanState
 		{
 			pacman.move();
 			pacman.game.getGhosts()[i].backToCenter();
-			if(pacman.game.getMap().getMap()[c.getX()][c.getY()] == Element.G)
+			if(pacman.game.getMap().getMap()[c.getX()][c.getY()] == Map.G)
 			{
 				for(int j = 0 ; j < pacman.game.getGums().length ; ++j)
 				{
