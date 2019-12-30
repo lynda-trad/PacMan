@@ -27,8 +27,6 @@ public class Map
 	/*Chaque element sera reconnu par un int qui lui correspond
 	 Rien   = 0
 	 Murs 	= 1
-	 Joueur = 2
-	 Ghosts = 3
 	 Gums 	= 4
 	 */
 	
