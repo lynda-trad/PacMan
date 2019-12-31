@@ -1,4 +1,3 @@
-
 public class VulnerableState extends GhostState 
 {	
 	protected VulnerableState(Ghosts ghost) 

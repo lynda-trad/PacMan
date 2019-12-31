@@ -1,4 +1,3 @@
-
 public class GhostNormalState extends GhostState 
 {	
 	protected GhostNormalState(Ghosts ghost) 
@@ -21,6 +20,5 @@ public class GhostNormalState extends GhostState
 	public GState getState()
 	{
 		return GState.NORMAL;
-	}
-	
+	}	
 }

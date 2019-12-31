@@ -4,7 +4,6 @@ public class App
 {
 	public static void main(String[] args) 
 	{
-		// cree un Jframe
 		Game game = new Game();
 		
 		Graph graph = new Graph(game);

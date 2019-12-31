@@ -1,4 +1,3 @@
-
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -36,6 +35,7 @@ public class MyListener extends KeyAdapter
 	    		p.setDirection(Direction.Right);
 	        break;
 	     }
+	    
 	    p.notifyObserver();
 	}	
 }

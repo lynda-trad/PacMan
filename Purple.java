@@ -1,4 +1,3 @@
-
 public class Purple extends Gum
 {
 	/*
@@ -12,5 +11,4 @@ public class Purple extends Gum
 	{
 		super(1, c);
 	}
-	
 }

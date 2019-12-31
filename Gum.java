@@ -1,4 +1,3 @@
-
 public abstract class Gum
 {
 	protected int 	  type;     			// 0 = Blue, 1 = Violet, 2 = Orange, 3 = Vert
@@ -30,8 +29,8 @@ public abstract class Gum
 			
 			default:
 				this.score = 100;
+			break;
 		}
-		
 	}
 	
 	// Setter & Getter
@@ -50,8 +49,4 @@ public abstract class Gum
 	{
 		return this.score;
 	}
-
-	/////////////////////////////////////
-	
-	
 }

@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Pacman extends Characters
 {
-	private int score;	    // score du player
-	private int lives; 		// initialement trois vies
+	private int score;	   
+	private int lives;
     private PacmanState state;
     
 	private ArrayList<Observer> observers;
@@ -20,7 +20,7 @@ public class Pacman extends Characters
 	{
 		this.game  	   =  g;
 		this.score 	   =  0;
-		this.state = new PacmanNormalState(this);
+		this.state 	   = new PacmanNormalState(this);
 		this.lives 	   =  3;
 		this.direction = Direction.Still;
 		this.previous  = Direction.Still;		
@@ -222,7 +222,6 @@ public class Pacman extends Characters
 	{
 		Coordinate dir = new  Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
 		
-		// Si la position suivante du pacman ne sort pas de l'écran et ne correspond pas à un mur
 		if(!isOut(dir) && game.getMap().getMap()[dir.getX()][dir.getY()] != Map.W) 
 		{
 			c = dir;
@@ -241,38 +240,42 @@ public class Pacman extends Characters
 		{
 			case Left  :
 				specialLeft();
-				break;
+			break;
+			
 			case Right :
 				specialRight();
-				break;
+			break;
+			
 			case Up :
 				specialUp();
-				break;
+			break;
+			
 			case Down :
 				specialDown();
-				break;
+			break;
+			
 			default:
-				break;
+			break;
 		}
 		
-		// si pas de collision fantome on verifie le reste
 		if(!ghostCollision(future) && !ghostCollision(current))
 		{
 			switch(game.getMap().getMap()[c.getX() + direction.getX()][c.getY() + direction.getY()])
 			{
 				case Map.N :  // nothing
 					move();
-					break;
-				case Map.G  : // gums
+				break;
+				
+				case Map.G : // gums
 					move();
 					for(int i = 0 ; i < game.getGums().length ; ++i)
 						if(game.getGums()[i].c.equals(future))
 							eatGum(game.getGums()[i]);
-					break;
+				break;
+				
 				case Map.W :
-					//	wallCollision();
 					direction = Direction.Still;
-					break;
+				break;
 			}
 		}	
 	}
@@ -350,5 +353,4 @@ public class Pacman extends Characters
 			c = new Coordinate (7, -1);
 		}
 	}
-	
 }

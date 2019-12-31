@@ -15,5 +15,4 @@ public abstract class GhostState
 		
 	public abstract GState getState();
 	public abstract void move();
-
 }

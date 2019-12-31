@@ -1,8 +1,5 @@
-
 import java.awt.Color;
 import java.awt.Graphics;
-
-//import javax.swing.JButton;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -20,24 +17,18 @@ public class Graph extends JPanel implements Observer
 	private Color ghostSpawn = new Color(114,0,0);
 	private Color blue_gum	 = new Color(60,180,217);
 	
-	//private JButton jbutton;
-	
 	public Graph(Game g) 
 	{
 		this.game = g;
 		this.setSize(width, height + 30);
-
-		//jlabel.setLocation(0, 0);
-		//jlabel.setForeground(Color.WHITE);
 	}
 	
 	@Override
-	public void paintComponent(Graphics g) //appelée par repaint 
+	public void paintComponent(Graphics g) 
 	{
 		super.paintComponent(g);
 		
 		setBackground(Color.BLACK);
-		//set background color a gris	
 		
 		for(int i = 0 ; i < this.game.getMap().getLength() ; ++i)
 		{
@@ -48,9 +39,11 @@ public class Graph extends JPanel implements Observer
 					case Map.W :
 						drawWalls(g, i, j);
 					break;
+					
 					case Map.G : 
 						drawGums(g, i, j);
 					break;
+					
 					default :
 					break;
 				}
@@ -104,19 +97,17 @@ public class Graph extends JPanel implements Observer
 	{
 		for(int i = 0 ; i < 4 ; ++i)
 		switch(game.getGhosts()[i].nameState())
-			{
-				case NORMAL :
-					g.setColor(Color.RED);
-					g.fillOval(game.getGhosts()[i].c.getX() * SCALE, game.getGhosts()[i].c.getY() * SCALE, SCALE, SCALE);
-				break;
+		{
+			case NORMAL :
+				g.setColor(Color.RED);
+				g.fillOval(game.getGhosts()[i].c.getX() * SCALE, game.getGhosts()[i].c.getY() * SCALE, SCALE, SCALE);
+			break;
 				
-				case VULNERABLE :
-					g.setColor(Color.BLUE);
-					g.fillOval(game.getGhosts()[i].c.getX() * SCALE, game.getGhosts()[i].c.getY() * SCALE, SCALE, SCALE);
-				break;
-			}
-
-		// couleur non imposée apart bleu quand vulnerable
+			case VULNERABLE :
+				g.setColor(Color.BLUE);
+				g.fillOval(game.getGhosts()[i].c.getX() * SCALE, game.getGhosts()[i].c.getY() * SCALE, SCALE, SCALE);
+			break;
+		}
 	}
 	
 	public void drawGums(Graphics g, int i, int j)
@@ -127,18 +118,21 @@ public class Graph extends JPanel implements Observer
 			{
 				switch(game.getGums()[k].getType())
 				{
-				case 0 :
-					drawBlueGum(g, i, j);
-				break;
-				case 1 :
-					drawPurpleGum(g, i ,j);
-				break;
-				case 2 :
-					drawOrangeGum(g, i ,j);
-				break;
-				case 3 :
-					drawGreenGum(g, i ,j);
-				break;
+					case 0 :
+						drawBlueGum(g, i, j);
+					break;
+
+					case 1 :
+						drawPurpleGum(g, i ,j);
+					break;
+
+					case 2 :
+						drawOrangeGum(g, i ,j);
+					break;
+
+					case 3 :
+						drawGreenGum(g, i ,j);
+					break;
 				}
 			}			
 		}
@@ -149,6 +143,7 @@ public class Graph extends JPanel implements Observer
 		int minScale = SCALE - SCALE/2;
 		int i_center = i * SCALE + 5;
 		int j_center = j * SCALE + 5;
+		
 		g.setColor(blue_gum);
 		g.fillOval(i_center, j_center, minScale, minScale);
 	}
@@ -158,6 +153,7 @@ public class Graph extends JPanel implements Observer
 		int minScale = SCALE - SCALE/2;
 		int i_center = i * SCALE + 5;
 		int j_center = j * SCALE + 5;
+		
 		g.setColor(purple);
 		g.fillOval(i_center, j_center, minScale, minScale);
 	}
@@ -167,6 +163,7 @@ public class Graph extends JPanel implements Observer
 		int minScale = SCALE - SCALE/2;
 		int i_center = i * SCALE + 5;
 		int j_center = j * SCALE + 5;
+		
 		g.setColor(Color.ORANGE);
 		g.fillOval(i_center, j_center, minScale, minScale);
 	}
@@ -176,6 +173,7 @@ public class Graph extends JPanel implements Observer
 		int minScale = SCALE - SCALE/2;
 		int i_center = i * SCALE + 5;
 		int j_center = j * SCALE + 5;
+		
 		g.setColor(Color.GREEN);
 		g.fillOval(i_center, j_center, minScale, minScale);
 	}

@@ -1,4 +1,3 @@
-//import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class Game 
@@ -156,7 +155,7 @@ public class Game
 		
 	}
 	
-	//Getter & Setter
+	//Setter & getter
 
 	public int getCompteurGum() 
 	{
@@ -209,8 +208,7 @@ public class Game
 	}
 	
 	////////////////////////////////
-	
-	
+		
 	public void restartAfterCollision()
 	{
 		getGhosts()[0].c = new Coordinate (3, 3);
@@ -230,6 +228,7 @@ public class Game
 			JOptionPane.showMessageDialog(null, "Too bad, you lost ! Your score : " + player.getScore());
 		else
 			JOptionPane.showMessageDialog(null, "Great job, you won ! Your score : " + player.getScore());
+		
 		System.exit(0);
 	}
 	
@@ -277,6 +276,4 @@ public class Game
 	{
 		this.powerTimer = powerTimer;
 	}
-	
-	
 }

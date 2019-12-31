@@ -1,4 +1,3 @@
-
 public class Green extends Gum
 {
 	/*
@@ -10,8 +9,6 @@ public class Green extends Gum
 	public Green(int type, Coordinate c) 
 	{	
 		super(3, c);
-	}
-	
-	
+	}	
 }
  

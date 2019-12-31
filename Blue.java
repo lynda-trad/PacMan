@@ -5,9 +5,9 @@ public class Blue extends Gum
 		100
 		rien
 	*/
+	
 	public Blue(int type, Coordinate c)
 	{
 		super(0, c);  
 	}
-
 }

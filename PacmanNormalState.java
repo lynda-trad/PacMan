@@ -1,4 +1,3 @@
-
 public class PacmanNormalState extends PacmanState
 {	
 	public PacmanNormalState(Pacman pacman) 
@@ -18,5 +17,4 @@ public class PacmanNormalState extends PacmanState
 	{
 		return PState.NORMAL;
 	}
-		
 }

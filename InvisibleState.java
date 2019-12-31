@@ -1,4 +1,3 @@
-
 public class InvisibleState extends PacmanState
 {
 
@@ -13,6 +12,7 @@ public class InvisibleState extends PacmanState
 		if(!pacman.wallCollisionPower(c))
 		{
 			pacman.move();
+			
 			if(pacman.game.getMap().getMap()[c.getX()][c.getY()] == Map.G)
 			{
 				for(int j = 0 ; j < pacman.game.getGums().length ; ++j)
@@ -23,6 +23,7 @@ public class InvisibleState extends PacmanState
 					}
 				}
 			}
+			
 			pacman.notifyObserver();
 		}
 	}

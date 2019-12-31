@@ -4,7 +4,7 @@ public class Ghosts extends Characters
 {
 	private GhostState state;
 	
-	private int ralenti;    // incremente a chaque move et si impair on bouge pas
+	private int ralenti;    	// incremente a chaque move et si impair on bouge pas
 	
 	private Direction direction;
 	
@@ -122,13 +122,14 @@ public class Ghosts extends Characters
 				if(c.getX() == 0)
 					specialLeft();
 			break;
+			
 			case Up	: 
 				if(c.getY() == 0)
 					specialUp();
 			break;
 
 			default:
-				break;
+			break;
 		}
 		
 		Coordinate dir = new  Coordinate (c.getX() + direction.getX(), c.getY() + direction.getY());
@@ -163,7 +164,7 @@ public class Ghosts extends Characters
 				break;
 
 				default:
-					break;
+				break;
 			}
 	
 			state.move();

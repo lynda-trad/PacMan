@@ -1,4 +1,3 @@
-
 public class Map
 {
 	public static final char N = 'N';
@@ -28,13 +27,6 @@ public class Map
 	};
 	
 	private int length = 18;
-	
-	/*
-	 * On met que les pacgum, les murs et le vide 
-	 * comme ca si fantome passe sur pacgum, 
-	 * lemplacement ne devient pas vide quand il se fait manger par superpacman
-	 * et emplacement de gum ne se fait pas ecraser par celui du ghost
-	 */
 
 	public Map()
 	{
@@ -71,7 +63,6 @@ public class Map
 		
 		map[16][15]= N;
 		
-		//map[13][11]= Element.W;
 		map[14][3] = W;
 		map[9][7]  = W;
 		
@@ -81,6 +72,4 @@ public class Map
 	{
 		return length;
 	}
-	
 }
-
