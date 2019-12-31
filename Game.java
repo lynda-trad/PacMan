@@ -151,8 +151,7 @@ public class Game
 		ghosts[0] = new Ghosts(this, new Coordinate(3, 3));
 		ghosts[1] = new Ghosts(this, new Coordinate(16, 3));
 		ghosts[2] = new Ghosts(this, new Coordinate(3, 16));
-		ghosts[3] = new Ghosts(this, new Coordinate(15, 10)); 
-		
+		ghosts[3] = new Ghosts(this, new Coordinate(15, 10)); 	
 	}
 	
 	//Setter & getter
@@ -224,12 +223,7 @@ public class Game
 	
 	public void gameOver(int i)
 	{
-		if(i == 0)
-			JOptionPane.showMessageDialog(null, "Too bad, you lost ! Your score : " + player.getScore());
-		else
-			JOptionPane.showMessageDialog(null, "Great job, you won ! Your score : " + player.getScore());
-		
-		System.exit(0);
+		Gui.gameOver(i);
 	}
 	
 	public void move() 
