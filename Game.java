@@ -1,5 +1,3 @@
-import javax.swing.JOptionPane;
-
 public class Game 
 {
 	private Map map;

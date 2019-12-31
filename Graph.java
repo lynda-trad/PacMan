@@ -24,8 +24,7 @@ public class Graph extends JPanel implements Observer
 		this.game = g;
 		this.setSize(width, height + 30);
 	}
-	
-	
+
 	public void setGui(Gui gui) 
 	{
 		this.gui = gui;
