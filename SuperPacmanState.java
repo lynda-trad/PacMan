@@ -32,5 +32,4 @@ public class SuperPacmanState extends PacmanState
 	{
 		return PState.SUPERPACMAN;
 	}
-
 }
