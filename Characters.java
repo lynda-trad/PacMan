@@ -5,7 +5,7 @@ public abstract class Characters
 	
 	public abstract void move();
 	
-	boolean isOut(Coordinate c)  				//indique si la position du pacman ou du ghost sort de l'écran
+	boolean isOut(Coordinate c)  				//indique si la position du pacman ou du ghost sort de l'ecran
 	{
 		if (c.getX() < 0 || c.getY() < 0)
 			return true;

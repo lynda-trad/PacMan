@@ -109,9 +109,9 @@ public class Game
 		gums[55]  = new Blue  (0,new Coordinate(8, 13));	// blue 
 		
 		
-		gums[56] = new Blue  (0,new Coordinate(1, 14)) ;	    // blue 
+		gums[56] = new Blue  (0,new Coordinate(1, 14)) ;	// blue 
 		gums[57] = new Blue  (0,new Coordinate(3, 14)) ; 	// blue
-		gums[58] = new Blue  (0,new Coordinate(5, 14)) ;	    // blue 
+		gums[58] = new Blue  (0,new Coordinate(5, 14)) ;	// blue 
 		gums[59] = new Blue  (0,new Coordinate(7, 14)) ; 	// blue 
 		gums[60] = new Blue  (0,new Coordinate(9, 14)) ; 	// blue 
 		gums[61] = new Blue  (0,new Coordinate(11,14)) ; 	// blue 
