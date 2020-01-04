@@ -7,8 +7,6 @@ public class Graph extends JPanel implements Observer
 {
 	private Game game;
 	
-	private Gui gui;
-	
 	private static final int SCALE  = 20;
 	private static final int width  = SCALE * 18 + 14;
 	private static final int height = SCALE * 18 + 37;
@@ -23,11 +21,6 @@ public class Graph extends JPanel implements Observer
 	{
 		this.game = g;
 		this.setSize(width, height + 30);
-	}
-
-	public void setGui(Gui gui) 
-	{
-		this.gui = gui;
 	}
 	
 	@Override

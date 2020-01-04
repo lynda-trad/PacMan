@@ -221,7 +221,10 @@ public class Game
 	
 	public void gameOver(int i)
 	{
-		Gui.gameOver(i);
+		if(i == 0)
+			Gui.gameOver("Too bad, you lost ! Your score : ", getPlayer().getScore());
+		else
+			Gui.gameOver("Great job, you won ! Your score : ", getPlayer().getScore());		
 	}
 	
 	public void move() 

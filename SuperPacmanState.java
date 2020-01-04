@@ -1,6 +1,5 @@
 public class SuperPacmanState extends PacmanState 
 {
-	
 	protected SuperPacmanState(Pacman pacman) 
 	{
 		super(pacman);

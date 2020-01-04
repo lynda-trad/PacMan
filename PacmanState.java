@@ -17,4 +17,3 @@ public abstract class PacmanState
 	public abstract PState getState();
 	public abstract void ghostCollision(int i, Coordinate c);	
 }
-		

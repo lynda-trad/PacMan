@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 public class Gui 
 {
 	private static JFrame frame = new JFrame("Pacman");
-	private static Graph graph;
 	private static Game game;
 
 	public JFrame getFrame() 
@@ -28,13 +27,9 @@ public class Gui
 		frame.addKeyListener(new MyListener(game.getPlayer()));
 	}
 
-	public static void gameOver(int i)
+	public static void gameOver(String s, int i)
 	{
-		if(i == 0)
-			JOptionPane.showMessageDialog(frame, "Too bad, you lost ! Your score : " + game.getPlayer().getScore());
-		else
-			JOptionPane.showMessageDialog(frame, "Great job, you won ! Your score : " + game.getPlayer().getScore());
-		
+		JOptionPane.showMessageDialog(frame, s + i);		
 		System.exit(0);
 	}
 }

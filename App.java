@@ -9,8 +9,6 @@ public class App
 		game.getPlayer().addObserver(graph);
 		
 		Gui gui = new Gui(game, graph);
-
-		graph.setGui(gui);
 		
 		while(true)
 		{
