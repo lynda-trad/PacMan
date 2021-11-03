@@ -1,3 +1,0 @@
-TRAD 	      Lynda 	u21604852
-
-HATHARASINGHA Nadeesha 	u21610524
